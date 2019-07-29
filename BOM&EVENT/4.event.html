@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件对象</title>
+    <script>
+        /*
+        event:事件对象，当一个事件发生的时候，
+        和当前这个对象发生的这个事件有关的一些详细的信息都会被临时保存到一个指定的地方，这个地方就是event对象
+        供我们在需要的时候调用
+
+        兼容
+        ie/chrome:event是一个内置全局对象,
+        ff事件对象是通过事件函数的第一个参数传递的
+        event必须要在事件调用的时候才会有用
+
+        clientX[Y]:当一个事件发生时，鼠标到页面可视区域的距离
+        */  
+            // 例子1
+            // alert(event)//undefined这里没有事件
+            // document.onclick=function(){
+            //     alert(event);//[object MouseEvent]
+            // }
+
+            // 例子2
+            // function fn1(){
+            //     alert(event)
+            // }
+            // fn1()//google测试环境：undefined
+
+            // 例子3
+            // document.onclick=fn1
+            // function fn1(ev){
+            //     var ev=ev||event;
+            //     // alert(ev);
+            //     for(var attr in ev){
+            //         console.log(attr+'='+ev[attr])
+            //     }
+            // }
+                
+            document.onclick=fn2;
+            function fn2(ev){
+                var ev=ev||event;
+                alert(ev.clientX);
+                alert(ev.clientY);
+            }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

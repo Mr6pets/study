@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>阻止默认行为</title>
+    <script>
+        /*
+        事件的默认行为：当一个事件发生的时候浏览器的会默认做的事情
+        阻止默认行为
+        当前这个行为是什么事情触发的，然后在事件函数中使用 return false
+
+        */
+       document.onkeydown=function(){
+           return false;
+       }
+       /*
+       oncontextmenu:右键菜单事件，当右键菜单（环境菜单）显示出来的时候触发
+       */
+      document.oncontextmenu=function(){
+          return false;//禁用原本的菜单
+          //之后可以模拟菜单
+      }
+    </script>
+</head>
+<body>
+     
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽封装</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript">
+    /*
+        拖拽的时候 如果有文字被选中 那就会有问题
+        原因：
+        当鼠标按下后 如果页面中有文字被选中，那么会触发浏览器默认拖拽文字的效果\
+        解决问题：
+            标准：阻止默认事件
+            IE下：设置全局捕获 
+        图片拖拽问题
+        解决办法同理    
+    */
+        window.onload=function(){
+            var oDiv=document.getElementById('div1')
+            drag(oDiv)
+            function drag(obj){
+                oDiv.onmousedown=function(ev){
+                    var ev=ev||window.event;
+                    var disX=ev.clientX-this.offsetLeft;
+                    var disY=ev.clientY-this.offsetTop;
+                    if(obj.setcapture){//设置全局捕获 这样选中的文字就不会再IE下被拖动 参考20.drag3.html
+                        obj.setcapture()
+                    }
+                    document.onmouseover=function(ev){
+                        var ev=ev||window.event;
+                        obj.style.left=ev.clientX-disX+'px';
+                        obj.style.top=ev.clientY-disY+'px';
+                    };
+                    document.onmouseup=function(){
+                        document.onmouseover=document.onmouseup=null;
+                        //释放全局捕获 releaseCapture()
+                        if(obj.releaseCapture){
+                            obj.releaseCapture()
+                        }
+                    }
+                    return false;
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

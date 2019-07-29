@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跟随鼠标移动的div</title>
+    <style>
+        #box{
+            width: 100px; 
+            height: 100px;
+            background-color: aquamarine;
+        }
+    </style>
+    <script type="text/javascript">
+    /*
+        onmouseover:当鼠标在一个元素上面移动的触发
+        触发频率不是像素，而是间隔的时间，在一个指定的时间内（很短），如果鼠标的位置和上一次的位置发生了变化，那么就会触发一次
+    */
+        window.onload=function(){
+            var box=document.getElementById('box')
+           document.onmousemove=function(e){
+               var e=e||event;
+               var scrollTop=document.documentElement.scrollTop||document.bady.scrollTop;
+                box.style.marginLeft=e.clientX+'px';
+                box.style.marginTop=e.clientY+'px';
+           } 
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

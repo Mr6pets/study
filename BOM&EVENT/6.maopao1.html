@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件冒泡1</title>
+    <style>
+        #div1{
+            width: 100px; 
+            height: 200px;
+            border: 1px solid #000000;
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+    /*
+        阻止冒泡：当前要阻止冒泡的事件函数中调用 event.cancelBulbble=true;
+    */
+        window.onload=function(){
+            var btn=document.getElementById('btn');
+            var div1=document.getElementById('div1');
+            btn.onclick=function(ev){
+                var e=ev||event;
+                ev.cancelBubble=true;//阻止当前对象的冒泡
+                div1.style.display='block'
+            };
+            document.onclick=function(){
+                div1.style.display='none';
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+    <div id="div1"></div>
+</body>
+</html>

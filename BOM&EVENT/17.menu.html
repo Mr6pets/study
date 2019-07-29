@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改默认菜单</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 200px;
+            border: 1px solid lightblue;
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var div1=document.getElementById('div1');
+            document.oncontextmenu=function(ev){
+                var ev=ev||event;
+                div1.style.left=ev.clientX+'px';
+                div1.style.top=ev.clientY+'px'
+                div1.style.display='block';
+                return false;
+            };
+            document.onclick=function(){
+                div1.style.display='none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

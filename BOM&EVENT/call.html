@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>call</title>
+</head>
+<body>
+    <script>
+        /*
+        函数下的一个方法，call方法第一个参数可以改变函数执行过程中的内部this的指向
+        call()方法的第二参数就是原函数的第一个参数的值
+        */
+        function fn1(){
+            alert(this);
+        };
+        fn1()//window    
+        fn1.call(1);//调用函数 fn1==fn1.call();
+
+        // 进行一次封装
+        function bind(obj,evname,fn){
+            if(obj.addEventListener){//w3c
+                obj.addEventListener(evname,fn,false);
+            }else{
+                obj.attachEvent('on'+evname,function(){
+                    fn.call(obj)
+                })
+            }
+        }
+        bind(document,'click',fn1)
+    </script>
+</body>
+</html>

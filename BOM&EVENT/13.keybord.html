@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>键盘事件</title>
+</head>
+<body>
+    <script>
+        /*
+        onkeydown:当键盘按键按下的时候触发
+        onkeyup:当键盘按键抬起的时候触发
+        event.keyCode:数字类型 键盘按键的值 键值
+        CtrlKey，shiftKey.altKey布尔值
+        当一个事件发生的时候，如果ctrl||shift||alt是按下的状态，返回true 否则返回false
+        */ 
+        document.onkeydown=function(ev){
+            var ev=ev||event;
+            alert(ev.keyCode);
+        }
+
+        document.onclick=function(ev){
+            var ev=ev||event;
+            alert(ev.ctrlKey);
+        }
+    </script>
+</body>
+</html>

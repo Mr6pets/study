@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设置全球捕获</title>
+    <script>
+        window.onload=function(){
+            /*
+            设置全局捕获，当我们给一个元素设置全局捕获以后，那么这个元素就会监听后续发生的所有事件，
+            当有事件发生的时候，就会被当前设置了全局捕获的元素触发
+            */
+            var aInput=document.getElementsByTagName('input');
+            aInput[0].setCapture()//设置了全局捕获，那么无论点击那里 都会是弹出1
+            aInput[0].onclick=function(){
+                alert('1');
+            }
+            aInput[1].onclick=function(){
+                alert('2');
+            }
+
+            /*
+                IE：有 并且有效果
+                ff: 有 但是没有效果
+                Chrome：没有 会报错
+            */
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="按钮一">
+    <input type="button" value="按钮二">
+</body>
+</html>
