@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class的静态方法和继承</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+            }
+            // class下写一个静态的方法
+            static isHuman(){
+                console.log('isHuman');
+            }
+            // 静态方法
+            static instan(obj){
+                return obj instanceof Person;//传递进来的obj是不是person构造的 或者说obj是不是在原型链上；
+            }
+            // 静态属性创建(错误的方法)
+            // static a=1//Uncaught SyntaxError: Unexpected token =
+            say(){
+                console.log("我叫"+this.name+"今年"+this.age);
+            }
+            eat(){
+                console.log("lallalaalallal");
+            }
+        };
+        // 添加静态属性(正确的方式)
+        // Person.staticProps="1";
+        // console.log(Person.staticProps);//1
+
+        var p1=new Person("pet",28);
+        // 通过实例来调用
+        p1.say();//我叫pet今年28
+        // 如果静态方法通过实例来调用会报错
+        // p1.isHuman()//报错
+        // Person.isHuman()//isHuman
+
+        // console.log(Person.instan(1));//false
+        // console.log(Person.isHuman(p1));//true;
+
+
+        // var str="妙";
+        // console.log(str.charCodeAt());//22937
+        // 静态方法：通过构造函数来调用
+        // console.log(String.fromCharCode(22937));//妙
+
+
+
+    </script>
+</body>
+</html>

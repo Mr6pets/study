@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>异步编程promise</title>
+    <style>
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: aquamarine;
+    }
+    </style>
+</head>
+<body>
+    <script>
+        // var a=1;
+        // let p1=new Promise(()=>{
+        //     //要执行的异步任务
+
+        //     setTimeout(()=>{
+        //         a=10
+        //     },3000);
+        // });
+        // p1.then(()=>{
+        //     //then方法就是promise处理完任务以后继续执行的任务
+        //     console.log(a);
+        // })
+
+        var btn=dcument.querySelector('button');
+        var div=document.querySelector('div');
+        btn.onclick=function(){
+            var xhr = new XMLHttpRequest();
+            xhr.onload=function(){
+                console.log(this.responseText);
+            }
+            xhr.open('get','http:locallhost:8080',true);
+            //true:异步
+            //false:同步
+            xhr.send();
+        }
+        div.onclick=function(){
+            this.style.background='green';
+        }    
+        
+    </script>
+    <button>按钮</button>
+    <div class="box"></div>
+</body>
+</html>

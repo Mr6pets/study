@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise_all</title>
+</head>
+<body>
+   <script>
+       /*
+       
+       */
+        let p1=new Promise((resolve,reject)=>{
+           setTimeout(()=>{
+            console.log(1)   
+            resolve(10);
+           },2000)
+       });
+        let p2=new Promise((resolve,reject)=>{
+           setTimeout(()=>{
+            console.log(2)   
+            resolve(20);
+           },3000)
+       });
+       Promise.all([p1,p2]).then(arr=>{
+           console.log(3,arr)
+       })//等待所有的执行完了再执行then
+
+   </script>   
+</body>
+</html>

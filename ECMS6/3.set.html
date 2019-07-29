@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>set</title>
+</head>
+<body>
+    <script>
+        var s=new Set(['a','b','c']);
+        // console.log(s.size)//3
+
+        // s.add(1)
+        // console.log(s)//Set(4) {"a", "b", "c", 1}
+
+        // s.add(1).add(2).add(1);
+        // console.log(s);//Set(5) {"a", "b", "c", 1, 2} 增加的相同值不会重复添加
+
+        // s.delete('b');
+        // console.log(s);//Set(2) {"a", "c"};
+
+        // var res=s.delete('b');
+        // console.log(s,res);//Set(2) {"a", "c"} true
+
+        // var res=s.delete('z');
+        // console.log(s,res);//Set(2) {"a", "c"} false
+
+        // console.log(s.has('x'));//false
+        // console.log(s.has('a'));//true
+
+        // 遍历
+        // s.forEach(function(item,index,set){//循环项目 索引 完整的set数据结构
+        //     console.log(item,index,set);
+        //     // a a Set(3) {"a", "b", "c"}
+        //     // b b Set(3) {"a", "b", "c"}
+        //     // c c Set(3) {"a", "b", "c"}
+        // })
+
+        // var keys=s.keys();
+        // console.log(keys);//SetIterator {"a", "b", "c"}
+        // console.log(keys.next())//{value: "a", done: false}
+        // console.log(keys.next())//{value: "b", done: false}
+        // console.log(keys.next())//{value: "c", done: false}
+        // console.log(keys.next())//{value: undefined, done: true}
+        
+        // var values=s.values();
+        // console.log(values.next())//{value: "a", done: false}
+        // console.log(values.next())//{value: "b", done: false}
+        // console.log(values.next())//{value: "c", done: false}
+        // console.log(values.next())//{value: undefined, done: true}
+
+        // var entries=s.entries();   
+        // console.log(entries.next())//{value: Array(2), done: false}
+        // console.log(entries.next())//{value: Array(2), done: false}
+        // console.log(entries.next())//{value: Array(2), done: false}
+        // console.log(entries.next())//{value: undefined, done: true}
+
+        // var arr=[1,2,3,2,3,5,4,"1",NaN,NaN];
+        // var s=new Set(arr);
+        // console.log(s);//Set(7) {1, 2, 3, 5, 4,"1",NaN}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>appendchild</title>
+</head>
+<body>
+  <input type="button" value="按钮" id="btn">
+  <ul id="ul">
+  </ul>
+  <script type="text/javascript">
+  // document.createElement(标签的名字)；
+  // 插入元素 （向父级末尾添加一个元素）
+  // appendChild(childNode)
+
+// document.createElement(tagName) 通过标签名的形式创建一个元素
+// parentNode.appendChild(childNode) 往一个节点里面添加一个子节点 注意添加在最后
+
+// parentNode.insertBefore(childNode1,childNode2)往一个节点的指定子节点前边插入一个节点 例子： childNode1 插入到childnode2的前边
+// parentNode.insertBefore(新添加的元素,被插入的元素)
+// 如果第二个参数为假的 那么会将某个元素添加到父元素的末尾
+// parentNode.removeChild(childNodes)从一个节点中删除指定的子节点
+
+
+
+
+    var btn=document.getElementById('btn');
+    var ul=document.getElementById('ul');
+    var str='';
+    var num=0;
+    btn.onclick=function(){
+      num++;
+      var li=document.createElement('li');
+      li.innerHTML=num;
+      // ul.appendChild(li);
+      ul.insertBefore(li,ul.children[0])//将ul的第一个子节点前插入元素
+    };
+
+  </script>
+</body>
+</html>

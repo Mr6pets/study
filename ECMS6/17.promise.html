@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+</head>
+<body>
+    <script>
+        // var p=new Promise((res,rej)=>{
+        //     res("success");
+        // })
+        // var p2=p.then(()=>{
+
+        // });
+        // console.log(p2)//
+        //=========================================
+        // var p=new Promise((res,rej)=>{
+        //     console.log("成功")
+        // });
+        // var p2 = p.then(()=>{return 1111})//这里P2的返回状态是取决p的状态
+        // // p2.then(data=>{
+        // //     console.log("data then:",data)//成功
+        // // })
+
+        // // var p2=p.then(()=>{return undefined});
+        // var p2=p.then(()=>{return new Promise((res,rej)=>{rej()})});//这里p2zhen的状态是里面内部promise的状态
+
+        //=====================================================================
+        var p=new Promise((res,rej)=>{
+            res("成功")
+        })
+        p.then(()=>{
+            console.log(1);//1
+        })
+        .then(()=>{
+            console.log(2);//2
+        })
+        .then(()=>{
+            console.log(3);//3
+        })
+        .catch((err)=>{//catch会捕获以上任意的一个then的报错，并且将错误信放置在err中
+            console.log(err);
+        })
+        .finally(()=>{//finally无论是不是报错 都会执行到最后
+            console.log("执行完了");
+        })
+    </script>
+</body>
+</html>

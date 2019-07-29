@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>offsetParent</title>
+  <style>
+    #div1{
+      background: lightblue;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      border:10px solid black;
+    }
+    #div2{
+      background: lightpink;
+      width: 60px;
+      height: 60px;
+      position: relative;
+      top:30px;
+      left: 30px;
+      border:10px solid black;
+    }
+    #div3{
+      background: lightyellow;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top:20px;
+      left: 20px;
+      border:3px solid black;
+      transition:1s left;
+    }
+  </style>
+</head>
+<body>
+  <input type="button" value="按钮" id="btn">
+  <div id="div1">
+    <div id="div2">
+      <div id="div3"></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    // 需求
+      // 点击按钮div3移动到边上
+    // 分析
+      // 从div3开始查找它到定位父级的左边距离 20
+      // div2到div1的左距离 30
+      // div1到body的左距离 50
+      // 从div3开始找，找到之后 把目标变成div2 继续找
+
+  var div3=document.getElementById('div3');
+  var btn=document.getElementById('btn');
+  // btn.onclick=function(){
+  //   var left=0;
+  //   var elem=div3;
+  //   div3B=parseInt(getComputedStyle(div3).borderLeftWidth);
+  //   while (elem) {
+  //     left+=elem.offsetLeft+parseInt(getComputedStyle(elem).borderLeftWidth);
+  //     elem=elem.offsetParent;
+  //   }
+  //   left-=div3B;
+  //   div3.style.left=-left+'px';
+  // }
+
+
+  /*
+    getBoundingClientRect() 返回一个对象
+    获取某个元素的信息（高版本：left top bottom right width height）;
+
+  */
+
+
+  btn.onclick=function(){
+    div3.style.left=-div3.getBoundingClientRect().left+'px';
+  }
+
+  </script>
+</body>
+</html>

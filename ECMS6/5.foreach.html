@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>遍历接口</title>
+</head>
+<body>
+    <script>
+    /*
+    
+    */
+    var arr=[10,20,30];
+    console.log(arr[Symbol.iterator]);//ƒ values() { [native code] }有遍历接口
+    // var k=arr.keys();
+    // console.log(k.next());
+    // console.log(k.next());
+    // console.log(k.next());
+    // console.log(k.next());
+
+    // var k=i(arr);
+    // console.log(k.next());
+    // console.log(k.next());
+    // console.log(k.next());
+    // console.log(k.next());
+    //  function i(obj){
+    //      var index=-1;
+    //     return{
+    //         next:function(){
+    //             index++
+    //             return index<obj.length
+    //             ?{
+    //                 values:index;
+    //                 done:false
+    //             }
+    //             :{
+    //                 values:undefined;
+    //                 done:true
+    //             }
+    //         }
+    //     }
+    //  };
+
+    //  for(var attr of arr){
+    //     console.log(attr)//10 20 30
+    //  }
+
+    var els=document.getElementsByTagName('*');
+    for(var attr of els){
+        console.log(attr);
+    }
+    //数组 类数组 set map 都可以用for of
+    </script>
+</body>
+</html>

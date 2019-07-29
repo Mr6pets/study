@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+</head>
+<body>
+    <script>
+        /*
+        promise是一个构造函数
+        通过promise来构建一个异步任务处理对象
+        */
+        // var a=1;
+        // setTimeout(function(){
+        //     a=10;
+        // },2000)
+        // console.log(a);//1
+//=====================================================================
+        //  let p1=new Promise((resolve,reject)=>{
+        //     //  要执行的异步任务
+        //     resolve("a")
+        //      setTimeout(()=>{
+        //          a=10
+        //      },2000)
+        //  })
+        //  p1.then((data)=>{
+        //     //这里的then方法就是promise处理完任务后继续执行的任务
+        //     console.log(data);
+        //  })
+        //  console.log(p1)
+         //有三个状态 pending:初始状态 既不是成功，也不是失败状态
+         //fulfilled/resolved:意味着操作成功
+         //rejected意味着操作失败
+
+         //========================================================================
+
+         let p2=new Promise((resolve,reject)=>{
+             setTimeout(()=>{
+                reject();
+             },2000)
+         })
+         p2.then(()=>{
+            console.log();
+         },()=>{
+            console.log('失败了')
+         });//then()中的第二个箭头函数是promise失败的时候调用的
+    </script>
+</body>
+</html>

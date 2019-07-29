@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>表格</title>
+</head>
+<body>
+  <table border="" id="box">
+    <thead>
+      <tr>
+        <th>头1</th>
+        <th>头2</th>
+        <th>头3</th>
+        <th>头4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>内容1</td>
+        <td>内容2</td>
+        <td>内容3</td>
+        <td>内容4</td>
+        <td>内容4</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>统计1</td>
+        <td>统计2</td>
+        <td>统计3</td>
+        <td>统计4</td>
+      </tr>
+    </tfoot>
+  </table>
+  <script type="text/javascript">
+    /*
+      table.tHead--获取表格头部
+      table.rows--获取tr获取的是行数（一组）
+      table.tFood--获取底部
+      table.tBodies--获取表格主体 注意：获取到的是一个集合
+      rows[n].cells:单元格就是td
+
+    */
+    var box = document.getElementById('box');
+    box.tHead.style.borderColor = 'red';
+  </script>
+</body>
+</html>

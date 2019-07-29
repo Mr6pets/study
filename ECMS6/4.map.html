@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Map</title>
+</head>
+<body>
+    <script>
+        /*
+
+        */
+        // 让momo这个对象名字作为obj对象下的一个键的名字，以下方法是行不通的
+        // var obj={
+        //     name:"miaov"
+        // };
+        // var momo={
+        //     name:"m"
+        // }
+        // obj[momo]=1;
+        // console.log(obj);
+
+        // var m=new Map([["name","miaov"]]);
+        // console.log(m);//Map(1) {"name" => "miaov"}
+        // console.log(m.get("name"));//miaov
+        // m.set("age",100);
+        // console.log(m);//Map(2) {"name" => "miaov", "age" => 100}
+
+        // var momo={name:"m"};
+        // m.set(momo,1);
+        // console.log(m);
+        // Map(2) {"name" => "miaov", {…} => 1}
+        // size: (...)
+        // __proto__: Map
+        // [[Entries]]: Array(2)
+        // 0: {"name" => "miaov"}
+        // 1: {Object => 1}
+        // key: {name: "m"}
+        // value: 1
+        // length: 2
+
+        // m.delete(momo);
+        // console.log(m);//Map(1) {"name" => "miaov"}
+
+        // var res=m.delete(momo);
+        // console.log(res);//true表示删除是成功的
+        // console.log(m.has(momo));//false 表示没有
+
+        // m.clear()
+        // console.log(m);//Map(0) {}
+
+        var m=new Map([["name","miaov"],["aaa",200]]); 
+        var momo={name:"m"};
+        m.set(momo,1); 
+        // m.forEach(function(item,key,map){
+        //     console.log(item,key,map);
+        // }); 
+        // var res=m.keys();
+        // console.log(res.next());//{value: "name", done: false}
+        // console.log(res.next());//{value: "aaa", done: false}
+        // console.log(res.next());//{value: {…}, done: false}
+        // console.log(res.next());//{value: undefined, done: true}
+
+        // var res=m.values();
+        // console.log(res.next());//{value: "miaov", done: false}
+        // console.log(res.next());//{value: 200, done: false}
+        // console.log(res.next());//{value: 1, done: false}
+        // console.log(res.next());//{value: undefined, done: true}
+
+        // var  res=m.entries();
+        // console.log(res.next());// {value: Array(2), done: false}
+        // console.log(res.next());//{value: Array(2), done: false}
+        // console.log(res.next());//{value: Array(2), done: false}
+        // console.log(res.next());//{value: undefined, done: true}
+    
+        // m.set({},2);
+        // m.set({},3);
+        // console.log(m)//Map(5) {"name" => "miaov", "aaa" => 200, {…} => 1, {…} => 2, {…} => 3}
+        // console.log(m.get({}));//无法取到这个值，地址不同
+
+        var obj ={};
+        m.set(obj,2);
+        m.set(obj,3);
+        console.log(m)//Map(4) {"name" => "miaov", "aaa" => 200, {…} => 1, {…} => 3}
+        console.log(m.get(obj));//可以获取到
+
+    </script>
+</body>
+</html>

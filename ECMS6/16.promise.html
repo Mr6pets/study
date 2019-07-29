@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+</head>
+<body>
+    <script>
+        // 苏州公司的面试题
+            // const promise=new Promise((resolve,reject)=>{
+            //     console.log(1);
+            //     resolve();
+            //     console.log(2);
+            // });
+            // promise.then(()=>{
+            //     console.log(3);
+            // })
+            // console.log(4);
+            //结果：1 2 4 3
+
+        
+        
+        //苏州公司面试题二，有报错   
+        // const first=()=>{(new Promise((resolve,reject)=>{
+        //     console.log(3);
+        //     let p=new Promise((resolve,reject)=>{
+        //     console.log(7);
+        //     setTimeout(()=>{
+        //         console.log(5);
+        //         resolve(6)
+        //     },0)
+        //     resolve(1)
+        //     });
+        //     resolve(2);
+        //     p.then((arg)=>{
+        //         console.log(arg);
+        //     })
+        //     })
+        // )}   
+        // first().then((arg)=>{
+        //     console.log(arg);
+        // });
+        // console.log(4);
+
+
+
+        // 模拟ajax函数
+        // function send(){
+        //     // var xhr=new xmlhttprequest();
+        // }
+
+        //  异步编程解决方案
+        // var p=new Promise((resolve,reject)=>{
+        //     console.log("实例化...")
+        //     //这里是ajax地址
+        //     return resolve("成功!");
+        //     console.log("22")
+        // });
+        // console.log(p)//  
+        // p.then((data)=>{
+        //     console.log('then:',data)
+        // }) 
+//=================================================================
+    //    console.log(1);
+    //    setTimeout(()=>{
+    //        console.log(3)
+    //    });
+    //    setTimeout(()=>{
+    //        console.log(4);
+    //    })
+    //    var p=new Promise((res,rej)=>{
+    //        console.log(5)
+    //        res()
+    //    });
+    //    p.then(()=>{//宏任务
+    //        console.log(6);
+    //    })
+    //    console.log(2);
+
+       //结果：1 5 2 6 3 4
+       //先执行宏任务，宏任务执行完了再执行微任务 then方法中的回调函数（箭头函数）是微任务
+       //所以 先执行了 1 5 2 6,其中的setTimeout只是将内部的函数推到了任务堆中 下一次执行的时候在执行
+
+//=============================================================================================
+        // var p=new Promise((res,rej)=>{
+        //     res("success");
+        //     // rej()
+        // });
+        // p.then((data)=>{
+        //     console.log(data);//success
+        // },()=>{
+        //     console.log("失败");
+        // }
+        // )
+
+        // p.then((data)=>{
+        //     console.log(data);
+        // })
+        // // 如果仅仅就只是想捕捉失败
+        // p.catch(()=>{
+        //     console.log("失败");
+        // })
+
+//===============================
+        // var p=new Promise((res,rej)=>{
+        //     res("success");
+        //     // rej()
+        // });
+        // var p2=p.then((data)=>{
+        //     console.log(data)
+        // })
+        // console.log(p2)//返回一个新的promise
+    // 同理链式调用可以写成这样
+    // p
+    // .then(()=>{
+    //     console.log(data);
+    // })
+    // .then(()=>{
+    //     console.log("then");
+    // })
+//================================================
+    </script>
+</body>
+</html>

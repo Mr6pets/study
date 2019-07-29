@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>clientHeigh</title>
+  <style>
+  #div1{ width:100px; height: 100px; background-color: lightblue;position: absolute;}
+
+  </style>
+</head>
+<body>
+  <div id="div1"></div>
+  <script type="text/javascript">
+  /*
+  可视区域的宽高
+  document.documentElement.clientWidth;
+  document.documentElement.clientHeight;
+  元素的宽/高
+  node.offsetWidth/node.offsetHeight
+  计算边框
+  加上padding值
+  node.clientWidth/node.clientHeigh
+  不计算边框
+  加上padding值
+  */
+    var div=document.getElementById('div1');
+    var left=(document.documentElement.clientWidth-div.clientWidth)/2;
+    var top1=(document.documentElement.clientHeight-div.clientHeight)/2;
+    console.log(top1);
+    div.style.left=left+'px';
+    div.style.top=top1+'px';
+  </script>
+</body>
+</html>

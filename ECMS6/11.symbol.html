@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>synbol</title>
+</head>
+<body>
+    <script>
+        /*
+        
+        */
+        // var s = Symbol("a");//用来标识数据，没有其他作用
+        // console.log( typeof s)//symbol
+        // console.log(s)//Symbol()
+
+        // var s2=Symbol();
+        // console.log(s2);
+
+        // // var s3=new Symbol();//不能通过构造器调用
+
+        // var obj={
+        //     a:1
+        // }
+        // obj.b=3;
+        // obj.a=2;
+        // console.log(obj);//{a: 2, b: 3}会覆盖
+
+        var obj={
+            a:1
+        }    
+        var a=Symbol("a");
+        obj[a]="sa";
+        console.log(obj);//{a: 1, Symbol(a): "sa"}
+
+        console.log(obj[a]);//sa
+
+        var b=Symbol("b");
+        obj[b]="lal";
+        console.log(obj);//{a: 1, Symbol(a): "sa", Symbol(b): "lal"}
+
+        // 如果使用for in遍历
+        // for(var attr in obj){
+        //     console.log(obj[attr]);
+        // }
+        //这里是无法遍历出来的 
+
+        // 如何遍历symbol中的值
+        console.log( Object.getOwnPropertySymbols(obj))//[Symbol(a), Symbol(b)]
+        
+
+        var ss=Symbol();
+        // console.log(ss+1);//报错symbol类型不能运算
+        // console.log(ss+"a");//报错
+        console.log(!!ss)//true 可以转化为布尔值  用来做判断
+        console.log(Boolean(ss));//true
+
+    </script>
+</body>
+</html>

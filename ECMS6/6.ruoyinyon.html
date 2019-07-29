@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弱引用</title>
+</head>
+<body>
+    <script>
+        // var m=new Map();
+        // var zm={
+        //     name:"amouse",
+        //     age:30
+        // };
+        // var reci={
+        //     name:"reci",
+        //     age:20
+        // };
+        // m.set(zm,"miaov");
+        // m.set(reci,"miaov2");
+        // zm=null;//垃圾回收机制下,这里是强引用 并没有清除掉zm
+        // console.log(m);//Map(2) {{…} => "miaov", {…} => "miaov2"}
+
+        // 弱引用
+        // var m=new Map();
+        var wm=new WeakMap();
+
+        var zm={
+            name:"amouse",
+            age:30
+        };
+        var reci={
+            name:"reci",
+            age:20
+        };
+        wm.set(zm,"miaov");
+        wm.set(reci,"miaov2");
+        zm=null;//垃圾回收机制下
+        console.log(wm);
+
+        // WeakMap 下set设置键名不能用非对象
+        //同时也是不能遍历的
+        // for(var v of wm){
+        //     console.log(v)//Uncaught TypeError: wm is not iterable
+        // }
+        
+
+    </script>
+</body>
+</html>

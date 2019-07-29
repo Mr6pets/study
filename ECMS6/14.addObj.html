@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象新增</title>
+</head>
+<body>
+    <script>
+        /*
+        
+        */
+        // es5:
+        // var a=1;
+        // var obj={
+        //     a:a
+        // };
+        // console.log(obj);//{a:1}
+
+        // es6:
+        // 如果键值和键名是一样的可以简写    
+        // var a=1;
+        // var obj={a};
+        // console.log(obj);//{a: 1}
+
+        // es5:    
+        // var a=1;
+        // var obj={
+        //     a:a,
+        //     fn:function(){
+        //         console.log("fn");
+        //     }
+        // }
+        // console.log(obj.fn)//ƒ (){console.log("fn");}
+//-----------------------------------------------------------------------
+        // es6:
+        // var a=1;
+        // var obj={
+        //     a,
+        //     fn(){
+        //         console.log('fn执行了');
+        //     },
+        //     b:100
+        // }
+        //  obj.fn()//fn执行了
+//------------------------------------------------------------------------
+        // var attrname="width";
+        // var attrobj={}; //这里有个坑，这里的变量是一个空的对象 放到下面的对象上去了 对象是不支持作为对象的key值的 所以会进行一个转化
+        // var attrFn="fn";
+        // var obj={//这里通过在对象中用变量，可以在外部改动变量的值
+        //     [attrname]:100,
+        //     [attrobj]:"hellow",
+        //     [attrFn](){
+        //         console.log("attrFn");
+        //     }
+        // }
+        // console.log(obj);//{width: 100, [object Object]: "hellow", fn: ƒ}
+        // obj.fn()//可以执行
+//------------------------------------------------------------------------------
+        // console.log(1=="1")//true
+        // console.log(NaN===NaN)//false
+        // console.log(Object.is(1,1));//用Object.is()判断内容是不是相等 true
+        // console.log(Object.is(1,"1"));//false
+        // console.log(Object.is(NaN,NaN))//true
+        // console.log(Object.is({},{}));//false
+//--------------------------------------------------------
+        // function move(obj){
+        //     var defaultObj={
+        //         ease:"linear",
+        //         duration:1000
+        //     };
+        //     // 以上是默认的值 如果函数调用没有传递值过来 那就用执行函数本身内部定义的默认
+        //     // var para={
+        //     //     ease:obj.ease||defaultObj.ease,
+        //     //     duration:obj.duration||defaultObj.duration
+        //     // }
+        //     // console.log(para);
+        //     // es6的方法
+        //     var para={};
+        //     Object.assign(para,defaultObj,obj)//从最后的面obj往前面融合，如果后面的值和前一个有相同的值后面的值覆盖前一个值
+        //     console.log(para);//{ease: "easeIn", duration: 2000}
+        // }
+        // move({
+        //     ease:"easeIn",
+        //     duration:2000
+        // })
+
+
+//-----------------------------------------------------
+            // var obj={
+            //     a:1,
+            //     b:2
+            // }
+            // for(var attr of obj){
+            //     console.log(attr);
+            // }//报错 这里没有遍历接口
+            //  for(var attr of Object.keys(obj)){
+            //     console.log(attr);
+            //  }
+            //  for(var attr of Object.values(obj)){
+            //     console.log(attr);
+            //  }
+            //  for(var [key,val] of Object.entries(obj)){
+            //     console.log(key,val);
+            //  }
+
+//----------------------------------------------------------------
+                // var obj={
+                //     a:1,
+                //     b:2
+                // };
+                // var res={
+                //     ...obj,
+                //     c:3
+                // }
+                // console.log(res);//{a: 1, b: 2, c: 3}
+
+                // var arr=[1,2,34,4];
+                // console.log(...arr)// 1 2 34 4 三个点arr代表的是打散arr
+
+                // var arr=[1,23,4,5];    
+                // console.log(Math.max(1,23,4,5))//23
+                // console.log(Math.max(...arr))//23
+
+                var arr=[1,1,12,23,3,2,1,2];
+                // var res=new Set(arr);
+                // console.log(res);//{1, 12, 23, 3, 2}
+                var res=[...new Set(arr)];
+                console.log(res);//[1, 12, 23, 3, 2]
+
+
+    </script>
+</body>
+</html>

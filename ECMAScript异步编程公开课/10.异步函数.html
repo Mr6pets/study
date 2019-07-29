@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>异步函数</title>
+</head>
+<body>
+    <script>
+        // 异步函数
+        // async function fn(){
+        //     var v = await new Promise((resolve,reject)=>{
+        //         setTimeout(()=>{
+        //             var a=10;
+        //             resolve(a);
+        //         },2000)
+        //     })//加上await的意思是 下面的程序等待 await执行完在执行
+        //     console.log(v)
+        // }
+        // fn()//
+        //===============================================================
+        async function fn(){
+           
+            try {
+                var v = await getValue(10)
+                console.log(v)
+                var w= await getValue()
+                console.log(w)
+                var y= await getValue(101)
+                console.log(y)
+            } catch (error) {
+                console.log(error)
+            }
+            
+
+        }
+        fn()
+        function getValue(val){
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    var a=10
+                    if(val==undefined){
+                        resolve(a);
+                    }else if(val<100){
+                        resolve(val*10);
+                    }else{
+                        reject("传入的值太大了");
+                    }
+                   
+                },2000)
+            })
+        }
+    </script>
+</body>
+</html>

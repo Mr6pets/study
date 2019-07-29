@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>offsetParent</title>
+  <style>
+    #div1{
+      background: lightblue;
+      width: 100px;
+      height: 100px;
+      position: relative;
+    }
+    #div2{
+      background: lightpink;
+      width: 60px;
+      height: 60px;
+      position: relative;
+      left: 30px;
+    }
+    #div3{
+      background: lightyellow;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <input type="button" value="按钮" id="btn">
+  <div id="div1">
+    <div id="div2">
+      <div id="div3"></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+
+    // 需求
+      // 点击按钮div3移动到边上
+    // 分析
+      // 从div3开始查找它到定位父级的左边距离 20
+      // div2到div1的左距离 30
+      // div1到body的左距离 50
+      // 从div3开始找，找到之后 把目标变成div2 继续找
+
+  var div3=document.getElementById('div3');
+  var btn=document.getElementById('btn');
+  btn.onclick=function(){
+    var left=0;
+    var elem=div3;
+    while (elem) {//如何有这个节点 就执行循环
+      left+=elem.offsetLeft;
+      elem=elem.offsetParent;//第一次计算之后，elem就变成div2
+    }
+
+  }
+
+
+  </script>
+</body>
+</html>

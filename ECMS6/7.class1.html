@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class的基本使用</title>
+</head>
+<body>
+    <script>
+        // es5
+        // function Person(name,age){
+        //     this.name=name;
+        //     this.age=age;
+        // }
+        // var person=new Person("liu",27);
+        // Person.prototype.say=function(){
+        //     console.log("我会说话的");
+        // };
+        // console.log(person.say());
+
+        //es6
+        class Person{
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+            }
+            say(){
+                console.log("lallalalal")
+            }
+        }
+        var p1=new Person("liuan",27);
+        console.log(p1);
+        p1.say()//
+
+    </script>
+</body>
+</html>

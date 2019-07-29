@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>布局练习</title>
+  <style>
+  *{ margin:0; padding:0; }
+  ul{ width: 200px; background-color: rgb(148, 148, 148); margin-left: 20px; margin-top: 20px;}
+  ul li{ height: 40px;line-height: 40px;list-style: none; padding-left: 10px;}
+  .singal{ background-color: rgb(85, 85, 85); color: white;}
+  .addMainColor{ background-color: rgb(85, 85, 85);}
+  .near{background-color: rgb(180, 177, 180);}
+  .side{ background-color:rgb(228, 161, 13); }
+  </style>
+</head>
+<body>
+  <ul id="ul">
+    <li class="singal">这是首行</li>
+    <li>111111</li>
+    <li>222222</li>
+    <li>333333</li>
+    <li>444444</li>
+    <li>555555</li>
+    <li>666666</li>
+    <li>777777</li>
+    <li>888888</li>
+    <li>999999</li>
+    <li class="singal">这是末行</li>
+  </ul>
+  <script type="text/javascript">
+    var oUl=document.getElementById('ul');
+    var lis=oUl.children;
+    var first=oUl.firstElementChild;
+    var last=oUl.lastElementChild;
+    for(var i=0;i<lis.length;i++){
+      lis[i].onmouseover=function(){
+        if(this==first||this==last){
+          this.className='side';
+        }else {
+          this.className='addMainColor';
+          this.nextElementSibling.className=this.previousElementSibling.className='near';
+          first.className=last.className='singal';
+        }
+      };
+      lis[i].onmouseout=function(){
+        for (var i = 0; i < lis.length; i++) {
+          lis[i].className='';
+        }
+        first.className=last.className='singal';
+      };
+    }
+  </script>
+</body>
+</html>

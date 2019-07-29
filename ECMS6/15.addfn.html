@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数新增</title>
+</head>
+<body>
+    <script>
+    //     function add(a,b){
+    //         // var _b=b||100;
+    //         var _b=b===undefined?100:b;
+    //         return a+_b;
+    //     }
+    //    console.log(add(3))//103
+    //    console.log(add(10,5))//15
+    //    console.log(add(10,0))//10
+
+    //    function add(a,b=100){//效果类似是 var _b=b===undefined?100:b;
+    //         return a+b;
+    //     }
+    //    console.log(add(3))//103
+    //    console.log(add(10,5))//15
+    //    console.log(add(10,0))//10
+    //    console.log(add(10,undefined))//110
+
+    // 剩余参数
+        // function fn(a,...r){
+        //     console.log(a,r)//1 [2, 3, 4, 5]
+        // }
+        // fn(1,2,3,4,5)
+
+    // 
+    // function add(a,b){
+    //     return a+b;
+    // }
+    // console.log(add(2,3))//5
+    // 箭头函数表示上述函数(普通写法)
+    // var add=(a,b)=>{return a+b}//函数名 ()传递的值 {}执行内容
+    // 如果箭头函数中只有一条语句，可以如此写
+    // var add=(a,b)=>a+b;
+    // 如果如以下
+    // var add=(a,b)=>{miaov:1}//undefined  这里的{miaov：1}函数不认为是个对象 会认为是一个函数体
+    // var add= (a,b)=>({miaov:1})//miaov:1
+
+    var add=(a,b)=>{
+        // miaov:1//这里的miaov是个label标签
+        miaov:for(var i=0;i<10;i++){
+            console.log(i)
+            if(i==3){
+                break miaov;
+            }
+        }
+    }
+    // console.log(add(2,3))//5
+
+
+        // var add=(a)=>a*100;//参数只有一个的时候可以写成
+        // var add=a=>a*100;//如果没有传递的参数的时候要写成
+        // var add=()=>a*100;
+        // console.log(add(2));//200
+
+        // es5
+        // var arr=[10,2,31,48,15,6];
+        // var res=arr.filter(function(item){
+        //     return item>20;
+        // })
+        // console.log(res)// [31, 48]
+
+        // es6
+        // var arr=[10,2,31,48,15,6];
+        // var res=arr.filter(item=>item>20)
+
+        // var fn=()=>{
+        //     console.log(this);
+        // };
+        // document.onclick=fn()//Window 箭头函数this指向window
+        
+        // var fn=function(){
+        //     console.log(this);
+        // }
+        // document.onclick=fn//document 这里的this指向document;
+
+        // var fn=()=>{
+        //     console.log(arguments);//箭头函数没有传值的时候 是没有arguments的。如果真的要用 那就要用以下方法
+        // }
+        // fn()
+
+        var fn=(...r)=>{
+            console.log(r);//[1, 2, 3]
+        }
+        fn(1,2,3);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回调地狱</title>
+</head>
+<body>
+    <script>
+        /*
+        异步任务处理：回调
+        callback hell 回调地狱
+
+        任务链
+        任务是一个接着一个的，而且是有依赖关系的
+        */
+        var xhr=new XMLHttpRequest();
+        xhr.onload=function(){
+            // console.log(this.responseText);
+            //假设获取到了用户的信息了
+            if(user.isAdmin){
+                var xhr=new XMLHttpRequest();
+                xhr.open('get','http:localhost:端口号/getVideo',true)
+                xhe.onload=function(){
+                    //根据视频信息，当前视频的具体地址
+                    
+                }
+                xhr.send();
+            }
+        }
+        //获取当前的用户信息，
+        xhr.open('get','http:localhost:端口号/getuser',true);
+        xhr.send();
+
+        //===========================================================================================
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class的静态方法和继承</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+            }
+            // class下写一个静态的方法
+            static isHuman(){
+                console.log('isHuman');
+            }
+            static instan(obj){
+                return obj instanceof Person;//传递进来的obj是不是person构造的 或者说obj是不是在原型链上；
+            }
+            say(){
+                console.log("我叫"+this.name+"今年"+this.age);
+            }
+            eat(){
+                console.log("lallalaalallal");
+            }
+        };
+        // coder从继承Person中继承
+        class Coder extends Person{
+            constructor(name,age,money){
+                super(name,age)//必须要写super构造，参数中写上继承来的父类的参数  继承中子类调用父类的构造函数，要带上父类的参数
+                this.money=money;
+            }
+            say(){
+                console.log("我叫"+this.name+"今年"+this.age+"月薪"+this.money)
+            }
+        }
+        var c1 = new Coder('xm',30,30000);
+        console.log(c1);//Coder {name: "xm", age: 30, money: 30000}
+        c1.say();//我叫xm今年30月薪30000;
+
+        var p1=new Person("liu",18);
+        console.log(p1)//Person {name: "liu", age: 18}
+        p1.say()//我叫liu今年18;
+
+        // 总结：子类继承的父类的方法 子类可以通过构造函数调用，同时不会影响父类的函数执行
+    </script>
+</body>
+</html>

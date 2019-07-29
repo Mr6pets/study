@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>script</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="box"></div>
+    <!-- 
+        script引入要分先后，因为有相互依赖 
+        defer要在外链js上使用，会在其他的js，dom节点加载后再加载
+        多个defer会顺序加载
+     -->
+    <!-- <script src="20-2.js" defer></script> -->
+    <!-- <script src="20-3.js" defer></script> -->
+    <!-- <script src="20-1.js"></script> -->
+
+    <!--使用了type="module"后 会默认加上defer-->
+    <!-- <script src="20-1.js" type="module"></script>
+    <script>
+        console.log(a)//报错 script20-1.js中的console.log在20-1中才有效，如果要使用 需要用到export
+    </script> -->
+
+    <script src="20-a.js" type="module"></script>
+    <!-- <script src="20-3.js></script> -->
+    
+
+    
+</body>
+</html>

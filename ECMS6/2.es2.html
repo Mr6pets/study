@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>解构赋值</title>
+</head>
+<body>
+    <script>
+        /*
+        
+        */
+        var obj={
+            name:'liuliu',
+            age:28,
+            a:1,
+            b:2
+        }
+
+        // var name =obj.name;
+        // console.log(name);
+
+        // 解构赋值
+        // var {name}=obj;//取对象obj中name的值并且存放在name中
+        // console.log(name);
+
+        // var {name,age}=obj;//取对象obj中name的值并且存放在name中
+        // console.log(name,age);//liuliu 28
+
+        //var name='';
+        //{name}=obj;//会报错 解决办法如下
+        //({name}=obj)//
+        //console.log(name)//liuliu
+
+        // var {name:str}=obj;//从obj的对象中取出name的值存放到str中；
+        // console.log(str)//liuliu
+
+        // var {age:time}=obj;
+        // console.log(time);//28
+
+        // 想从obj中取没有定义c属性
+        // var {c}=obj;
+        // console.log(c)//undefined
+        // var {c=100}=obj;//c添加默认值
+        // console.log(c)//100
+
+        // var {gender:g='mail'}=obj
+        // console.log(g)//如果obj中没有定义gender显示mail,如果obj中有gender定义 显示obj中的数值
+
+        // 剩余模式
+        var {a,b,...r}=obj;
+        console.log(a,b,r);//1 2 {name: "liuliu", age: 28}
+
+
+        // 数组的解构赋值
+        // var arr=[1,2,3,4,5];
+        // var arr="miaov".split("");
+        // console.log(arr);//["m", "i", "a", "o", "v"]
+        // var [f,s,]=arr;
+        // console.log(f,s)//m i
+        // var [f,s,,t]=arr;
+        // console.log(f,s,t)//m i o
+        
+        // arr[0]=undefined;
+        // var [a,b,c]=arr;
+        // console.log(a,b,c);//undefined "i" "a"
+        
+        // 剩余模式
+        // var [a,b,c,...r]=arr;
+        // console.log(a,b,c,r)//m i a (2) ["o", "v"]
+
+
+
+
+
+    </script>
+</body>
+</html>

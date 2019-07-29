@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>es6变量声明</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// var a=1;
+			// a=1000;
+			// console.log(a);//1000
+
+			// console.log(b)//Uncaught ReferenceError: Cannot access 'b' before initialization at 1.es1.html:13
+			// let b=2;
+
+
+
+			// let b=2;
+			// console.log(b)//2
+
+			// 注意不可以重复申明
+			// let b=2;
+			// let b=3
+			// console.log(b)//报错
+
+			// let支持块级作用域
+			// {
+			// 	var a=5;
+			// }
+			// console.log(a);//5 可以取到
+			// {
+			// 	let b=110;
+			// 	console.log(b)//110
+			// }
+			// console.log(b)//Uncaught ReferenceError: b is not defined
+
+			// 常量
+			// var x=10;
+			// x=30;
+			// console.log(x)//30
+			// const c=3.14;
+			// c=20
+			// console.log(c)//报错
+
+			//const c//报错
+			const obj={};
+			//obj=1//报错 不能直接修改常量的
+			obj.name='lala';//但是可以给你这个常量添加属性
+			console.log(obj);
+
+			
+		</script>
+	</body>
+</html>

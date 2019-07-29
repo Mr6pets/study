@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组新增</title>
+</head>
+<body>
+      <script>
+          /*
+          
+          */
+          //var arr=new Array(10,20,30);
+        //   var arr=new Array(10)
+        //   console.log(arr);//Array(10)
+
+        // es6
+        // var arr=Array.of(12,20,30);
+        // console.log(arr);//(3) [12, 20, 30]
+        // var arr=Array.of(10);
+        // console.log(arr);//[10]
+
+        // var arr=Array.of(10);
+        // console.log(Array.isArray(arr));//true 用来判断所写的是不是数组
+
+        // var els=document.all;//类数组
+        // var arrEls=Array.from(els);
+        // console.log(Array.isArray(els));//false
+        // console.log(Array.isArray(arrEls));//true;
+
+        var arr=[10,20,30,40,50,60];
+        // 找到某个符合规则的项
+        // var res=arr.find(function(item){
+        //     return item>50;
+        // });
+        // console.log(res)//60
+
+        var res=arr.findIndex(function(item){
+            return item>50;
+        });
+        console.log(res)//5
+
+      </script>  
+</body>
+</html>

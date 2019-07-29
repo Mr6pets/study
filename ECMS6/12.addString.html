@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串新增</title>
+</head>
+<body>
+    <script>
+        /*
+        
+        */
+        // es5:
+        var str="miaovketang";
+        // console.log(str.indexOf('mia')!=-1?true:false);
+        // es5查看字符串中是不是以miao开头
+        // console.log(str.indexOf('mia')==0?true:false);//true
+
+        // es6:
+        // console.log(str.includes('xxx'))//false
+        // es6查看字符串中是不是以miao开头
+        // console.log(str.startsWith("mia"))//true;
+        // es6查看字符串中是不是以angj结尾
+        // console.log(str.endsWith("ang"))//true;
+
+        // var stro="miaovketang |";
+        // stro.repeat(3);
+        // console.log(stro)//miaovketang |
+        // console.log( stro.repeat(3))//miaovketang |miaovketang |miaovketang |
+
+        // 超级字符串
+        // var classStr='yellow';
+        // var html=`
+        // <ul>
+        // <li class="red></li>
+        // <li class="green></li>
+        // <li class='${classStr}'></li>
+        // </ul>`
+        // console.log(html);
+
+        // var n=2;    
+        // var m=3;
+        // console.log('m+n='+(m+n));
+        // console.log(`m+n=${m+n}`)//m+n=5
+
+        var isRaining=true;
+        console.log(`今天的天气是${isRaining?"晴天":"雨天"}`); // 今天的天气是晴天
+
+        function fn(){
+            return "miaov";
+        }
+        console.log(`fn的执行结果是：${fn()}`);//fn的执行结果是：miaov
+
+
+    </script>
+</body>
+</html>

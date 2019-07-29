@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>认识dom</title>
+  <style>
+    li{ width:20px; height: 40px; background-color: lightblue; margin-bottom: 10px; transition: 2s;}
+  </style>
+</head>
+<body>
+  <div id="div1">123456</div>
+  <ul id="lis">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <script type="text/javascript">
+    /*
+      按照节点的类型划分：
+      nodeType 返回一个数字
+      var str='';
+      元素节点：数字1代表
+      文本节点是数字3
+      注释节点是数字8
+      属性节点是2
+
+      childNodes:获取到某个节点下的所有子节点
+      nodeValue:取到节点属性的值
+      nodeName:取到节点的名字
+
+      children:不是标准属性，但是所有浏览器都支持
+      children也是找到某个元素下的所有元素的节点
+    */
+    var div=document.getElementById('div1');
+    // console.log(div.nodeType);//1
+    // console.log(document.nodeType);//9
+    // console.log(div.childNodes)//NodeList [text]
+    // console.log(div.childNodes[0])//123456
+    // console.log(div.childNodes[0].nodeType)//3 文本节点
+    // console.log(div.attributes[0])//id="div1"
+    // console.log(div.attributes[0].nodeValue)//div1
+    // console.log(div.attributes[0].nodeName)//id
+    var lis=document.getElementById('lis');
+    var oUl=lis.childNodes;
+    document.onclick=function(){
+      for (var i = 0; i < oUl.length; i++) {
+        if(oUl[i].nodeType===1){
+          oUl[i].style.width='150px';
+        }
+      }
+    }
+
+  </script>
+</body>
+</html>
