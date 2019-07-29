@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>字符串查找</title>
+  <style>
+    p{ width:500px; height: 350px; background: lightyellow; box-sizing: border-box; padding: 20px;}
+    span{ background-color: lightpink;}
+  </style>
+  <script type="text/javascript">
+    window.onload=function(){
+      var oInput=document.getElementsByTagName('input');
+      var oP=document.getElementsByTagName('p')[0];
+      oInput[2].onclick=function(){
+        var str=oInput[0].value;
+        var newStr=oInput[1].value;
+        if(!str) return;
+        oP.innerHTML=oP.innerHTML.split(str).join('<span>'+newStr+'</span>');
+      };
+    };
+  </script>
+</head>
+<body>
+  <input type="text">
+  <input type="text">
+  <input type="button" value="替换">
+  <p>选择是一种态度，更是一种生活方式的体验。《帮TA选》作为一档选车类栏目，它的推出便是为更多有购车意向的消费者服务，
+    解决他们在选车时遇到的疑惑，结合真实的用车生活场景和车主的实际购车需求，为其推荐更适合他她的心仪座驾，并为更多关注相关车型的消费者提供更有价值的购车参考。</p>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全局环境</title>
+</head>
+<body>
+    <div id="box">11111111111</div>
+    <script>
+        // var fn=()=>{
+        //     console.log(this);
+        // }
+        // fn()//Window
+
+        //在箭头函数定义的时候，fn指谁那么箭头函数中this就是指谁
+        // 这里是是fn()自己的的调用 所以指向window
+
+        // box.onclick=function(){
+        //     setTimeout(()=>{
+        //         this.style.backgroundColor="red";
+        //     },500)
+        // }
+        //这里的this指向box
+
+        //================================================
+        var fn=()=>{
+            console.log(this);
+        }
+        var fn9=fn.bind({})
+        fn9()//window 这里是无法通过bind改变其this的指向的
+        
+    </script>
+</body>
+</html>

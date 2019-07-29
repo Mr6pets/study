@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>return的应用</title>
+  <script>
+    window.onload=function(){
+      function sort(a,b){
+        var c=null;
+        var newArr=[];
+        // way1
+        // if(a>b){
+        //   for (var i = b; i < a; i++) {
+        //     newArr.push(i);
+        //   };
+        //   return newArr;
+        // }else {
+        //   for (var i = a; i < b; i++) {
+        //     newArr.push(i);
+        //   };
+        //   return newArr;
+        // };
+
+        // way2
+        if (a>b) {
+          c=b;
+          b=a;
+          a=c;
+          for (var i = a; i <b; i++) {
+            newArr.push(i);
+          }
+          return newArr;
+        }
+      };
+      console.log(sort(6,2))
+    };
+  </script>
+</head>
+<body>
+  <div>111</div>
+</body>
+</html>

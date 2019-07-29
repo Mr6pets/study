@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue简易的留言板</title>
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="val">
+        <input type="button" value="发送" v-on:click="sendHandle">
+        <ul>
+            <li v-for="item in list">{{item.title}}</li>
+        </ul>
+    </div>
+    <script>
+        /*
+        */
+        let list=[
+            {
+                id:123,
+                title:'today is happy'
+            },
+            {
+                id:456,
+                title:'today is sad'
+            }
+        ]
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                list,
+                val:''
+            },
+            methods: {
+                sendHandle(){
+                    this.list.push({
+                        id:Date.now(),
+                        title:this.val
+                    }) 
+                    this.val='';                   
+                }
+            }
+        })
+        //模拟的请求的时间
+        // setTimeout(function(){
+        //     vm.list=[
+        //         {
+        //             id:123,
+        //             title:'today is happy'  
+        //         },
+        //         {
+        //             id:456,
+        //             title:'today is sad'    
+        //         }
+        //     ]
+        // },2000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <style>
+			ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			.wrap {
+				width: 384px;
+				height: 707px;
+				background: url(./imgs/bg1.png) no-repeat center center;
+				margin: 0 auto;
+				position: relative;
+			}
+
+			.list {
+				width: 280px;
+				position: absolute;
+				left: 46px;
+				top: 64px;
+			}
+			.list h2 {
+				height: 48px;
+				font: 14px/48px arial;
+				color: #fff;
+				background: rgba(0,0,0,.8);
+				box-sizing: border-box;
+				padding-left: 10px;
+			}
+			.list h2:nth-of-type(1){
+				margin: 0;
+			}
+			.list h2.active {
+				background: rgba(221,84,111,.8)
+			}
+			.list span {
+				width: 0;
+				height: 0;
+				display: inline-block;
+				border: 6px dashed rgba(0,0,0,0);
+				border-left: 6px solid rgba(255,255,255,1);
+				margin-right: 10px;
+				position: relative;
+				top: 1px;
+			}
+			.list span.active {
+				width: 0;
+				height: 0;
+				display: inline-block;
+				border: 6px dashed rgba(0,0,0,0);
+				border-top: 6px solid rgba(255,255,255,1);
+				position: relative;
+				top: 4px;
+			}
+			.list ul {
+				background: #000000;
+				color: #fff;
+				display: none;
+			}
+			.list li {
+				height: 40px;
+				font: 14px/40px "微软雅黑";
+				box-sizing: border-box;
+				padding-left: 34px;
+			}
+			.list .item {
+				margin: 10px 0;
+			}
+
+			.list .active h2{
+				background: rgba(221,84,111,.8)
+			}
+			.list .active ul{
+				display: block;
+			}
+		</style>
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div class="tab" id="app">
+        <div class="tab-header">
+            <div class="tab-item tab-active">标签一</div>
+            <div class="tab-item">标签二</div>
+            <div class="tab-item">标签三</div>
+        </div>
+        <div class="tab-content">
+            <div style="display: block">
+                <p>标签一</p>
+                <p>标签二</p>
+                <p>标签三</p>
+            </div>
+            <div>标签二</div>
+            <div>标签三</div>
+        </div>
+    </div>
+    <script>
+        var qqData = [
+            {
+            title: '我的好友',
+            list: [
+                {
+                subTitle: '张国荣'
+                },
+                {
+                subTitle: '周杰伦'
+                },
+                {
+                subTitle: '王杰'
+                }
+            ]
+            },
+            {
+            title: '我的同事',
+            list: [
+                {
+                subTitle: '莫莫'
+                    },
+                    {
+                subTitle: '多多'
+                    },
+                    {
+                subTitle: 'leo'
+                }
+            ]
+            }
+        ]
+            
+    </script>
+</body>
+</html>

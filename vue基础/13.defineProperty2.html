@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ObjectdefineProprety</title>
+    <!-- <script src="./vue_developer.js"></script> -->
+</head>
+<body>
+    <div id="app">
+        <h2 id="title">这里是标题</h2>
+    </div>
+    <script>
+        /*
+           
+        */
+        var data={
+            title:"新闻"
+        }
+        var val="这里是老的值"
+        Object.defineProperty(data,"title",{
+            get(){
+                console.log('我访问数据了')
+                return val
+            },
+            set(newValue){
+                console.log(newValue)
+                val = newValue
+            }
+        })
+        console.log(data.title)
+    </script>
+</body>
+</html>

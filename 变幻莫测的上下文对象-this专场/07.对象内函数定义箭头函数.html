@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        //----------------------------------------------
+        var a=1;
+        var obj={
+            a:2,
+            fn1:()=>{
+                console.log(this.a);
+            },
+            fn2:function(){
+                console.log(this.a)
+            }
+        }
+        //箭头函数是谁申明我就更谁跑，
+        obj.fn1();//1 this的这里指的是window，
+        //function是谁调用它，他的this指针就是谁,这里是obj进行的调用 所以最后是取了 obj中的a的值
+        obj.fn2();//2 this的这里指的是obj    
+    </script>
+</body>
+</html>

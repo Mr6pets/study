@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>指令</title>
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2 v-bind:title="data.abc">{{data.abc}}</h2>        
+        <p></p>
+    </div>
+    <script>
+        /*
+            v-bind: v-bind:class="{ active: isActive }"
+            v-on: v-on:click="addChooseHandle(option,index,i)"
+            v-for: v-for="item in choose"
+            v-if: v-if="awesome"
+            v-show: v-show="ok"
+            v-model: v-model="message" 用在表单元素上 创建双向数据绑定
+        */
+        let obj={
+            html:"<div>hello,miaov</div>",
+            abc:1
+        };
+        var str=`<div>hello{{abc}}</div>`;
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                data:obj
+            },
+            // template:str//模板选项会覆盖掉以上已经创建好的app模板，同时替换的模板只能有一个跟标签 不能像这样<div>hello{{abc}}</div><span></span>  
+        });
+
+    </script>
+</body>
+</html>

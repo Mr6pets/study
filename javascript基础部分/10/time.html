@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>data</title>
+  <script type="text/javascript">
+  window.onload=function(){
+
+    setInterval(fnTime,1000);
+    fnTime()
+    function fnTime(){
+      var time=document.getElementById('time');
+      var oImg=document.getElementsByTagName('img');
+      var myTime=new Date();
+      //typeof number
+      var iHours=myTime.getHours();
+      var iMin=myTime.getMinutes();
+      var iSec=myTime.getSeconds();
+      var str='';
+
+      str=toTwo(iHours)+toTwo(iMin)+toTwo(iSec);
+      time.innerHTML=str;
+      for(var i=0; i<str.length;i++){
+        oImg[i].src='img/'+str.charAt(i)+'.JPG';
+      }
+    }
+
+  //
+  function toTwo(n){
+    return n<10?'0'+n:''+n;
+  }
+
+
+
+  }
+
+  </script>
+</head>
+<body>
+  <p id="time"></p>
+  <img src="img/0.JPG">
+  <img src="img/0.JPG">
+  <img src="img/0.JPG">
+  <img src="img/0.JPG">
+  <img src="img/0.JPG">
+  <img src="img/0.JPG">
+</body>
+</html>

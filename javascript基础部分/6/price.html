@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>函数传参 价格加减</title>
+  <style>
+    li{ list-style:none; margin-top:15px;}
+  </style>
+  <script type="text/javascript">
+    window.onload=function(){
+      var mainUl=document.getElementById('ul1');
+      var mLi=mainUl.getElementsByTagName('li');
+      var strongs=mainUl.getElementsByTagName('strong');
+      var spans=mainUl.getElementsByTagName('span');
+      var ems=mainUl.getElementsByTagName('em');
+
+      var allNum=document.getElementById('num');
+      var allPrice=document.getElementById('price');
+      var allMax=document.getElementById('max');
+      for(var i=0;i<mLi.length;i++){
+        normal(i)
+      };
+      count()
+      // 初始化
+      function count(){
+        var b=0;//存放总共有多少个
+        var c=0;//用来存取多少钱
+        var temp=0;
+        for(var i=0;i<strongs.length;i++){
+          b+=parseInt(strongs[i].innerHTML);
+          c+=parseInt(spans[i].innerHTML);
+          // 当span的值不是0的时候进行em的比较
+          if(strongs[i].innerHTML!=0){
+            if(parseFloat(ems[i].innerHTML)>temp){
+              temp = parseFloat(ems[i].innerHTML);
+            }
+          }
+        }
+        allMax.innerHTML=temp;
+        allNum.innerHTML=b;
+        allPrice.innerHTML=c;
+      };
+      function normal(b){
+        var li_ips=mLi[b].getElementsByTagName('input');
+        var li_stro=mLi[b].getElementsByTagName('strong')[0];
+        var li_em=mLi[b].getElementsByTagName('em')[0];
+        var li_span=mLi[b].getElementsByTagName('span')[0];
+        var a=0;
+        li_ips[0].onclick=function(){
+          a--;
+          if(a<0){
+            a=0;
+            alert('数量不能小于0');
+          }
+          li_stro.innerHTML=a;
+          li_span.innerHTML=a*li_em.innerHTML;
+          count()
+        }
+        li_ips[1].onclick=function(){
+          a++;
+          li_stro.innerHTML=a;
+          li_span.innerHTML=a*li_em.innerHTML;
+          count()
+        }
+      };
+    };
+</script>
+
+</head>
+<body>
+    <ul id="ul1">
+      <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>12.5</em>元
+        小计：<span>0</span>元
+      </li>
+      <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>10.5</em>元
+        小计：<span>0</span>元
+      </li>
+      <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>2.5</em>元
+        小计：<span>0</span>元
+      </li>
+      <li>
+        <input type="button" value="-">
+        <strong>0</strong>
+        <input type="button" value="+">
+        单价：<em>15.5</em>元
+        小计：<span>0</span>元
+      </li>
+    </ul>
+    <p id='total'>
+    商品合计共：<span id="num">0</span>件，共花了<span id="price">0</span>元<br>
+    最贵个商品单价是<span id="max"></span>元
+    </p>
+</body>
+</html>

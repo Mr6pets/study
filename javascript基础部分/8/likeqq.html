@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>扣扣面板</title>
+  <style>
+    #qq{ width: 200px; height: 500px; background-color: lightblue;}
+    #title{ width: 200px; height: 150px; background-color: lightpink; position: absolute; left: 220px; top: 20px; display: none;}
+  </style>
+  <script type="text/javascript">
+  window.onload=function(){
+    // 获取id
+    function $(id){
+      return document.getElementById(id)
+    };
+    // 判断类型
+    function $(v){
+      if(typeof v==='function'){
+        window.onload=v;
+      }else if (typeof v==='string') {
+        return document.getElementById(v);
+      }
+    };
+
+    $('qq').onmouseover=show;
+    $('qq').onmouseout=hide;
+    $('title').onmouseover=show;
+    $('title').onmouseout=hide;
+    var timer =null;
+
+    function show(){
+      clearInterval(timer);
+      title.style.display='block';
+    };
+    function hide(){
+      timer=setTimeout(function(){
+        title.style.display='none';
+      },200)
+    }
+  };
+
+
+
+  </script>
+</head>
+<body>
+    <div id="qq"></div>
+    <div id="title"></div>
+</body>
+</html>

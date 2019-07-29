@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>响应的数据变化——对象</title>
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p>{{miaov.ketang}}</p>
+    </div>
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{//只有计划好的数据，才是可以reactive
+                msg:'hello',
+                miaov:{
+                    abc:'111'
+                }
+            }
+        })
+        
+        /*
+            //vm.miaov.ketang="lalalal" 这样添加是不能够响应的
+            正确的方法：
+            调用Vue的静态方法set
+            语法：Vue.set(target,prop,value);
+        */ 
+
+        // 方法1：调用Vue的静态方法set
+        Vue.set(vm.miaov,'ketang','我是新添加的');
+        /*
+            //以上是静态方法
+            //=>挂载在函数上的方法，我们叫做静态方法 调用的时候用函数去调用
+            function fn(){}
+            //fn.miaov=function(){}//这里的miaov就是静态方法
+
+            // 原型方法
+            let arr=[];//实例
+            arr.push()
+        */
+
+       //============================================================= 
+
+       //方法2：调用实例上的方法$set
+       vm.$set(vm.miaov,'ketang','我是新添加的')
+        /*
+            实例上的方法
+            console.log(vm)
+        */
+        
+    //========================================================
+        //方法3：改写属性，重新赋值(这里有个问题就是原miaov有值话，会全部覆盖掉 所以要用assign方法)
+        // vm.miaov={ketang:'我是新添加的'}
+        // 改进
+        var miaov =Object.assign({},vm.miaov,{ketang:'我是新添加的'});
+
+    </script>
+</body>
+</html>

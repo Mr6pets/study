@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性</title>
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="message">
+        <p>{{message}}</p>
+        <p>{{reveserMessage}}</p>
+        <p>{{newList}}</p>
+    </div>
+    <script>
+        /*
+        在数组中每一项乘以2,并且过滤小于10的
+
+        计算属性
+            把对处理数据的逻辑抽离在计算属性中，使得模板更加清凉易读
+            
+        */
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                message:'miaovketang',
+                list:[1,2,3,4,5]
+            },
+            computed: {//计算属性挂载在实例上
+                //计算属性对应的函数this都是指向实例的
+                //计算属性会把结果缓存，可在模板中重复使用
+                //计算属性中依赖了data中数据，data中的数据发生变化，计算属性也会重新计算
+                reveserMessage(){
+                    console.log(this.message)
+                    return this.message.split("").reverse().join('')
+                },
+                newList(){
+                    return this.list.map(item=>item*2).filter(item=>item<10)
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

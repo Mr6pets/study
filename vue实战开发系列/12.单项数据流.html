@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单向数据流</title>
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>父组件中使用了count</h3>
+        {{count}}
+        <custom-component :count="count" @increment-click="countHandle"></custom-component>
+    </div>
+    <script>
+        /*
+            组件为props指定验证要求，如果未指定验证要求，Vue会发生警告
+            props:{
+                propA:Number//指定类型
+                propB：[String,Number]//多种类型
+                propC：{type:String,required:true}//必传，并且为字符串
+                propD：{type:Number,default:100}//字符串类型，默认值为100
+                propE：{type:Number,default:function(){
+                    return 1000
+                }}
+                //自定义验证规则
+                propF:{validator:function(value){return value >10}}
+            }
+            验证类型为原生构造器String,Number,FunctionObject,Boolean Array
+        */
+        Vue.component('custom-component',{
+            // props:["count"],
+            //如果要对父组件传递进来的值进行验证的话props就要用{}了
+            //要求是 传进来的值为count为数字
+            props:{
+                count:{
+                    // type:Number,
+                    // default:10,
+                    // type:[Number,String],
+                    // required:true
+                    
+                    //自定义验证规则
+                    validator:function(value){//这里的value值就是我的count值
+                        // console.log(value);//
+                        return value<10//false 这里的rerun是必须要写的  这里标明 要不要通过
+                    }
+                }
+            },
+            //父组件中传进来的值 要改变的话首先props中接收了这个值存放在count中，要么用data中作为初始值 要么用computedzhong increatcount1依赖
+            //data中值来计算所得
+            data(){
+                return{
+                    incrementCount:this.count//作为子组件中data的初始值
+                }
+            },
+            computed: {
+                incrementCount1(){
+                    return this.incrementCount
+                }
+            },
+            template:`
+                <div>
+                    <h2>我是一个自定义的组件</h2>
+                    <input type="button" value="改变count的值" @click="changeCount">
+                    {{incrementCount1}}
+                </div>
+            `,
+            methods: {
+                changeCount(){
+                    this.incrementCount++;
+                    this.$emit("increment-click")
+                }
+            }
+        })
+        let vn=new Vue({
+            el:"#app",
+            data:{
+               count:0 
+            },
+            methods:{
+                countHandle(){
+                    // console.log("我接受到了子组件的变动通知")
+                    this.count++;
+                } 
+            }
+
+        })
+    </script>
+</body>
+</html>

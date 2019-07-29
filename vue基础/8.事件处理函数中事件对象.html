@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选项卡</title>
+    <script src="./vue_developer.js"></script>
+    <style>
+        .red{background-color: red;}
+        #app div{ -display: none;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="test1">测试事件1</button>
+        <button @click="test2($event,123)">测试事件2</button>
+    </div>
+    <script>
+        /*
+            v-on:事件可以简写为@事件名
+            当模板中给事件的方法传参，需要手动使$event吧事件对象传递给方法
+        */
+    let vm= new Vue({
+        el:"#app",
+        methods: {
+            test1(ev){
+                console.log(ev)
+            },
+            test2(ev,param){
+                console.log(ev)
+                console.log(param)
+            }
+        }
+    })
+    </script>
+</body>
+</html>

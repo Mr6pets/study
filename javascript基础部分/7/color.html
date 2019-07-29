@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>取模</title>
+  <style media="screen">
+    li{ height: 24px; margin-bottom: 10px;list-style:none;}
+  </style>
+  <script type="text/javascript">
+    // 写法一
+    // window.onload=function(){
+    //   var aLi=document.getElementsByTagName('li');
+    //   arr=['lightblue','lightgreen','lightyellow'];
+    //   for (var i = 0; i < aLi.length; i++) {
+    //     aLi[i].index=i;
+    //     aLi[i].style.background=arr[i%arr.length];
+    //     aLi[i].onmouseover=function(){
+    //       this.style.background='lightgrey';
+    //     };
+    //     aLi[i].onmouseout=function(){
+    //       this.style.background=arr[this.index%arr.length];
+    //     };
+    //   }
+    // };
+    // 写法二
+    window.onload=function(){
+      var aLi=document.getElementsByTagName('li');
+      arr=['lightblue','lightgreen','lightyellow'];
+      var str='';
+      for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index=i;
+        aLi[i].style.background=arr[i%arr.length];
+        aLi[i].onmouseover=function(){
+          str=this.style.background;//存储当时的颜色
+          this.style.background='lightgrey';
+        };
+        aLi[i].onmouseout=function(){
+          this.style.background=str;
+        };
+      }
+    };
+  </script>
+</head>
+<body>
+  <ul id="ul1">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</body>
+</html>

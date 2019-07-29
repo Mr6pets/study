@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 在元素上写了v-model，再写value值无效 -->
+        <input type="text" v-model='message'>
+        <input type="checkbox" v-model='checked'>
+        <p>{{message}}</p>
+    </div>
+    <script>
+        /*
+         v-model=""
+        */
+       
+    var message='hello,miaov!'
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            message,
+            checked:true
+        },
+        methods:{
+            
+        }
+    })
+    console.log(vm);
+    </script>
+</body>
+</html>

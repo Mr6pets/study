@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>这里是我们要测试的H5vedio</title>
+  <style media="screen">
+  *{
+    margin: 0;
+    padding: 0;
+  }
+.cl{
+  clear: both;
+}
+#musicNav{
+      width: 1000px;
+      height: 30px;
+      line-height: 30px;
+}
+#musicNav li{
+  width: 100px;
+  background-color: lightgreen;
+  list-style: none;
+  float: left;
+  margin-left: 2px;
+}
+#musicNav li:nth-child(odd){
+  background-color: lightblue;
+}
+  </style>
+</head>
+<body>
+<ul id="musicNav" class="cl">
+  <li au="a">111</li>
+  <li au="b">222</li>
+  <li au="c">333</li>
+  <li au="d">444</li>
+  <li au="e">555</li>
+  <li au="f">666</li>
+  <li au="g">777</li>
+</ul>
+<audio id="audio1">
+
+</audio>
+<script type="text/javascript">
+    window.onload=function(){
+        var audioMusic=document.getElementById('audio1');
+        var aLi=document.getElementsByTagName('li');
+        for (var i = 0; i < aLi.length; i++) {
+          aLi[i].onmouseover=function(){
+            audioMusic.src='http://s8.qhimg.com/share/audio/piano1/'+this.getAttribute('au')+'4.mp3'
+            audioMusic.play();
+          };
+        }
+
+    };
+</script>
+</body>
+</html>

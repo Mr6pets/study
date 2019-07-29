@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.list-body li:nth-child(even) {
+				background: yellow;
+			}
+			.list-body li:nth-child(odd) {
+				background: #fff;
+			}
+			.list-body li:hover {
+				background: green;
+			}
+			.list-body li.checkedColor {
+				background: green;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/baidu.css" />
+		<script src="../vue_developer.js"></script>
+	</head>
+
+	<body>
+		<div class="wrap" id="app">
+			<div class="baidu">
+				<ul class="list list-head">
+					<li>
+						<div>
+							<input v-model="isCheckedAll" type="checkbox" />全选
+						</div>
+						<span>歌单</span>
+						<span>歌手</span>
+						<span>专辑</span>
+					</li>
+				</ul>
+				<ul class="list list-body">
+					<li 
+						v-for="item in songList"
+					>
+						<div>
+							<input v-model="item.checked" type="checkbox">
+						</div>
+						<span>{{item.song}}</span>
+						<span>{{item.name}}</span>
+						<span>{{item.album}}</span>
+					</li>
+					
+				</ul>
+				<div class="select">
+					<span class="selectAll">
+
+						<span>统计：</span>
+					</span>
+					<div class="others">
+						<span><em></em>歌手有：{{selectSongerLen}}位</span>
+						<span><em></em>专辑有{{totalAlbum}}张</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			let data = [
+				{
+					id:Date.now()+Math.random(),
+					name: '邓紫棋',
+					song: '泡沫',
+					checked: true,
+					album: 10
+				},
+				{
+					id:Date.now()+Math.random(),
+					name: '王杰',
+					song: '泡沫',
+					checked: true,
+					album: 10
+				},
+				{
+					id:Date.now()+Math.random(),
+					name: '吴青峰',
+					song: '起风了',
+					checked: true,
+					album: 10
+				}
+			]
+			let vm=new Vue({
+				el:"#app",
+				data:{
+					songList:data
+				},
+				computed: {
+					isCheckedAll(){
+						//every方法，当数组中每一项都满足条件就返回true，只有一项不满足就会返回false
+						let p1 = this.songList.every((item)=>{
+							return item.checked
+						})
+						return p1
+					},
+					//有多少位歌手
+					//问题提：箭头函数中的参数如果是单一 有华括弧和没有有什么区别
+					selectSongerLen(){
+						return this.songList.filter(item=>
+							item.checked
+						).length
+					},
+					totalAlbum(){
+						// return this.songList.filter(item=>item.checked).reduce((n,item)=>
+						// 	 n+item.album
+						// ,0)
+						let n=0;
+						this.songList.forEach(function(item){
+							n+=item.album
+						})
+						return n;
+					}
+				}
+			})	
+		</script>
+	</body>
+
+</html>

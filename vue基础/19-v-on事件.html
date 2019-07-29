@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on的事件标识符</title>
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <button>测试事件</button>
+        <a @click.prevent="preventHandle" href="http://www.baidu.com">baidu</a>
+        <a @click.prevent href="http://www.baidu.com">baidu</a>
+        <div @click.capture="demo1"><!--捕获-->
+            demo1
+            <div  @click.self="demo2"><!--点击自己的时候触发-->
+                demo2
+                <div  @click.stop.once="demo3"><!--.stop阻止冒泡 点击demo3就不会触发冒泡 once是只触发一次-->
+                    demo3
+                </div>
+            </div>
+        </div>
+        <input type="text" @keyup.enter="upHandle">
+        <input type="text" @keyup.13="upHandle">
+    </div>
+    <script>
+        /*
+             事件修饰符
+                方法只有纯粹的数据逻辑，而不是去处理dom事件细节
+                @事件名.修饰符.修饰符='';
+                语法：v-on:事件名.修饰符=“事件处理函数”
+                .stop .prevent .capture .self .once 
+                按键修饰符.enter .tab .delete .esc .space .up .down .left .right
+        */
+        var message='hello'
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                message
+            },
+            methods: {
+                preventHandle(ev){
+                    // ev.preventDefault()
+                },
+                demo1(){
+                    console.log('demo1')
+                },
+                demo2(){
+                    console.log('demo2')
+                },
+                demo3(){
+                    console.log('demo3')
+                },
+                upHandle(ev){
+                    console.log(ev.keyCode)
+                }
+            }
+        }); 
+    </script>
+</body>
+</html>

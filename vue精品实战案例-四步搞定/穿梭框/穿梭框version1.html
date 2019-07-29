@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			.transfer {
+				line-height: 1.5;
+				position: relative;
+			}
+			.transfer-list {
+				display: inline-block;
+				width: 280px;
+				height: 210px;
+				font-size: 12px;
+				vertical-align: middle;
+				position: relative;
+				padding-top: 35px;
+			}
+			.transfer-header {
+				box-sizing: border-box;
+				padding: 8px 16px;
+				background: #f9fafc;
+				color: #495060;
+				border: 1px solid #dddee1;
+				border-bottom: 1px solid #e9eaec;
+				border-radius: 6px 6px 0 0;
+				overflow: hidden;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+			}
+			.transfer-header-title {
+				padding-left: 4px;
+			}
+			.transfer-header-count {
+				float: right;
+				margin-right: 4px;
+			}
+			.transfer-list-body {
+			    height: 100%;
+			    border: 1px solid #dddee1;
+			    border-top: none;
+			    border-radius: 0 0 6px 6px;
+			    position: relative;
+			    overflow: hidden;
+			}
+			.transfer-list-content {
+			    height: 100%;
+			    padding: 4px 0;
+			    overflow: auto;
+			}
+			.transfer-list-content-item {
+			    margin: 0;
+			    line-height: normal;
+			    padding: 7px 16px;
+			    clear: both;
+			    color: #495060;
+			    white-space: nowrap;
+			    list-style: none;
+			    cursor: pointer;
+			    transition: background .2s ease-in-out;
+			    white-space: nowrap;
+			   	overflow: hidden;
+    			text-overflow: ellipsis;
+			}
+			.transfer-operation {
+			    display: inline-block;
+			    overflow: hidden;
+			    margin: 0 16px;
+			    vertical-align: middle;
+			}
+		</style>
+		<script src="../vue_developer.js"></script>
+	</head>
+
+	<body>
+		<div class="transfer" id="app">
+			<transfer-list 
+				title="源列表"
+				:data="originData"
+			></transfer-list>	
+			<div class="transfer-operation">
+				<p><input type="button" value="<" @click="targetToOrigin" /></p>
+				<p><input type="button" value=">" @click="originToTarget" /></p>
+			</div>
+			<transfer-list
+				title="目标列表"
+				:data="targetData"
+			>
+			</transfer-list>
+		</div>
+		<script>
+			let data = {
+				originData: [  // 源列表
+					{
+						id:1000,
+						title: 'js课程',
+						checked: false
+					},
+					{
+						id:1101,
+						title: 'css课程',
+						checked: false
+					},
+					{
+						id:1002,
+						title: 'vue课程',
+						checked: false
+					},
+					{
+						id:1103,
+						title: 'react课程',
+						checked: true
+					},
+				],
+				targetData: [ // 目标列表
+					{
+						id:105660,
+						title: 'Node课程',
+						checked: true
+					},
+					{
+						id:11088881,
+						title: 'canvas课程',
+						checked: true
+					}, 
+				]
+			}
+			Vue.component('transfer-list',{
+				props:["title","data"],
+				template:`
+				<div class="transfer-list">
+					<div class="transfer-header">
+						<input type="checkbox" name="">
+						<span class="transfer-header-title">
+							{{title}}
+						</span>
+						<span class="transfer-header-count">
+							{{checkedLength}}/{{data.length}}
+						</span>
+					</div>
+					
+					<div class="transfer-list-body">
+						<ul class="transfer-list-content">
+							<li 
+								class="transfer-list-content-item"
+								v-for="item in data"
+							>
+								<input 
+									type="checkbox"
+									v-model="item.checked"
+								>
+								<span>{{item.title}}</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				`,
+				computed: {
+					checkedLength(){
+						return this.data.filter(item=>item.checked).length
+					}
+				}
+			})
+			let vm=new Vue({
+				el:"#app",
+				data:{
+					...data
+				},
+				methods: {
+					//目标到源文件
+					targetToOrigin(){
+						// //找到选中的
+						// let targetChecked = this.targetData.filter(item=>item.checked);//[{}{}]
+						// //放置到原数组中
+						// this.originData.push(...targetChecked);
+
+						let targetChecked = this.targetData.filter(item=>item.checked).map((item)=>{
+							return {
+								...item,
+								checked:false
+							}
+						})//这里个人理解的意思就是将目标文件进行一次过滤，过滤的规则就是选中选中的 之后对这些选中的的这些里面的checked的值改为false
+						//最后赋值给targetChecked这个变量
+						this.originData.push(...targetChecked);
+						this.targetData=this.targetData.filter((item)=>!item.checked)//这里的意思是过滤目标列表中没有选中的留下来
+
+					},
+					//源文件到目标
+					originToTarget(){
+						let originChecked = this.originData.filter(item=>item.checked).map((item)=>{
+							return{
+								...item,
+								checked:false
+							}
+						})
+						this.targetData.push(...originChecked);
+						this.originData=this.originData.filter((item)=>!item.checked)//这里的意思是过滤源列表中没有选中的留下来
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

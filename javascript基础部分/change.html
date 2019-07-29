@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>change</title>
+  <script type="text/javascript">
+    /*
+  	1、找到arr里所有的数字：-98765, 34, -2, 0, 5
+  	2、找到可以转成数字的：'100px', -98765, 34, -2, 0, '300', '23.45元',  5
+  	3、把转成数字以后，最大值判断出来：300
+  	4、把 NaN 所在的位置找出来：1 14 17  19
+  */
+    window.onload = function() {
+      var arr = ['100px',
+        'abc' - 6,
+        [],
+        -98765, 34, -2, 0, '300', ,
+        function() {
+          alert(1);
+        },
+        null, document, [], true, '200px' - 30, '23.45元', 5, Number('abc'),
+        function() {
+          alert(3);
+        }, 'xyz' - 90
+      ];
+      var arrNum1=[];
+      var arrNum2=[];
+      for(var i= 0;i<arr.length;i++){
+          //1 思路：必须是数字，还不包含NaN,空白
+          if(isNaN(arr[i])===false && arr[i]!="NaN" && typeof(arr[i]) =="number" ){
+              arrNum1.push(arr[i]);
+              alert(arr[i])
+          }
+          //2 思路：要通过parseInt和parseFloat把所有的内容转换，然后通过isNaN判断出所有的数字类型
+          if(isNaN(parseInt(arr[i]))==false && isNaN(parseFloat(arr[i]))==false){
+              if(arr[i]==true){
+                  arrNum2.push(0);
+              }else{
+                  arrNum2.push(arr[i]);
+              }
+              alert(arr[i])
+          }
+          //4 思路：NaN有一个特性它自己不等于它自己
+          if(arr[i] !=arr[i]){
+              alert(i);
+          }
+      }
+      //3 思路：在第二步的基础之上，那么就需要一个临时变量先给每个值进行比较，比临时变量小的忽略；
+      // 比它大的，就让临时变量等于它；
+      // 然后接着给下面的每一个再进行比较，依次比较大的替换，小的忽略，直到找到最大的那个即可
+      var temp=0;
+      for(var i=0;i<arrNum2.length;i++){
+          if(parseFloat(arrNum2[i])>parseFloat(temp)){
+              temp=arrNum2[i];
+          }
+      }
+      console.log(temp);
+    };
+  </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

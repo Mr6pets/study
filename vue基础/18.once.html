@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-htmlv-clock</title>
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div id="app" >
+        <!-- <p v-text="message"></p> -->
+        <!-- <p v-html="message"></p> -->
+        <p v-once>{{message}}</p>
+        <p>{{message}}</p>
+    </div>
+    <script>
+        /*
+            v-text:
+            更新元素的textContent,可替代{{}}
+            v-html:
+                更新元素的innerHTML
+                不使用这个指令，插入的HTML结构不作为模板编译器，作为文本显示
+                不要插入不安去的HTML结构
+            v-clock:
+            隐藏未编译的Mustache(小胡子)标签直到实例准备完毕
+            v-once:
+            只渲染一次，随后数据改变不在重新渲染 视为静态内容 用于优化性能
+        */
+        let message='<div>hello</div>'
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                message
+            }
+        });
+
+        // 在console面板中改变vm.message=1页面是不显示的 因为只会渲染一次
+    </script>
+    
+</body>
+</html>

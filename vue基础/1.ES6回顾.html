@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>es6的回顾</title>
+</head>
+<body>
+    <script>
+        // document.onclick=function(){
+        //     setTimeout(()=>{
+        //         console.log(this)
+        //     },1000)//这里的箭头函数this绑定的是所定义的作用域中的this，这里就是document
+        // }
+
+        // document.onclick=()=>{
+        //     setTimeout(()=>{
+        //         console.log(this)
+        //     },1000)
+        // }//这里的第一个箭头函数在全局中定义的 所以他的this指向是window 那么第二个箭头函数的this指向就是window
+
+        // ES5的方法：
+        // map(),filter(),reduce(),every(),some()
+        // ES6的方法：
+        // find(), findIndex()
+
+        // var arr=[1,2,3];
+        // arr.forEach(function(item,index,set){
+        //     console.log(item,index);
+        // });
+        //===================================================
+        // var newArr=arr.map(function(item,index){
+        //     console.log(item,index);
+        // })
+        // console.log(newArr)//[undefined, undefined, undefined]
+        //==========================================================
+        // var newArr=arr.map(function(item,index){
+        //     console.log(item,index);
+        //     return 1
+        // })
+        // console.log(newArr)//[1, 1, 1]
+        //========================================
+        // var newArr=arr.map(function(item,index){
+        //     console.log(item,index);
+        //     return item*2
+        // })
+        // console.log(newArr)//[2, 4, 6]
+        //=======================================
+
+
+        // var arr1=[1,2,3,4,5,6,7,8,9];
+        // var filterNewArr=arr1.filter(function(item,index){
+        //     console.log(item,index);
+        //     return item%2===0;//这里是过滤条件 
+        // });
+        // console.log(filterNewArr)//[2, 4, 6, 8]
+
+
+
+        // ES6
+        //find()在数组中找到符合条件的第一个
+        var arr=[1,2,3,4,5,6,7,8,9];
+        var newArr=arr.find(function(item,index){
+            return item < 3;
+        });
+        console.log(newArr);//1
+
+        
+
+    </script>
+</body>
+</html>

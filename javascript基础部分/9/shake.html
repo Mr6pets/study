@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>抖动</title>
+  <style>
+    #div1{ width:100px;height: 200px; background-color: lightblue; position: absolute; left: 300px; top: 100px;}
+  </style>
+  <script type="text/javascript">
+    window.onload=function(){
+      function getStyle(obj,attr){
+        return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+      };
+      var oDiv=document.getElementById('div1');
+
+      oDiv.onclick=function(){
+        shake(oDiv,'left',function(){alert('1')});
+      };
+      function shake(obj,attr,endFn){
+        var pos=parseInt(getStyle(obj,attr));
+        // var obj.=null;
+        var num=0;
+        var arr=[];//[20,-20,18,-18.....,0] 抖的频率
+        for (var i = 20; i>0; i-=2) {
+          arr.push(i,-i);
+        }
+        arr.push(0);
+        clearInterval(obj.timer);
+        obj.timer=setInterval(function(){
+          obj.style[attr]=pos+arr[num]+'px';
+          num++
+          if(num==arr.length){
+            clearInterval(obj.timer);
+            endFn&&endFn();
+          }
+        },30)
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="div1"></div>
+</body>
+</html>

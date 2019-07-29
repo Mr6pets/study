@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>方块随机</title>
+  <style>
+    .cubContent{ width:500px; height: 500px; border: 1px solid lightblue; position: relative;}
+    .cubContent div{ width: 100px; height: 100px; line-height: 100px; position: absolute; background-color: lightgreen; text-align: center;}
+  </style>
+  <script type="text/javascript">
+    // 定位的赋值找规律---向上
+    // i left top
+    // 0 0    0
+    // 1 100  100
+    // 2 200  200
+    // 3 300  100
+    // 4 400  0
+    // left:i*100;
+    // i<=2
+    // top: 400-i*100
+    // top:i*100
+
+    // 定位的赋值找规律---向右
+    // i left top
+    // 0 400    0
+    // 1 300  100
+    // 2 200  200
+    // 3 300  300
+    // 4 400  400
+    // top:i*100;
+    // i<=2
+    // left: i*100
+    // left:400-i*100
+
+    // 定位的赋值找规律---向下
+    // i left top
+    // 0 400  400
+    // 1 300  300
+    // 2 200  200
+    // 3 100  300
+    // 4 0  400
+    // left:400-i*100;
+    // i<=2
+    // top: 400-i*100
+    // top:i*100
+
+    // 定位的赋值找规律---向左
+    // i left top
+    // 0 400    0
+    // 1 300  100
+    // 2 200  200
+    // 3 300  300
+    // 4 400  400
+    // top:i*100;
+    // i<=2
+    // left: i*100
+    // left:400-i*100
+
+    // 定位的赋值找规律---向左
+    // i left top
+    // 0 0    0
+    // 1 100  100
+    // 2 200  200
+    // 3 100  300
+    // 4 0  400
+    // top:i*100;
+    // i<=2
+    // left: i*100
+    // left:400-i*100
+    window.onload=function(){
+      var oBtn=document.getElementsByTagName('input')[0];
+      var oCubContent=document.getElementById('cubContent');
+      var str='';
+      var l=0;
+      var t=0;
+      var num=0;
+      oBtn.onclick=function(){
+        str='';
+        if(num==0){
+          for(var i=0;i<5;i++){
+              l=i*100;
+            if(i<=2){
+              t=i*100;
+            }else {
+              t=400-(i*100);
+            }
+            str+='<div style="left:'+l+'px;top:'+t+'px;">'+i+'</div>'
+          };
+        };
+        if(num==1){
+          for(var i=0;i<5;i++){
+              t=i*100;
+            if(i<=2){
+              l=400-(i*100);
+            }else {
+              l=i*100;
+            }
+            str+='<div style="left:'+l+'px;top:'+t+'px;">'+i+'</div>'
+          };
+        };
+        if(num==2){
+          for(var i=0;i<5;i++){
+              l=i*100;
+            if(i<=2){
+              t=400-(i*100);
+            }else {
+              t=i*100;
+            }
+            str+='<div style="left:'+l+'px;top:'+t+'px;">'+i+'</div>'
+          }
+        };
+
+        if(num==3){
+            for(var i=0;i<5;i++){
+              t=i*100;
+            if(i<=2){
+              l=i*100;
+            }else {
+              l=400-i*100;
+            }
+            str+='<div style="left:'+l+'px;top:'+t+'px;">'+i+'</div>'
+          }
+        };
+        num++;
+        if(num==4){
+          num=0;
+        }
+        oCubContent.innerHTML=str;
+      };
+
+    }
+  </script>
+</head>
+<body>
+  <input type="button" value="按钮">
+  <div class="cubContent" id="cubContent">
+    <!-- <div style="left:0;top:0;">0</div>
+    <div style="left:100px;top:100px;">1</div>
+    <div style="left:200px;top:200px;">2</div>
+    <div style="left:300px;top:100px;">3</div>
+    <div style="left:400px;top:0;">4</div> -->
+  </div>
+</body>
+</html>

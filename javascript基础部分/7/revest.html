@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>反选</title>
+  <style media="screen">
+    li {
+      list-style: none;
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function() {
+      var aInput = document.getElementsByTagName('input');
+      aInput[0].onclick=function(){
+        for (var i = 1; i < aInput.length; i++) {
+          if(aInput[i].checked){
+            aInput[i].checked=false;
+          }else {
+            aInput[i].checked=true;
+          }
+        }
+      };
+    };
+  </script>
+</head>
+
+<body>
+  <input type="button" name="" value="反选">
+  <ul>
+    <li><input type="checkbox" checked='checked'></li>
+    <li><input type="checkbox"></li>
+    <li><input type="checkbox" checked='checked'></li>
+    <li><input type="checkbox"></li>
+    <li><input type="checkbox"></li>
+  </ul>
+</body>
+
+</html>

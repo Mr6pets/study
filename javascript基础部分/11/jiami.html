@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>简单的加密</title>
+  <script type="text/javascript">
+    window.onload=function(){
+      // 加密
+      var oInput=document.getElementsByTagName('input');
+      var oDiv=document.getElementById('div1');
+      oInput[1].onclick=function(){
+        var str=oInput[0].value;
+        var str1='';
+        for (var i = 0; i < str.length; i++) {
+          str1+=String.fromCharCode(str.charCodeAt(i)-1300);
+        }
+        oDiv.innerHTML=str1;
+      };
+      // 解密
+      oInput[3].onclick=function(){
+        var str3=oInput[2].value;
+        var oDiv2=document.getElementById('div2');
+        var str4='';
+        for (var i = 0; i < str3.length; i++) {
+          str4+=String.fromCharCode(str3.charCodeAt(i)+1300);
+        }
+        oDiv2.innerHTML=str4;
+      };
+    };
+  </script>
+</head>
+<body>
+  <input type="text">
+  <input type="button" value="加密">
+  <div id="div1">加密</div>
+
+  <input type="text">
+  <input type="button" value="解密">
+  <div id="div2">解密</div>
+</body>
+</html>

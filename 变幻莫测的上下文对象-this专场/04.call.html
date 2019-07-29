@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全局环境</title>
+</head>
+<body>
+    <script>
+      
+        // function fn(){
+        //     console.log(this.a);
+        // }
+        // fn.call({a:1});//1 call方法会立即执行，同时 函数主体里的this会立即指向{a:1}这个对象
+
+        function fn(m,n){
+            console.log(this.a,m,n);
+        }
+        fn.call({a:1},2,3);//1 2 3
+        //函数.call会直接调用该函数，并且call的第0个参数就是函数执行的this
+        // 后面的参数是函数执行的参数
+        
+        
+    </script>
+</body>
+</html>

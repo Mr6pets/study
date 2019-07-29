@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>函数传参——图片切换</title>
+  <style>
+  *{margin: 0; padding: 0;}
+  li{ list-style: none;}
+  .oh{overflow: hidden;}
+  .fl{ float: left;}
+  .fr{ float: right;}
+  .pic{width: 400px; height: 600px; text-align: center;float: left; position: relative;
+  background: url('img/loader_ico.gif') no-repeat center center;}
+  .pic:nth-child(2){ margin-left: 100px;}
+  .pic img{ width: 100%; height: 100%;}
+  .pageNum{ width: 100%; height: 50px;line-height: 50px;display: block; background-color: rgba(0,0,0,0.5);
+    position: absolute;left: 0; top: 0; color: white;}
+  .textExp{ width: 100%; height: 50px; line-height: 50px;background-color: rgba(0,0,0,0.5);position: absolute;left: 0; bottom: 0;
+  color: white; display:block;}
+  .pic ul{ width: 100px;height: 600px; position: absolute; right: -120px; top: 0;}
+  .pic ul li{ width: 50px; height: 50px; background-color: lightgrey; margin-bottom: 10px;}
+  .active{ background: lightyellow!important;}
+  </style>
+  <script>
+    // 函数调用
+    // 1.保持HTML代码一致，通过父级选取子元素
+    // 2.实现核心住程序
+    // 3.把每组的不同值找出来，传参
+    window.onload=function(){
+      fnTab('pic1',
+      ['img/1.png','img/2.png','img/3.png','img/4.png'],
+      ['图片第一张的说明','图片第二张的说明','图片第三张的说明','图片第四张的说明'],
+      'onclick'
+    );
+      fnTab('pic2',
+      ['img/2.png','img/3.png','img/4.png'],
+      ['图片第二张的说明','图片第三张的说明','图片第四张的说明'],
+      'onmouseover'
+    );
+    function fnTab(id,arrPath,arrExp,evt){
+        var pic=document.getElementById(id);
+        var img=pic.getElementsByTagName('img')[0];
+        var pageNum=pic.getElementsByTagName('p')[0];
+        var textExp=pic.getElementsByTagName('span')[0];
+        var oUl=pic.getElementsByTagName('ul')[0];
+        var oLi=oUl.getElementsByTagName('li');
+        var num=0;
+        var oldLi=null;
+        for(var i=0;i<arrPath.length;i++){
+          oUl.innerHTML+='<li></li>'
+        };
+        // 初始化
+        function initialFn(){
+          img.src=arrPath[num];
+          pageNum.innerHTML=1+num+'/'+arrExp.length;
+          textExp.innerHTML=arrExp[num];
+          for(var i=0;i<oLi.length;i++){
+            oLi[i].className='';
+          };
+          oLi[num].className='active';
+        };
+        initialFn();
+        for(var i=0;i<oLi.length;i++){
+          oLi[i].index=i;
+          oLi[i][evt]=function(){
+            num=this.index;
+            initialFn();
+          };
+        };
+      };
+    };
+
+
+  </script>
+</head>
+<body>
+  <div class="pic" id="pic1">
+      <img src="">
+      <p class="pageNum">页码载入中</p>
+      <span class="textExp">文字说明载入中....</span>
+      <ul class="clickBtn"></ul>
+  </div>
+
+  <div class="pic" id="pic2">
+      <img src="" >
+      <p class="pageNum">页码载入中</p>
+      <span class="textExp">文字说明载入中....</span>
+      <ul class="clickBtn"></ul>
+  </div>
+
+</body>
+</html>

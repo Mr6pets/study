@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型链</title>
+</head>
+<body>
+    <script>
+        var p={
+            a:1,
+            fn:function(){
+                console.log(this.a);
+            }
+        }
+        var c=Object.create(p);//这里是从母本p上创建一个c,也就是c上有个__proto__指向p
+        // console.log(c)//{}
+        // console.log(c.__proto__)//{a: 1}
+        // console.log(c.a)//1
+        c.fn()//1
+    </script>
+</body>
+</html>

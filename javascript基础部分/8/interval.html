@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>定时器换背景</title>
+  <style>
+  body{ width: 100%; height: 100%;}
+    img{ width: 100%; height: 100%;}
+  </style>
+  <script type="text/javascript">
+    window.onload=function(){
+      var oInput=document.getElementsByTagName('input');
+      var arrUrl=['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'];
+      var num=0;
+      var timer=null;
+      var oBody=document.body;
+      oBody.style.background='url('+arrUrl[num]+')';
+      oInput[0].onclick=function(){
+        clearInterval(timer);
+        timer=setInterval(function(){
+          oBody.style.background='url('+arrUrl[num]+')';
+          num++;
+          num%=arrUrl.length
+        },1000)
+      };
+      oInput[1].onclick=function(){
+        clearInterval(timer);
+      };
+    };
+  </script>
+</head>
+<body>
+  <input type="button" value="更换背景">
+  <input type="button" value="停止">
+</body>
+</html>

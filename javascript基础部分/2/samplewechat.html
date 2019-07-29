@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>简单版本的微信聊天</title>
+  <style>
+  *{ margin: 0; padding: 0;}
+  .oh{ overflow: hidden;}
+  .fl{ float: left;}
+  .fr{ float: right;}
+  .iphoneX_talkMain{ width: 413px; height: 832px; margin: 50px auto 0 auto; background: url('iPhone6.png') no-repeat left top;
+  box-sizing: border-box; padding: 95px 24px 43px 24px; }
+  .text_main{ width: 100%;height: 85%; box-sizing: border-box; padding: 10px;}
+  .text_main p{ overflow: hidden; margin-bottom: 5px;}
+  .text_main p img{ float: left;}
+  .text_main p span{  height: 40px; line-height: 40px; background-color: lightgreen; display: inline-block; float:left; padding: 2px 4px;}
+  #cont li{ overflow: hidden;}
+  #cont li img{ width: 40px;}
+  .text_keyArea{ width: 100%; height: 50px;background-color: lightgrey; box-sizing: border-box; padding: 5px 7px; }
+  .per{ width: 40px; border-radius: 4px; overflow: hidden;}
+  .text_keyArea input[type="text"]{ width: 68%;height: 100%; margin-left: 10px; box-sizing: border-box; padding-left: 4px;}
+  .text_keyArea input[type="button"]{width: 15%;height: 100%; }
+  .zuo{ line-height: 40px;}
+  .zuo img{ float: left;}
+  .zuo p{ float: left; max-width: 310px; background-color: lightblue;}
+  .you{ line-height: 40px;}
+  .you img{ float: right;}
+  .you p{ float: right; max-width: 310px; background-color: lightyellow;}
+  </style>
+  <script>
+    window.onload=function(){
+      var per=document.getElementById('per');
+      var img=document.getElementById('img');
+      var text_main=document.getElementById('text_main');
+      var keyTex=document.getElementById('keyTex');
+      var send=document.getElementById('send');
+      var oCont=document.getElementById('cont');
+
+      var onOff=true;
+      // 控制切换图片
+      img.onclick=function(){
+        if(onOff){
+          this.src='emoji2.jpg';
+          onOff=false;
+        }else {
+          this.src='emoji1.jpg';
+          onOff=true;
+        }
+      };
+      send.onclick=function(){
+        // 通过开关来判断是哪个图片
+        if(onOff){
+          if( keyTex.value!=''){
+            oCont.innerHTML='<li class="zuo"><img src="emoji1.jpg"><p>'+keyTex.value+'</p></li>'+oCont.innerHTML;
+            keyTex.value='';
+          }else{
+            oCont.innerHTML+='';
+            keyTex.value='';
+          }
+        }else {
+          if(keyTex.value!=''){
+            oCont.innerHTML='<li class="you"><img src="emoji2.jpg"><p>'+keyTex.value+'</p></li>'+oCont.innerHTML;
+            keyTex.value='';
+          }else{
+            Cont.innerHTML+='';
+            keyTex.value='';
+          }
+
+        }
+      };
+    };
+  </script>
+</head>
+<body>
+  <div class="iphoneX_talkMain">
+    <div class="text_main oh" id="text_main">
+      <ul id="cont">
+        <!-- <li class="zuo">
+          <img src="emoji1.jpg">
+          <p class="fr">你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好</p>
+        </li>
+        <li class="you">
+          <img src="emoji2.jpg">
+          <p class="fr">你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好</p>
+        </li> -->
+      </ul>
+    </div>
+    <div class="text_keyArea oh">
+      <div class="per fl" id="per">
+        <img src="emoji1.jpg" id="img">
+      </div>
+      <input type="text" class="fl" id="keyTex" value="">
+      <input type="button" class="fr" id="send" value="send">
+    </div>
+  </div>
+</body>
+</html>

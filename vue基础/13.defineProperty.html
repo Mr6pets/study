@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ObjectdefineProprety</title>
+    <!-- <script src="./vue_developer.js"></script> -->
+</head>
+<body>
+    <div id="app">
+        <h2 id="title">这里是标题</h2>
+    </div>
+    <script>
+        /*
+           首先使用数据的时候，要先对数据进行劫持（代理）
+           //使用Object.defineProperty劫持数据，把属性转化为访问器的方式
+           getter(获取属性)
+           setter(设置属性)
+
+        */
+        var data={
+            title:"新闻"
+        }
+        /*
+          Object.definedProperty
+          定义属性，也可以在原来的属性上描述  
+
+            语法：Object.defineProperty(obj,prop,descriptor)
+            参数：obj 是其上定义属性的对象 prop是要定义或者修改的属性的名称descriptor是被定义或者修改的属性描述符
+            数据描述：
+            configurable:是否可以删除目标属性 默认为false
+            enumerable:此属性是否可以被枚举 默认为false
+            value:该属性对应的值 默认为undefined
+            writable:属性的值是否可以被重写。默认为false
+            访问器描述：
+            getter 是一种获得属性值的方法
+            setter是一种设置属性值的方法
+            可以写 configurable enumerable
+            不能写value writable
+        */
+        //设置新的属性
+        Object.defineProperty(data,"miaov",{
+            value:"ketang"
+        })
+        //同时也可以改变原属性
+        Object.defineProperty(data,"title",{
+            value:"重新定义了",
+            configurable:false,//是否可以删除目标属性 //3.例子
+            writable:false,//不允许改写//1.例子
+            enumerable:false//是否可以枚举 ==2.例子
+
+
+        })
+        //data.title="再次改变下"//1.例子
+        // for(var attr in data){
+        //     console.log(attr)//2.例子 以上设置为false 无法通过for in 进行遍历
+        // }
+        
+        delete data.title//3.例子
+        console.log(data) 
+
+
+
+
+        console.log(data.title)
+        console.log(data.miaov)
+    </script>
+</body>
+</html>

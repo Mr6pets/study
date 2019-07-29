@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>图片擦除</title>
+  <style>
+    #warp{ width: 500px; height: 500px;border: 1px solid lightblue; background: url('1.jpg') no-repeat left top; background-size: 500px 500px; position: relative;}
+    #warp div{ width: 50px;height: 50px; background: url('2.jpg') no-repeat left top; background-size: 50px 50px; position:absolute;
+  transition: 1s;}
+  </style>
+  <script type="text/javascript">
+    window.onload=function(){
+      var oWarp=document.getElementById('warp');
+      var oDiv=oWarp.getElementsByTagName('div');
+      var str='';
+      var l=0;
+      var t=0;
+      // 向下取整
+      // 5/10 0.5取整是0
+      // 19/10 0.5取整是1
+      for(var i=0;i<100;i++){
+        l=[i%10]*50;//取模思想
+        t=Math.floor(i/10)*50;
+        str+='<div style="left:'+l+'px; top:'+t+'px;"></div>';
+      };
+      oWarp.innerHTML=str;
+      var oDiv=oWarp.getElementsByTagName('div');
+      for(var i=0;i<oDiv.length;i++){
+        oDiv[i].onmouseover=function(){
+          this.style.transform="scale(0)";
+          this.style.opacity=0;
+        }
+      }
+    };
+  </script>
+</head>
+<body>
+  <div id="warp"></div>
+</body>
+</html>

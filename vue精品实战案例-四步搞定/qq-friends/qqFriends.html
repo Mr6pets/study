@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			.wrap {
+				width: 384px;
+				height: 707px;
+				background: url(./imgs/bg1.png) no-repeat center center;
+				margin: 0 auto;
+				position: relative;
+			}
+
+			.list {
+				width: 280px;
+				position: absolute;
+				left: 46px;
+				top: 64px;
+			}
+			.list h2 {
+				height: 48px;
+				font: 14px/48px arial;
+				color: #fff;
+				background: rgba(0,0,0,.8);
+				box-sizing: border-box;
+				padding-left: 10px;
+			}
+			.list h2:nth-of-type(1){
+				margin: 0;
+			}
+			.list h2.active {
+				background: rgba(221,84,111,.8)
+			}
+			.list span {
+				width: 0;
+				height: 0;
+				display: inline-block;
+				border: 6px dashed rgba(0,0,0,0);
+				border-left: 6px solid rgba(255,255,255,1);
+				margin-right: 10px;
+				position: relative;
+				top: 1px;
+			}
+			.list span.active {
+				width: 0;
+				height: 0;
+				display: inline-block;
+				border: 6px dashed rgba(0,0,0,0);
+				border-top: 6px solid rgba(255,255,255,1);
+				position: relative;
+				top: 4px;
+			}
+			.list ul {
+				background: #000000;
+				color: #fff;
+				display: none;
+			}
+			.list li {
+				height: 40px;
+				font: 14px/40px "微软雅黑";
+				box-sizing: border-box;
+				padding-left: 34px;
+			}
+			.list .item {
+				margin: 10px 0;
+			}
+
+			.list .active h2{
+				background: rgba(221,84,111,.8)
+			}
+			.list .active ul{
+				display: block;
+			}
+		</style>
+		<script src="../vue_developer.js"></script>
+	</head>
+
+	<body>
+		<div class="wrap" id="app">
+			<div class="list">
+				<div 
+					class="item" 
+					v-for="item,index in qqDate"
+					v-bind:class="{active:index===currentIndex}"
+				>
+					<h2 @click="tab(index)"><span></span>{{item.title}}</h2>
+					<ul>
+						<li v-for="option in item.list">{{option.subTitle}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script>
+			var qqDate=[{
+				title:'我的好友',
+				list:[{
+					subTitle:'张国荣'
+				},{
+					subTitle:'周杰伦'
+				},{
+					subTitle:'王杰'
+				}]
+			},{
+				title:'企业好友',
+				list:[{
+					subTitle:'腾讯'
+				},{
+					subTitle:'阿里'
+				},{
+					subTitle:'360'
+				}]
+			}]
+			let vm =new Vue({
+				el:"#app",
+				data:{
+					qqDate:qqDate,
+					currentIndex:''
+				},
+				methods: {
+					tab(index){
+						this.currentIndex=this.currentIndex===index ? "" : index;
+					}
+				}
+			})
+		</script>
+
+	</body>
+</html>

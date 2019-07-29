@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>字符串的查找</title>
+  <script type="text/javascript">
+    // var str='还是可以的进行的开始';
+    // alert(str.charAt());//还
+    // alert(str.charCodeAt())//36824
+    // alert(str.charCodeAt(1))//26159;
+    // alert(String.fromCharCode(26159));//是
+
+    //charCodeAt()//0-9 48-57    a-z 97-122 A-Z 65-90
+    window.onload=function(){
+      var oInput=document.getElementsByTagName('input');
+      oInput[1].onclick=function(){
+        if(detectNum(oInput[0].value)){
+          alert('you keyin the string is number');
+        }else {
+          alert('你输入的不是数字')
+        }
+      };
+      function detectNum(str){
+        var n=0;
+        for (var i = 0; i < str.length; i++) {
+          n=str.charCodeAt(i);
+          if(n<48 || n>57){
+            return false;
+          }
+        }
+        return true;
+      };
+
+    };
+
+
+  </script>
+</head>
+<body>
+  <input type="text">
+  <input type="button" value="检测">
+
+</body>
+</html>

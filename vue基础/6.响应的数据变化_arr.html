@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>响应的数据变化——数组</title>
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox"  v-model="checked"/>
+        <p v-if="checked">{{list}}</p>
+        <p v-show="checked">{{list}}</p>
+    </div>
+    <script>
+        /*
+        提供了观察数组的变异方法，使用这些方法将会触发视图更新 push(),pop(),shift(),unshift().splice(),sort(),reverse()
+        会改变原数组
+
+        条件判断
+        v-if
+        语法：v-if="表达式"；(初始页面根据条件判断是否要渲染这一模块，使用v-if)
+        v-if是根据表达式的值的真假条件渲染元素和移出元素
+        v-show
+        语法：v-show="表达式"；(用于频繁饭的切换一个元素)
+        v-show是根据表达式的值的真假条件，切换元素的css属性display属性
+
+        */
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                list:[1,2,3],
+                checked:true
+            }
+        })
+        vm.list.push(1000);
+        //map方法是不会改变原数组的
+        // vm.list=vm.list.map(item=>item*3);
+
+        //不能触发视图更新
+            //利用索引直接设置一个项时
+            //修改数组的长度时
+    </script>
+</body>
+</html>

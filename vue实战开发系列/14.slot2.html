@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据分发1</title>
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>自定义组件</h2>
+        <!-- 当写在自定义标签中HTML的结构中内容 其实就是要混合模板插入我写的值 要在模板中放置插槽slot -->
+        <custom-com>
+            <!-- <div>写的东西要放置在模板中</div> -->
+            <div slot="one">替换第一个div</div>
+            <div slot="three">替换第三个div</div>
+            <template slot="two">
+                <div slot="two">替换第二个div</div>
+                <span slot="two">替换第二个div</span>
+            </template>
+        </custom-com>
+    </div>
+    <script>
+        /*
+        
+        */
+        //定制模板
+        Vue.component("custom-com", {
+            template:`
+                <div>
+                    <slot name="one"><p>这是第一个提醒</p></slot>
+                    <slot name="two"><p>这是第二个提醒</p></slot>
+                    <slot name="three"><p>这是第三个提醒</p></slot>
+                </div>
+            `
+        });
+        let vm=new Vue({
+            el:"#app"
+        })
+    </script>
+</body>
+</html>

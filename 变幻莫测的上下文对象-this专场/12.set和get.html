@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>get和set</title>
+</head>
+<body>
+    <script>
+        var obj={
+            n:1,
+            m:2,
+            get sum(){
+                console.log("正在尝试访问sum....")
+                // return 2
+                return this.n+this.m
+            }
+            // set sum(val){//这里必须传一个参数
+            //     console.log("正在设置sum.......")
+            //     this.n=val/2;
+            //     this.m=val/2;
+            // }
+        }
+        console.log(obj.sum)
+    </script>
+</body>
+</html>

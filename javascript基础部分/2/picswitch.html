@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>点击图片切换</title>
+  <style>
+  *{margin: 0;padding: 0;}
+  .oh{overflow: hidden;}
+  .fl{ float: left;}
+  .fr{ float: right;}
+  a{ list-style: none; text-decoration: none;}
+  .totall_switch{ width: 600px;margin: 0 auto 10px auto;
+  box-sizing: border-box; padding: 0 200px;}
+  .totall_switch .switch_btn{ background-color: grey; padding: 5px; border-radius: 5px; color: white; cursor: pointer;}
+  .switch_main{ width: 600px; height: 400px; margin:0 auto; border: 1px solid lightgrey; position: relative; overflow: hidden;}
+  .switch_main a{width: 40px; height: 40px; line-height: 40px; background-color: white; text-align: center; font-size: 18px;
+  position: absolute; top: 50%; margin-top: -10px; color: grey;}
+  .switch_main a:hover{ background-color: rgba(255,255,255,0.6);}
+  .switch_main img{ width: 100%; height: 100%;}
+  #prev{left: 10px;}
+  #next{right: 10px;}
+  .tex{width: 100%;height: 50px; line-height: 50px;background-color: rgba(0,0,0,0.3); position: absolute; left: 0; text-align: center; color: white;}
+  .pageNum{ top:0;}
+  .expText{ bottom:0;}
+  </style>
+  <script type="text/javascript">
+    window.onload=function(){
+      var preBtn=document.getElementById('prev');
+      var nextBtn=document.getElementById('next');
+      var pic=document.getElementById('pic');
+      var pageNum=document.getElementById('pageNum');
+      var expText=document.getElementById('expText');
+      // 切换模式
+      var loop_switch=document.getElementById('loop_switch');
+      var once_switch=document.getElementById('once_switch');
+      // 初始状态
+      var num=0;
+      arrPicPath=['1.jpg','2.jpg','3.jpg','4.jpg'];
+      arrExpText=['第一张美女1','第一张美女2','第一张美女3','第一张美女4'];
+      function loadResouce(){
+        pageNum.innerHTML=num+1+'/'+arrPicPath.length
+        expText.innerHTML=arrExpText[num];
+        pic.src=arrPicPath[num];
+      };
+      loadResouce()
+      // 循环按钮执行的函数
+      loop_switch.onclick=function(){
+        next.onclick=function(){
+          if(num<3){
+            num++
+          }else {
+            num=0;
+          }
+          loadResouce()
+        };
+        prev.onclick=function(){
+          if(num>0){
+            num--
+          }else {
+            num=3;
+          }
+          loadResouce()
+        }
+      };
+      once_switch.onclick=function(){
+        next.onclick=function(){
+          if(num==3){
+            num==1
+            alert('到底了朋友')
+          }else {
+            num++;
+          }
+          loadResouce()
+        };
+        prev.onclick=function(){
+          if(num==0){
+            num==4
+            alert('已经到第一张了')
+          }else {
+            num--;
+          }
+          loadResouce()
+        }
+      };
+
+
+
+    };
+  </script>
+</head>
+<body>
+    <div class="totall_switch oh">
+      <div class="loop_switch fl switch_btn" id="loop_switch">循环切换</div>
+      <div class="once_switch fr switch_btn" id="once_switch">顺序切换</div>
+    </div>
+    <div class="switch_main">
+      <img src="" id="pic">
+      <a href="javascript:void(0)" id="prev"><</a>
+      <a href="javascript:void(0)" id="next">></a>
+      <div class="pageNum tex" id="pageNum">载入页码信息</div>
+      <div class="expText tex" id="expText">正在载入文字说明</div>
+    </div>
+
+</body>
+</html>

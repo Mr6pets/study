@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js基础</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    .oh{ overflow: hidden;}
+    .fl{ float: left;}
+    .fr{ float: right;}
+    .main{width: 500px;height: 600;margin: 50px auto 0 auto;border: 1px solid grey;}
+    .top{width: 100%; height: 50px; line-height: 50px; background-color: lightblue; font-size: 20px; color: white; text-align:center; cursor: pointer;}
+    .bottom{height: 550px;background-color: white; position: relative;}
+    .cub{width: 100px;height: 100px; line-height: 100px; text-align: center; color: white;background-color: lightblue; border-radius: 10px;
+     position:absolute;
+     left:50%;
+     top:50%;
+     margin-left: -50px;
+     margin-top: -50px;
+   }
+    .mask{ width: 100%; height: 100%;position: fixed; left: 0; top: 0; background-color: rgba(0,0,0,0.3); display: none;}
+    .mask_menu{ width: 200px; height: 400px; background-color: white; margin: 50px auto 0 80%; box-sizing: border-box; padding: 5px 10px;}
+    .com p{ font-size: 18px; color: black;}
+    .com ul{ width: 100%;height: 70px; display: block;}
+    .com ul li{ list-style:none; width: 50px; height: 50px; line-height: 50px; background-color: lightgrey; border-radius: 5px; float: left; margin-top: 10px; margin-left: 10px;
+    text-align: center; cursor: pointer;}
+    .com ul li:nth-child(1){ margin-left: 0;}
+    .cut_line{ width: 100%; height: 1px; background-color: grey; margin-top: 20px;}
+    .menu_btn{ margin-top: 10px;}
+    .menu_btn-com{ width: 85px; height: 40px; line-height: 40px;background-color: grey; border-radius: 5px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="top" id="top">
+      点此设置样式
+    </div>
+    <div class="bottom">
+      <div class="cub" id="cub">效果区域</div>
+    </div>
+  </div>
+  <!-- mask -->
+  <div class="mask" id="mask">
+    <div class="mask_menu">
+      <div class="bg_menu com" id="bg_menu">
+        <p>选择背景</p>
+        <ul>
+          <li style="background-color: red;">红</li>
+          <li style="background-color: yellow;">黄</li>
+          <li style="background-color: blue;">蓝</li>
+        </ul>
+      </div>
+      <div class="width_menu com" id="width_menu">
+        <p>选择宽度</p>
+        <ul>
+          <li>100</li>
+          <li>200</li>
+          <li>300</li>
+        </ul>
+      </div>
+      <div class="height_menu com" id="height_menu">
+        <p>选择高度</p>
+        <ul>
+          <li>100</li>
+          <li>200</li>
+          <li>300</li>
+        </ul>
+      </div>
+      <p class="cut_line"></p>
+      <div class="menu_btn oh">
+        <div class="recovery menu_btn-com fl" id="recovery">恢复</div>
+        <div class="enter menu_btn-com fr" id="enter">确定</div>
+      </div>
+    </div>
+  </div>
+  <script>
+      window.onload=function(){
+        var menuClick=document.getElementById('top')
+        var mask=document.getElementById('mask');
+        var cub=document.getElementById('cub');
+        var recovery=document.getElementById('recovery');
+        var enter=document.getElementById('enter');
+        var bg_menu=document.getElementById('bg_menu')
+        var aLi_bg=bg_menu.getElementsByTagName('li')
+        var width_menu=document.getElementById('width_menu')
+        var aLi_width=width_menu.getElementsByTagName('li')
+        var height_menu=document.getElementById('height_menu')
+        var aLi_height=height_menu.getElementsByTagName('li')
+
+
+        menuClick.onclick=function(){
+          mask.style.display='block';
+        };
+        // 改变背景色
+        for (var i = 0; i < aLi_bg.length; i++) {
+          aLi_bg[i].onclick=function(){
+            cub.style.backgroundColor=this.style.backgroundColor;
+          };
+        };
+        for (var i = 0; i < aLi_width.length; i++) {
+          aLi_width[i].onclick=function(){
+            var innerHTML=parseInt(this.innerHTML)
+            cub.style.width=innerHTML+'px';
+            cub.style.marginLeft=-(innerHTML/2)+'px';
+          };
+        };
+        for (var i = 0; i < aLi_height.length; i++) {
+          aLi_height[i].onclick=function(){
+            var innerHTML=parseInt(this.innerHTML);
+            cub.style.height=innerHTML+'px';
+            cub.style.marginTop=-(innerHTML/2)+'px';
+            cub.style.lineHeight=innerHTML+'px';
+          };
+        };
+        enter.onclick=function(){
+            mask.style.display='none';
+        };
+
+      };
+  </script>
+</body>
+</html>

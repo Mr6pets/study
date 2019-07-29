@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据劫持的使用</title>
+</head>
+<body>
+    <button>按钮</button>
+    <h2 id="title"></h2>
+    <script>
+        var data={
+            title:'新闻',
+            maiov:"keatang"
+        }
+        /*
+            数据劫持，转化成访问器模式 getter setter
+
+        */
+        observer(data)
+        function observer(obj){
+            Object.keys(obj).forEach(item=>{
+                defineReactive(obj,item,obj[item])
+            })
+        }
+        function defineReactive(obj,key,value){
+            Object.defineProperty(obj,key,{
+                get(){
+                    return value
+                },
+                set(newValue){
+                    value =newValue;
+                    title.innerHTML=newValue
+                }
+            })
+        }
+        
+        
+        var title=document.getElementById('title');
+        var btn=document.getElementById('btn');
+        title.innerHTML=data.title;
+        btn.onclick=function(){
+
+        }
+    </script>
+</body>
+</html>

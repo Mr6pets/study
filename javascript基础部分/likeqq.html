@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>仿照QQ的点击折叠</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    .main {
+      width: 200px;
+      margin: 0 auto;
+      border: 1px solid lightgrey;
+    }
+
+    .main ul li h3 {
+      height: 30px;
+      line-height: 30px;
+      background: url('img/ico1.gif') no-repeat left center;
+      background-color: lightblue;
+      box-sizing: border-box;
+      padding-left: 10px;
+      background-color: lightgrey;
+      cursor: pointer;
+    }
+
+    .sec_lis ul {
+      display: none;
+    }
+
+    .active {
+      background: url('img/ico2.gif') no-repeat left center !important;
+      background-color: lightyellow !important;
+    }
+
+    .hover {
+      background: lightgrey;
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function() {
+      var mainUl = document.getElementById('mainUl');
+      var mainH3 = mainUl.getElementsByTagName('h3'); //获取所有H3的集合
+      var aUl = mainUl.getElementsByTagName('ul');
+      var ali = null;
+      var arrLi = [];
+      var num = 0;
+      // 点击H3标题的效果
+      for (var i = 0; i < mainH3.length; i++) {
+        mainH3[i].index = i;//所有的h3就添加了索引
+        mainH3[i].onOff=true;
+        mainH3[i].onclick = function() {
+          for (var i = 0; i < mainH3.length; i++) {
+            // 除了点击的其他 的全部关闭
+            if(i!=this.index){
+              mainH3[i].className="";
+              mainH3[i].onOff=true;
+              aUl[i].style.display="none";
+            }
+          };
+          if (this.onOff) {
+            this.className = 'active';
+            aUl[this.index].style.display = 'block';
+          } else {
+            this.className ='';
+            aUl[this.index].style.display = 'none';
+          }
+          this.onOff=!this.onOff;
+        }
+      };
+      // 获取素有子元素li进行存储
+      for (var i = 0; i < aUl.length; i++) {
+        ali = aUl[i].getElementsByTagName('li');
+        for (var j = 0; j < ali.length; j++) {
+          arrLi.push(ali[j]);
+        };
+      };
+      for (var i = 0; i < arrLi.length; i++) {
+        arrLi[i].onclick = function() {
+          for (var i = 0; i < arrLi.length; i++) {
+            arrLi[i].className = '';
+          }
+          this.className = 'hover';
+        };
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <div class="main">
+    <ul id="mainUl">
+      <li class="sec_lis">
+        <h3>我的好友</h3>
+        <ul>
+          <li>李小阳</li>
+          <li>韩小宁</li>
+          <li>钟小刚</li>
+          <li>刘小伟</li>
+        </ul>
+      </li>
+      <li class="sec_lis">
+        <h3>企业好友</h3>
+        <ul>
+          <li>李小阳的企业</li>
+          <li>韩小宁的企业</li>
+          <li>钟小刚的企业</li>
+          <li>刘小伟的企业</li>
+        </ul>
+      </li>
+      <li class="sec_lis">
+        <h3>我的黑名单</h3>
+        <ul>
+          <li>李违阳</li>
+          <li>韩违宁</li>
+          <li>钟违刚</li>
+          <li>刘违伟</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>

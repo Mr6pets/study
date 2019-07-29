@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue组件通信</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div style="float: left">
+            <h3>自定义的下拉框1</h3>
+            <!-- <table>
+                <tr is="custom-select"></tr>
+            </table>    -->
+            <custom-select btn-value="查询" v-bind:list="list1"></custom-select>
+        </div>
+        <div style="float: left">
+            <h3>自定义的下拉框2</h3>
+            <custom-select btn-value="搜索" v-bind:list="list2"></custom-select>
+        </div>
+    </div>
+    <script>
+        /*
+           组件之间的的通信
+           父组件要给子组件传递数据，子组件需要将他的内部发生的事情告诉父组件
+           父组件=>子组件
+            组件实例的作用域是孤立的，不能再子组件直接用父组件的数据
+            可以再组件上使用自定义属性绑定数据，在组件中需要显式的用props声明自定义属性名
+           子组件=>父组件
+            需要用到自定义事件，父组件用$on监听自定义事件，$emit触发父组件所关心个自定义事件 
+
+            受限制的dom元素
+            就是你的组件中放的标签要符合W3C标准，table中不能放input 等等。。
+            如果实在要放 那就要加is="custom-select"来拓展
+        */
+        // var obj={
+        //     selectShow:false
+        // }
+        Vue.component("custom-select",{
+            data:function(){
+                return {
+                    selectShow:false ,
+                    val:''
+                }
+            },
+            props:["btnValue","list"],//这里要使用驼峰的形式，这里是接收自定义custom-select 中定义的btn-value的数据
+            template:`<section class="warp">
+                <div class="searchIpt clearFix">
+                    <div class="clearFix">
+                        <input type="text" class="keyWord" :value="val" @click="selectShow=!selectShow" />
+                        <input type="button" :value="btnValue">
+                        <span></span>
+                    </div>
+                    <custom-list 
+                        v-show="selectShow" 
+                        :list="list"
+                        v-on:receive="changeValueHandle"
+                    >
+                    </custom-list>
+                </div>
+            </section>`,
+            methods:{
+                //子组件进行了$emit 父组件自定义了一个receive的方法
+                //receive接收到了 子组件传递上来的item值
+                changeValueHandle(value){
+                    // alert("接收到的值是"+value)
+                    this.val=value;
+                }
+            }
+        })
+
+        Vue.component("custom-list",{
+            props:["list"],
+            template:`<ul class="list" >
+                <li v-for="item in list" @click="selectValueHandle(item)">{{item}}</li>
+            </ul>`,
+            methods: {
+                selectValueHandle(item){
+                    //在子组件中 现在要向父组件中input text传递值
+                    //告诉父级，改变val的值，需要触发一个自定义事件
+                    this.$emit("receive",item)//这里就是把item的值 通过$emit传递给receive
+                }
+            }
+        })
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                list1:["javascript","angular","react","vue"],
+                list2:["北京","上海","杭州","深圳","苏州","无锡"]
+            }
+        })
+    </script>
+</body>
+</html>

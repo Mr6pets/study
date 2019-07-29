@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue组件</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./vue_developer.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>自定义的下拉框1</h3>
+        <custom-select></custom-select>
+        <h3>自定义的下拉框2</h3>
+        <custom-select></custom-select>
+    </div>
+    <script>
+        /*
+            使用组件需要先注册组件
+            注册分2种：
+            全局注册：
+                可以再任何模板中使用，使用之前要先注册
+                语法：使用Vue.component(组件名，选项对象)
+                组件命名约定：
+                    驼峰（camelCase）,烤串(kebab-case)
+                在HTML中使用组件：
+                    使用烤串（kebab-case）命名法
+                使用，注册：Vue.component('my-component',{})    
+                    使用：<my-component></my-component>
+            局部注册：
+                在组件实例中通过选项对象注册，只在所注册的作用域中使用
+                {
+                    component:{
+                        组件名：选项对象
+                    }
+                }
+        */
+        //全局注册组件
+        // Vue.component("custom-select",{
+        //     template:`<section class="warp">
+        //         <div class="searchIpt clearFix">
+        //             <div class="clearFix">
+        //                 <input type="text" class="keyWord" value="" />
+        //                 <input type="button" value="GO">
+        //                 <span></span>
+        //             </div>
+        //             <ul class="list">
+        //                 <li>html+css</li>
+        //                 <li>html5+css3</li>
+        //                 <li>javascript</li>
+        //                 <li>angular</li>
+        //                 <li>react</li>
+        //                 <li>vue</li>
+        //                 <li>jquery</li>
+        //                 <li>nodejs</li>
+        //             </ul>
+        //         </div>
+        //     </section>`
+        // })
+
+        let vm=new Vue({
+            el:"#app",
+            //局部注册
+            components:{
+                "custom-select":{
+                    template:`<section class="warp">
+                        <div class="searchIpt clearFix">
+                            <div class="clearFix">
+                                <input type="text" class="keyWord" value="" />
+                                <input type="button" value="GO">
+                                <span></span>
+                            </div>
+                            <ul class="list">
+                                <li>html+css</li>
+                                <li>html5+css3</li>
+                                <li>javascript</li>
+                                <li>angular</li>
+                                <li>react</li>
+                                <li>vue</li>
+                                <li>jquery</li>
+                                <li>nodejs</li>
+                            </ul>
+                        </div>
+                    </section>` 
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
