@@ -7,17 +7,17 @@
 
 javascritp原型树的一些笔记内容
 
->ECMS6
-
-基于ECMA2015简称es6的，一些知识点小计
-
->ECMAScript异步编程公开课_来自妙味课堂一些总结
-
-基于es6的promise编程的一些知识点<br>
-
 >javascript基础部分
 
 javascript的基础知识点
+
+> ECMS6
+
+基于ECMA2015简称es6的，一些知识点小计
+
+> ECMAScript异步编程公开课_来自妙味课堂一些总结
+
+基于es6的promise编程的一些知识点
 
 >vue基础
 
