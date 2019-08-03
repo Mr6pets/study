@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSON字符串</title>
+    <script>
+        // eval() 解析任何字符串变js
+
+    </script>
+</head>
+<body>
+    <script>
+        /*
+            JSON的新方法：
+            parse():把字符串转成json
+                -字符串中的属性要严格加上引号
+            stringify():吧json转化成字符串
+                -会自动的把双引号加上
+            新方法和eval的区别：
+                深度克隆新对象
+            做到浏览器兼容 json2.js
+        */ 
+    //    var str = '{"name":"hello"}';
+    //    var json_parse=JSON.parse(str);
+    //    alert(json_parse.name)//hello
+        
+    //    var json={name:"hello"};
+    //    var str = JSON.stringify(json)
+    //    alert(str)//{"name":"hello"}
+
+    // 对象引用
+    // 例子1
+    // var a={
+    //     name:"hello"
+    // }
+    // var b=a;
+    // b.name="hi";
+    // alert(a.name)//hi 改变了原先的a对象中的值
+
+    // 例子二
+    // var a={
+    //     name:"hello"
+    // };
+    // var b={};
+    // for(var attr in a){
+    //     b[attr]=a[attr];
+    // };
+    // b.name="hi";
+    // alert(a.name)//hello
+
+
+    var a={
+        name:'hello'
+    };
+    var str =JSON.stringify(a);//转化成字符串
+    var b=JSON.parse(str)//再一次转化成json
+    b.name='hi';//这里是b再次改属性 是不会影响a的值
+    alert(a.name)//hello
+    </script>
+</body>
+</html>

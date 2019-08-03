@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>历史管理</title>
+</head>
+<body>
+    <input type="button" id="input1" value="随机选择">
+    <div id="div1"></div>
+    <script>
+            /*
+            触发历史管理
+            onhashchange:改变hash值来管理
+    
+            history:
+                -服务器下运行
+                -pushState：三个参数：数据 标题(都没有实现) 地址（可选）
+                -popstate事件：读取数据 event.state
+                -注意：网址是虚拟的 需要在服务器指定对应页面 不然刷新找不到页面
+            */
+           
+            var aInput=document.getElementById('input1');
+            var oDiv=document.getElementById('div1');
+            var a=document.getElementById('put')
+            var json={};
+           
+            aInput.onclick=function(){
+                var num=Math.random()
+                var arr=randomNum(35,7);
+                json[num]=arr;
+                oDiv.innerHTML=arr;
+                window.location.hash=num;
+
+            };
+            window.onhashchange=function(){
+                oDiv.innerHTML= json[window.location.hash.substring(1)];
+            }
+            function randomNum(iAll,iNow){
+                var arr=[];
+                var newArr=[];
+                for(var i=0;i<iAll;i++){
+                    arr.push(i);
+                }
+                for(var i=0;i<iNow;i++){
+                    newArr.push(arr.splice(Math.floor(Math.random()*arr.length),1))
+                }
+                return newArr;
+            }
+        </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas基础_微博点击图片旋转</title>
+  <style media="screen">
+    body{
+      background: black;
+    }
+    #canvas{
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+  <input type="button" value="←">
+  <input type="button" value="→">
+  <div>
+    <img src="2.png" id="img1">
+  </div>
+
+  <script>
+    window.onload=function(){
+      // 获取相应的元素
+      var aInput=document.getElementsByTagName('input');
+      var oImg=document.getElementById('img1');
+      var iNow=0;
+      var yImg= new Image();
+      yImg.onload=function(){
+        draw(oImg);
+      };
+      yImg.src=oImg.src;
+      function draw(obj){
+        // 创建canvas节点
+        var canvas=document.createElement('canvas');
+        var occ=canvas.getContext('2d');
+        canvas.width=obj.width;
+        canvas.height=obj.height;
+        // canvas替换img节点
+        obj.parentNode.replaceChild(canvas,obj);
+        occ.drawImage(obj,0,0);
+        // 右箭头点击控制循环
+        aInput[1].onclick=function(){
+          if (iNow==3) {
+            iNow=0;
+          }else{
+            iNow++;
+          }
+          toChange();
+        };
+        // 左箭头点击控制循环
+        aInput[0].onclick=function(){
+          if (iNow==0) {
+            iNow=3
+          }else {
+            iNow--;
+          }
+          toChange();
+        }
+        function toChange(){
+          switch (iNow) {
+            case 1:
+            canvas.width=obj.height;
+            canvas.height=obj.width;
+            occ.rotate(90*Math.PI/180);
+            occ.drawImage(obj,0,-obj.height);
+            break;
+            case 2:
+            canvas.width=obj.width;
+            canvas.height=obj.height;
+            occ.rotate(180*Math.PI/180);
+            occ.drawImage(obj,-obj.width,-obj.height);
+            break;
+            case 3:
+            canvas.width=obj.height;
+            canvas.height=obj.width;
+            occ.rotate(270*Math.PI/180);
+            occ.drawImage(obj,-obj.width,0);
+            break;
+            case 0:
+            canvas.width=obj.width;
+            canvas.height=obj.height;
+            occ.rotate(0*Math.PI/180);
+            occ.drawImage(obj,0,0);
+            break;
+
+          }
+        };
+      }
+    }
+  </script>
+</body>
+</html>

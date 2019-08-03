@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas基础</title>
+  <style media="screen">
+    body{
+      background: black;
+    }
+    #canvas{
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="400" height="400">
+        <span>不支持canvas的浏览器</span>
+  </canvas>
+  <script>
+    window.onload=function(){
+      // 绘制环境
+      var canvas=document.getElementById('canvas');
+      var occ=canvas.getContext('2d');//webgl绘制3d;
+      // translate
+      // occ.translate(100,100);
+      // occ.fillRect(0,0,100,100);
+
+      // occ.rotate(45*Math.PI/180);
+      // occ.fillRect(0,0,100,100);
+
+      // occ.scale(0.5,0.5);
+      // occ.fillRect(0,0,100,100);
+      // 旋转的小方块
+      // -----有些问题需要解决------
+      var num=0;
+      occ.fillStyle='lightgreen';
+      occ.translate(100,100);
+      setInterval(function(){
+        num++;
+        occ.save();
+        occ.clearRect(0,0,canvas.width,canvas.height);
+        occ.rotate(num*Math.PI/180);
+        occ.fillRect(0,0,100,100);
+        occ.restore();
+
+      },100);
+
+      //理论
+      // arcTo(x1,y1,x2,y2,r);第一组坐标 第二组坐标 半径；
+      // quadraticCurveTo(dx,dy,x1,y1);贝塞尔曲线 第一组控制点 第二组结束坐标
+      // bezierCurveTo(dx1,dy2,dx2,dy2,x1,y1);贝塞尔曲线 第一控制点 第二组控制点 第三组控制点坐标；
+
+      // occ.moveTo(100,200);
+      // occ.arcTo(100,100,200,100,50)
+      // occ.stroke();
+
+      // occ.moveTo(100,200);
+      // occ.quadraticCurveTo(100,100,200,100,50)
+      // occ.stroke();
+
+      // occ.moveTo(100,200);
+      // occ.bezierCurveTo(100,100,200,200,200,100)
+      // occ.stroke();
+    }
+  </script>
+</body>
+</html>

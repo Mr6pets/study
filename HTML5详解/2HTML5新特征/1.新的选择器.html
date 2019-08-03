@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新的选择器</title>
+    <script>
+        window.onload=function(){
+            // var oDiv=document.querySelector('#div1');
+            // var oDiv_hellow=document.querySelector('[title=hello]');
+            // //获取一组元素
+            // var aDiv=document.querySelectorAll('.box')
+            // var oDiv_className=document.getElementsByClassName('box');
+            // oDiv.onclick=function(){
+            //     alert(this.length);
+            // }
+
+            var oDiv_classList=document.getElementById('div_calssList');
+            console.log(oDiv_classList.classList)//box1 box2 box3 类似于数组的对象
+            oDiv_classList.classList.add('box_add');
+            oDiv_classList.classList.remove('box_remove');
+            oDiv_classList.classList.toggle('box_toggle'); 
+
+        }
+    </script>
+</head>
+<body>
+    <div id="div1" class="box" title="hello">div1</div>
+    <div id="div2" class="box" title="hello">div2</div>
+    <div id="div_calssList" class="box1 box2 box3">div</div>
+</body>
+</html>
