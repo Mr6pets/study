@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>响应式</title>
+	</head>
+	<style type="text/css">
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+		@media embossed {
+			/*在盲人打印机上是绿色*/
+			#box{
+				background-color: green;
+			}
+		}
+		@media tv{
+			/*在TV上是粉色*/
+			#box{
+				background-color: pink;
+			}
+		}
+		@media all{
+			/*在所有媒体上是红色*/
+			#box{
+				background-color: red;
+			}
+		}
+		@media only screen{
+			/*仅仅在彩屏设备下识别*/
+			#box{
+				background-color: pink;
+			}
+		}
+		@media all and (min-width:500px){
+			/*当屏幕宽度大于等于500px的时候识别*/
+			#box{
+				background-color: lightblue;
+			}
+		}
+	</style>
+	<body>
+		<!--
+			all:所有设备
+			braille:盲文触觉设备
+			embossed:盲文打印机
+			print:手持设备
+			projection:手持预览
+			screen:彩屏设备
+			speech:听觉 类似的媒体类型
+			tty:不适用像素的设备
+			tv:电视
+			@media only设备类型
+			只有在特定的设备上识别
+			and 是用来连接媒体类型和媒体特性
+		-->
+		<div id="box">1</div>
+	</body>
+</html>

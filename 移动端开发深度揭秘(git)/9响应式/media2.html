@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>响应式2</title>
+		<style type="text/css">
+		#box{
+			height: 100px;
+			border:1px solid grey;
+			background-color: pink;
+		}
+		#box:before{
+			content:"这是我的位置地方还是挺大的自由限度这是我的位置地方还是挺大的自由限度这是我的位置地方还是挺大的自由限度这是我的位置地方还是挺大的自由限度";
+		}
+		@media all and (max-width:900px ) {
+			#box{
+				background-color: paleturquoise;
+			}
+			#box:before{
+				content: "位置变小了 有点小了";
+			}
+		};
+		@media all and (max-width:500px) {
+			#box{
+				background-color: lightcyan;
+			}
+			#box:before{
+				content: "enenenenenenene 有点小了";
+			}
+		}
+		@media all and (max-width:300px ) {
+			#box{
+				background-color: lightsalmon;
+			}
+			#box:before{
+				content: "最小了没有办法了";
+			}
+		}
+		/*ps：注意每个@media{}结束后不加;*/
+	</style>
+	</head>
+	<body>
+		<!--
+			/*@media all and (min-width:500px){
+			
+			}
+			@media all and (max-width:500px){
+				
+			}*/
+			and 是用来连接媒体类型和媒体特性
+			min-width:当屏幕大于等于某个值的时候识别
+			max-width: 当屏幕大小 大于等于某个值识别
+			
+		-->
+		<div id="box"></div>
+	</body>
+</html>

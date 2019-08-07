@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>手机端适配</title>
+		<script type="text/javascript">
+			(function(){
+				var w=window.screen.width;
+				var targetW=320;
+				var scale=w/targetW;
+				var meta=document.createElement('meta');
+				meta.name="viewport";
+				meta.content="width=device-width,initial-scale="+scale+",minimum-scale="+scale+",maximum-scale="+scale+",user-scalable=no";
+				document.head.appendChild(meta);
+			})()
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

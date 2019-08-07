@@ -1,0 +1,56 @@
+a,
+input,
+button {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+button {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+body {
+  margin: 0;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: 100%;
+}
+body * {
+  -webkit-user-select: none;
+  font-family: Helvetica;
+}
+#header {
+  height: 2.06rem;
+  background-color: lightcoral;
+  position: relative;
+}
+#header a {
+  width: 2.56rem;
+  height: 1.76rem;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  line-height: 1.76rem;
+}
+#header #task {
+  left: 0;
+}
+#header #task span {
+  font-size: 37% 50rem;
+}
+#header #refresh {
+  right: 0;
+}
+#header #refresh span {
+  font-size: 0.72rem;
+}
+#header span {
+  color: #FFFFFF;
+}
+#header h1 {
+  text-align: center;
+  font-size: 0.78rem;
+  color: #FFFFFF;
+  line-height: 1.76rem;
+}
+#header h1 span {
+  font-size: 0.52rem;
+  margin-right: 0.32rem;
+}

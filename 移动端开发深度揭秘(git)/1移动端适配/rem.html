@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>rem</title>
+		<link rel="stylesheet" href="./init_index.css">
+		<link rel="stylesheet" type="text/css" href="bs/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/rem.css"/>
+		<script type="text/javascript">
+			(function(){
+				var html=document.documentElement;
+				var hWidht=html.getBoundingClientRect().Widht;
+				html.style.fontSize=hWidht/15+'px';
+				//设置文旦的字体大小为 页面的宽度/15，例子：设计图是750的 也就是说 页面是被分为15份 每份是50px  103px的长度就是103/50=2.06rem
+			})()
+		</script>
+	</head>
+	<body>
+		<header id="header">
+			<a href="javascript:;" id="task"><span class="glyphicon glyphicon-tasks"></span></a>
+			<h1><span class="glyphicon glyphicon-lock">ceshi</span></h1>
+			<a href="javascript:;" id="refresh"><span class="glyphicon glyphicon-repeat"></span></a>
+		</header>
+		
+	</body>
+</html>
