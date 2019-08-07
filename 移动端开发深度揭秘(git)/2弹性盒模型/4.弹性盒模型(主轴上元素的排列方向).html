@@ -13,19 +13,33 @@
             height: 200px;
             border: 1px solid #000;
             /*新版的弹性盒模型*/
-            display: flex;
-            /* 设置主轴的方向为水平方向 */
-            /* flex-direction: row; */
-            /* 设置主轴的方向为垂直方向 */
+            /* display: flex; */
+
+            /* 设置主轴的方向为水平方向,元素的排列为反序 */
+            /* flex-direction: row-reverse; */
+            /* 设置主轴的方向为垂直方向，元素的排列为反序 注意区别 column-reverse 和column的区别 */
+            /* flex-direction: column-reverse; */
             /* flex-direction: column; */
+
+           
 
 
             /* 老版本的弹性盒模型 */
             display: -webkit-box;
-            /* 设置主轴的方向为水平方向 */
+
+             /* 设置主轴的方向为水平方向 */
             /* -webkit-box-orient: horizontal; */
+            /* 元素在主轴上排列为反序 */
+            /* -webkit-box-direction:reverse; */
+             /* 元素在主轴上排列为正序 */
+             /* -webkit-box-direction:normal; */
+
              /* 设置主轴的方向为垂直方向 */
-            -webkit-box-orient: vertical;
+            /* -webkit-box-orient: vertical;  */
+             /* 元素在主轴上排列为反序 */
+            /* -webkit-box-direction:reverse; */
+             /* 元素在主轴上排列为正序 */
+             /* -webkit-box-direction:normal; */
 
         }
         #box div{

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>2弹性盒模型</title>
+    <title>6弹性盒模型</title>
     <style>
         body{
             margin: 0;
@@ -13,37 +13,29 @@
             height: 200px;
             border: 1px solid #000;
             /*新版的弹性盒模型*/
-            display: flex;
-            /* 设置主轴的方向为水平方向 */
-            /* flex-direction: row; */
-            /* 设置主轴的方向为垂直方向 */
-            /* flex-direction: column; */
-
+            /* display: flex; */
 
             /* 老版本的弹性盒模型 */
             display: -webkit-box;
-            /* 设置主轴的方向为水平方向 */
-            /* -webkit-box-orient: horizontal; */
-             /* 设置主轴的方向为垂直方向 */
-            -webkit-box-orient: vertical;
-
+            
         }
         #box div{
+            /* 新版 */
+            /* flex-grow: 1; */
+            /* 老版 */
+            -webkit-box-flex:1;
+            
             width: 50px;
             height: 50px;
-            line-height: 50px;
-            font-size: 30px;
+            font-size: 20px;
             color: white;
             background-color: #f00;
             text-align: center
         }
-
+        /* #box div:nth-of-type(2){
+            flex-grow: 2;
+        } */
     </style>
-    <script>
-        /*
-            
-        */
-    </script>
 </head>
 <body>
     <div id="box">

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端事件基础</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: lightblue;
+            filter:alpha(opacity=50);   
+            -moz-opacity:0.5;   
+            -khtml-opacity: 0.5;   
+            opacity: 0.5; 
+        }
+    </style>
+
+</head>
+<body>
+    <a href="www.baidu.com" id="atar">11</a>
+    <div id="div1"></div>
+    <input type="text" id="txt">
+    <script>
+        /*
+        移动端的点透：
+            当上层元素发生点击的时候，下层元素也有点击（焦点)特性，
+            在300ms之，如果上层元素消失或者隐藏，目标点就会“漂移 ”到下层元素身上 就会触发点击行为
+            在这个例子中 点击a的上面这一层 超过300毫秒 上层消失 不跳转  在200毫秒以为会消失和跳转
+
+            解决办法：
+            1.下层元素不放置有点击 或者焦点特性的元素（不利于SEO优化）
+            2.阻止PC事件的默认行为
+
+
+            1.ios 10下设置的mete禁止用户缩放是不可行的。（使用阻止PC事件就可以在iOS10下禁止用户缩放）
+            2.解决iOS10下溢出隐藏的问题
+            3.禁止系统默认的滚动条，阻止橡皮筋效果
+            4.禁止长按选中文字，选中图片 系统默认菜单
+            5.解决点透问题
+            6.这样的情况下也阻止了元素的焦点行为（如果要使用input输入框 要使用默认事件停止冒泡）
+
+
+        */
+
+        document.addEventListener('touchstart',function(ev){
+            ev.preventDefault();//这里阻止默认行为后 PC的时间是无法使用的 所以就可以尽量不用PC的事件
+        })
+        var div=document.getElementById('div1');
+        var atar=document.getElementById('atar');
+        var txt=document.getElementById('txt');
+        // 移动端都是事件要比鼠标事件快大概300毫秒
+        div.addEventListener('touchend',end);
+        atar.addEventListener('touchstart',function(){
+            window.location.href="http:www.baidu.com";
+        });
+        txt.addEventListener('touchstart',function(ev){
+            ev.stopPropagation();
+        })
+        function end(){
+            this.style.display="none";
+        }
+        
+    </script>
+</body>
+</html>

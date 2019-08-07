@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>仿淘宝</title>
+    <link rel="stylesheet" href="./init_index.css">
+    <script>
+        (
+           function(){
+               var html=document.documentElement;
+               var htmlWidth=html.getBoundingClientRect().width;
+               html.style.fontSize=htmlWidth/15+"px";
+           }
+        )()
+    </script>
+    <style>
+        .rows{
+            display: flex;
+            display: -webkit-box;
+        }
+        .rows div{
+            width: 0;
+            -webkit-box-flex: 1;
+            flex-grow: 1
+        }
+        .rows div a{
+            font-size: 0.44rem;
+            color: #666;
+            text-align: center;
+            line-height: 1.04rem;
+            display: block;
+        }
+        .rows div a:before{
+            content: "";
+            display: block;
+            margin: 0 auto;
+            width: 1.72rem;
+            height: 1.7rem;
+            background-size: 1.72rem 1.7rem;
+        }
+        .rows:nth-of-type(1) div:nth-of-type(1) a:before{
+            background-image:url(./img/01.png);
+        }
+        .rows:nth-of-type(1) div:nth-of-type(2) a:before{
+            background-image:url(./img/02.png);
+        }
+        .rows:nth-of-type(1) div:nth-of-type(3) a:before{
+            background-image:url(./img/03.png);
+        }
+        .rows:nth-of-type(1) div:nth-of-type(4) a:before{
+            background-image:url(./img/04.png);
+        }
+        .rows:nth-of-type(1) div:nth-of-type(5) a:before{
+            background-image:url(./img/05.png);
+        }
+
+        .rows:nth-of-type(2) div:nth-of-type(1) a:before{
+            background-image:url(./img/06.png);
+        }
+        .rows:nth-of-type(2) div:nth-of-type(2) a:before{
+            background-image:url(./img/07.png);
+        }
+        .rows:nth-of-type(2) div:nth-of-type(3) a:before{
+            background-image:url(./img/08.png);
+        }
+        .rows:nth-of-type(2) div:nth-of-type(4) a:before{
+            background-image:url(./img/09.png);
+        }
+        .rows:nth-of-type(2) div:nth-of-type(5) a:before{
+            background-image:url(./img/10.png);
+        }
+    </style>
+</head>
+<body>
+    <div class="rows">
+        <div><a href="javascript:void(0)">天猫</a></div>
+        <div><a href="javascript:void(0)">聚划算</a></div>
+        <div><a href="javascript:void(0)">天猫</a></div>
+        <div><a href="javascript:void(0)">聚划算</a></div>
+        <div><a href="javascript:void(0)">聚划算</a></div>
+    </div>
+    <div class="rows">
+        <div><a href="javascript:void(0)">天猫</a></div>
+        <div><a href="javascript:void(0)">聚划算</a></div>
+        <div><a href="javascript:void(0)">天猫</a></div>
+        <div><a href="javascript:void(0)">聚划算</a></div>
+        <div><a href="javascript:void(0)">聚划算</a></div>
+    </div>
+</body>
+</html>
