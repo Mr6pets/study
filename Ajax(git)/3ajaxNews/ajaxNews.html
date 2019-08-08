@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>后台新闻取值</title>
+	<script src="json2.js"></script>
+	<script src="ajax.js"></script>
+	<style>
+		li{ list-style: none; }
+	</style>
+	<script>
+		window.onload=function(){
+			var oBtn=document.getElementById('btn')	
+			oBtn.onclick=function(){
+				ajax('get','getList.php','',function(data){
+					var data=JSON.parse(data);
+					var oUl=document.getElementById('ul1');
+					var html='';
+					for(var i=0;i<data.length;i++){
+						html+='<li><a href="">'+data[i].title+'</a><span>'+data[i].data+'</span></li>'
+					};
+					oUl.innerHTML=html;
+				});
+				// setInterval(function(){
+				// 	ajax()
+				// },1000)
+			};		
+		};
+	</script>
+</head>
+<body>
+	<input type="button" value="按钮" id="btn">
+	<ul id="ul1"></ul>
+</body>
+</html>
