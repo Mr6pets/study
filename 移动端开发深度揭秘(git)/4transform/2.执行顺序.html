@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transform</title>
+    <style>
+        #box{
+          width: 100px;
+          height: 100px;
+          border: 1px solid #000;
+          padding: 100px;  
+        }
+        .div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 10px auto;
+            transition: .5s;
+            /* 移动的中心点设置 */
+            transform-origin: center center;
+            -webkit-transform-origin: center center
+        }
+    </style>
+    <script>
+        document.addEventListener('touchstart',function(ev){
+            ev.preventDefault();
+        })
+        /*
+            这里是先写的后执行
+            this.style.WebkitTransform=this.style.transform='scale(0.5) translateX(100px)';
+            先执行translate 后执行scale
+
+        */
+        window.onload=function(){
+          var div=document.querySelectorAll('.div');  
+          div[0].addEventListener('touchend',function(){
+              this.style.WebkitTransform=this.style.transform='scale(0.5) translateX(100px)';
+          });
+          div[1].addEventListener('touchend',function(){
+              this.style.WebkitTransform=this.style.transform='translateX(100px) scale(0.5)';
+          })
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <div class="div"></div>
+        <div class="div"></div>
+    </div>
+</body>
+</html>
