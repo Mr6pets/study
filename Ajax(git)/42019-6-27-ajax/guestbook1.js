@@ -7,9 +7,6 @@ window.onload=function(){
 	var oList=document.getElementById('list')
 	var oUsername1=document.getElementById('username1');
 	var oVerifyUserNameMsg=document.getElementById('verifyUserNameMsg');
-
-	var iPage=1;
-	var oShowMore=document.getElementById('showMore');
 	// 网站载入的时候做一次初始化的处理
 	updateUserStatus()
 	function updateUserStatus(){
@@ -28,6 +25,7 @@ window.onload=function(){
 			oLogin.style.display = 'block';
 		}
 	}
+	
 	/*初始化留言列表
 		get
 		guestbook/index.php
@@ -53,7 +51,47 @@ window.onload=function(){
 		}
 	*/
 	//留言页面进来发送一个ajax中去一个
-	showList();
+	ajax('post','guestbook/index.php','m=index&a=getList&n=3',function(data){
+		var d=JSON.parse(data);
+		console.log(d);
+		var arr=d.data.list;
+		for(var i=0;i<arr.length;i++){
+			var oDl=document.createElement('dl');
+
+			var oDt=document.createElement('dt');
+			var oStrong=document.createElement('strong');
+			oStrong.innerHTML=d.data.username;
+			oDt.appendChild(oStrong);
+
+			var oDd1=document.createElement('dd');
+			oDd1.innerHTML=d.data.content;
+
+
+			var oDd2=document.createElement('dd');
+			oDd2.className="t";
+			var oA1=document.createElement('a');
+			oA1.href='';
+			oA1.innerHTML='顶(<span>'+d.data.support+'</span>)';
+			var oA2=document.createElement('a');
+			oA2.href='';
+			oA2.innerHTML='踩(<span>'+d.data.oppose+'</span>)';
+			oDd2.appendChild(oA1);
+			oDd2.appendChild(oA2);
+
+			oDl.appendChild(oDt);
+			oDl.appendChild(oDd1);
+			oDl.appendChild(oDd2);
+
+			oList.appendChild(oDl);
+		}
+
+		
+			 
+	});
+
+
+
+
 
 	/*验证用户名
 	get
@@ -187,69 +225,37 @@ window.onload=function(){
 			alert(d.message);
 			if(!d.code){
 				//使用dom的方法创建添加留言板块oList
-				createList(d.data,true)
+				var oDl=document.createElement('dl');
+
+				var oDt=document.createElement('dt');
+				var oStrong=document.createElement('strong');
+				oStrong.innerHTML=d.data.username;
+				oDt.appendChild(oStrong);
+
+				var oDd1=document.createElement('dd');
+				oDd1.innerHTML=d.data.content;
+
+
+				var oDd2=document.createElement('dd');
+				oDd2.className="t";
+				var oA1=document.createElement('a');
+				oA1.href='';
+				oA1.innerHTML='顶(<span>'+d.data.support+'</span>)';
+				var oA2=document.createElement('a');
+				oA2.href='';
+				oA2.innerHTML='踩(<span>'+d.data.oppose+'</span>)';
+				oDd2.appendChild(oA1);
+				oDd2.appendChild(oA2);
+
+				oDl.appendChild(oDt);
+				oDl.appendChild(oDd1);
+				oDl.appendChild(oDd2);
+
+				oList.appendChild(oDl);
 			}
+				 
 		});
 	}
-
-	function createList(data,insert){
-		var oDl=document.createElement('dl');
-
-		var oDt=document.createElement('dt');
-		var oStrong=document.createElement('strong');
-		oStrong.innerHTML=data.username;
-		oDt.appendChild(oStrong);
-
-		var oDd1=document.createElement('dd');
-		oDd1.innerHTML=data.content;
-
-		var oDd2=document.createElement('dd');
-		oDd2.className= 't';
-		var oA1=document.createElement('a');
-		oA1.href='';
-		oA1.innerHTML='顶(<span>'+data.support+'</span>)';
-		var oA2=document.createElement('a');
-		oA2.href='';
-		oA2.innerHTML='踩(<span>'+data.oppose+'</span>)';
-		oDd2.appendChild(oA1);
-		oDd2.appendChild(oA2);
-
-		oDl.appendChild(oDt);
-		oDl.appendChild(oDd1);
-		oDl.appendChild(oDd2);
-
-		if(insert && oList.children[0]){
-			oList.insertBefore(oDl, oList.children[0]);	
-		}else{
-			oList.appendChild(oDl);
-		}
-	}
-
-	//显示更多的内容
-	oShowMore.onclick=function(){
-		iPage++;
-		showList();
-	}
-
-	function showList(){
-		ajax('post','guestbook/index.php','m=index&a=getList&n=2&page='+iPage,function(data){
-			var d=JSON.parse(data);
-			console.log(d);
-			var data=d.data
-			if(data){// 如果是初始化进来没有数据
-				for(var i=0;i<data.list.length;i++){
-					createList(data.list[i]);
-				}
-			}else{
-				if (iPage==1) {
-					oList.innerHTML="现在还没有评论，快来抢沙发！";
-				}
-				oShowMore.style.display = 'none';
-			}
-						 
-		});
-	}
-
 };	
 
 //获取浏览器的cookie
