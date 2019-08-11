@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跨域问题</title>
+	<script src="./1.txt"></script>
+</head>
+<body>
+	<script>
+		
+		/*
+			跨域就是跨域名
+			跨域请求（访问）：一个域名下的文件请求另一域名下的资源，就产生了跨域
+			跨域的解决
+			jsonp:json width padding
+
+			1.script标签
+			2.用script加载资源没有跨域问题
+
+			script 引入的资源是参照文件内容和后缀名无关，例子script src="./1.png",但是1.png的资源内容是 var a=1;所以底下可以出发alert(a)
+
+			jsonp::在资源加载进来之前定义好一个函数，这个函数接收一个参数（数据），函数里面利用这个参数做一些事情，然后需要的时候通过script标签加载对应远程文件资源，当远程的文件资源被加载进来的时候，就会去执行我们前面定义好的函数，并且把数组当做这个函数的参数传递进去
+		 */
+		alert(a)
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp点击按钮加载我们需要的资源</title>
+	<script>
+		function fn(data){
+			console.log(data);
+		}
+	</script>
+	<script>
+		window.onload=function(){
+			var btn=document.getElementById('btn');
+			btn.onclick=function(){
+				var oScript=document.createElement('script');
+				oScript.src="3.txt";
+				document.body.appendChild(oScript);
+			}
+		}
+	</script>
+</head>
+<body>
+	<button id="btn">按钮</button>
+</body>
+</html>
