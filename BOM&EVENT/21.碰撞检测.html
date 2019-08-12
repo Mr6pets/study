@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>拖拽封装</title>
+    <title>碰撞检测</title>
     <style>
         #div1{
             width: 100px;
@@ -12,18 +12,17 @@
             background-color: brown;
             position: absolute;
         }
+        #changearear{
+            width: 100px;
+            height: 100px;
+            background-color: lightgray;
+            position: absolute;
+            left: 500px;
+            top: 300px;
+        }
     </style>
     <script type="text/javascript">
-    /*
-        拖拽的时候 如果有文字被选中 那就会有问题
-        原因：
-        当鼠标按下后 如果页面中有文字被选中，那么会触发浏览器默认拖拽文字的效果\
-        解决问题：
-            标准：阻止默认事件
-            IE下：设置全局捕获 
-        图片拖拽问题
-        解决办法同理    
-    */
+  
         window.onload=function(){
             var oDiv=document.getElementById('div1')
             drag(oDiv)
@@ -37,8 +36,20 @@
                     }
                     document.onmouseover=function(ev){
                         var ev=ev||window.event;
-                        obj.style.left=ev.clientX-disX+'px';
-                        obj.style.top=ev.clientY-disY+'px';
+                        var L = ev.clientX-disX;
+                        var T = ev.clientY-disY;
+                        if(L<0){
+                            L=0
+                        }else if(L>document.documentElement.clientWidth-obj.offsetWidth){//可视区域的宽-元素的框
+                            L = document.documentElement.clientWidth-obj.offsetWidth+'px'
+                        }
+                        if(T<0){
+                            T=0
+                        }else if(T>document.documentElement.clientHeight-obj.offsetHeight){
+                            T = document.documentElement.clientHeight-obj.offsetHeight+'px'
+                        }
+                        obj.style.left= L +'px';
+                        obj.style.top= T +'px';
                     };
                     document.onmouseup=function(){
                         document.onmouseover=document.onmouseup=null;
@@ -47,6 +58,7 @@
                             obj.releaseCapture()
                         }
                     }
+                    //标准下阻止默认的文字拖拽阴影方法
                     return false;
                 }
             }
@@ -55,5 +67,6 @@
 </head>
 <body>
     <div id="div1"></div>
+    <div id="changearear">我是改变区域</div>
 </body>
 </html>

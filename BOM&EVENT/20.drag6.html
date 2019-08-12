@@ -19,7 +19,7 @@
             var oDiv=document.getElementById('div1')
             drag(oDiv)
             function drag(obj){
-                oDiv.onmousedown=function(ev){
+                obj.onmousedown=function(ev){
                     var ev=ev||window.event;
 
                     var disX=ev.clientX-this.offsetLeft;
@@ -33,13 +33,13 @@
                         var T = ev.clientY-disY;
                         if(L<100){
                             L=0
-                        }else if(L>document.documentElement.clientWidth-obj.offsetLeft){
-                            L = document.documentElement.clientWidth-obj.offsetLeft+'px'
+                        }else if(L>document.documentElement.clientWidth-obj.offsetWidth){//可视区域的宽-元素的框
+                            L = document.documentElement.clientWidth-obj.offsetWidth+'px'
                         }
                         if(T<0){
                             T=0
-                        }else if(T>document.documentElement.clientHeight-obj.offsetTop){
-                            T = document.documentElement.clientHeight-obj.offsetTop+'px'
+                        }else if(T>document.documentElement.clientHeight-obj.offsetHeight){
+                            T = document.documentElement.clientHeight-obj.offsetHeight+'px'
                         }
                         obj.style.left= L +'px';
                         obj.style.top= T +'px';
@@ -51,6 +51,7 @@
                             obj.releaseCapture()
                         }
                     }
+                    //标准下阻止默认的文字拖拽阴影方法
                     return false;
                 }
             }
