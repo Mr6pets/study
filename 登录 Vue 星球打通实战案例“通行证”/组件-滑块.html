@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <style>
+        .box {
+            margin: 100px auto 0;
+            width: 80%;
+        }
+        .clear:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .slider {
+            position: relative;
+            width: 400px;
+            height: 10px;
+            background: #e4e7ed;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .slider .process {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 112px;
+            height: 10px;
+            border-radius: 5px;
+            background: #409eff;
+        }
+        .slider .thunk{
+            position: absolute;
+            left: 100px;
+            top: -7px;
+            width: 20px;
+            height: 20px;
+        }
+        .slider .block {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #409eff;
+            background: rgba(255,255,255,1);
+            transition: .2s all;
+        }
+        .slider .tips {
+            position: absolute;
+            left: -7px;
+            bottom: 30px;
+            min-width: 15px;
+            text-align: center;
+            padding: 4px 8px;
+            background: #000;
+            border-radius: 5px;
+            height: 24px;
+            color: #fff;
+        }
+        .slider .tips i {
+            position: absolute;
+            margin-left: -5px;
+            left: 50%;
+            bottom: -9px;
+            font-size: 16px;
+            color: black;
+        }
+
+        .slider .block:hover {
+            transform: scale(1.1);
+            opacity: .6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <div class="slider">
+            <div class="process"></div>
+            <div class="thunk">
+                <div class="block"></div>
+                <div class="tips">
+                    <span>30</span>
+                    <i class="fas fa-caret-down"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
