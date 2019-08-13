@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>为了防止书写上相同的函数方法名</title>
+    <!-- 这个引用的表示公共的组件库 -->
+    <script src="./1.common.js"></script>
 </head>
 <body>
-    
+    <script>
+        /*
+            为了防止书写上相同的函数方法名,我们一帮会用命名空间解决部分问题
+            问题：
+            1.名称太长
+            2.只能降低冲突 不能退完全避免
+        */    
+
+    // 同事A：
+    workSpace.tab();
+    // 同事B
+    function tab(){
+
+    }
+    </script>
 </body>
 </html>
