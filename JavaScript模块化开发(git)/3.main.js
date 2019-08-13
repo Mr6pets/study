@@ -9,6 +9,6 @@ define(function(require,exports,module){
 
     oInput.onclick=function(){
         oDiv1.style.display="block";
-        
+        require('./3.Cfn.js').scale(oDiv1,oDiv2)
     }
 })

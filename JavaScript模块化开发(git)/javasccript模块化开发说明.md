@@ -109,5 +109,31 @@
    
    
    
-   ##	webqq实战
+##	webqq实战
+
+   *	参考文件夹下内容
+
+## 模块化的历史
+
+- nodeJS的的出现(http://nodejs.org/)
+
+  - commonJS的规范（http://www.commonjs.org/）
+
+- 浏览器js的模块化？
+
+  - AMD规范(http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition)
+
+    - requireJS库（http://require.org/）
+  - CMD规范
+    - Seajs采用的    
+## js模块化
+
+> ​	构建工具
+
+- gruntjs(http://gruntjs.com/)
+  - 安装流程
+    - 先安装nodejs和npm(包管理工具)
+    - npm install -g grunt-cli
+    - npm install grunt --save-dev
+    - grunt-versionnpm install grunt --save-dev
 

@@ -10,8 +10,14 @@ define(function(require,exports,module){
             disY=ev.clientY-this.offsetTop;
             document.onmousemove=function(ev){
                 var ev=ev || window.event;
-                obj.style.left=ev.clientX-disX+'px';
-                obj.style.top=ev.clientY-disY+'px';
+                var L=ev.clientX-disX;
+                var T=ev.clientY-disY;
+                //这里还是引入模块化的一个函数限制拖动的在窗口区域中 引入同事D 写的内容
+                var L = require('./3.Dfn').range(L,document.documentElement.clientWidth-obj.offsetWidth,0);
+                var T = require('./3.Dfn').range(T,document.documentElement.clientHeight-obj.offsetHeight,0)
+
+                obj.style.left=L+'px';
+                obj.style.top=T+'px';
             }
             document.onmouseup=function(){
                 document.onmousemove=document.onmouseup=null;
