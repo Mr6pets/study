@@ -131,9 +131,22 @@
 > ​	构建工具
 
 - gruntjs(http://gruntjs.com/)
+
   - 安装流程
+
     - 先安装nodejs和npm(包管理工具)
+
     - npm install -g grunt-cli
+
     - npm install grunt --save-dev
+
     - grunt-versionnpm install grunt --save-dev
 
+
+- gruntjs(http://gruntjs.com/)
+
+  - 使用流程
+
+    - 插件的概念
+    - package.json
+    - Gruntfile.js
