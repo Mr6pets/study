@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单的选项卡</title>
+    <style>
+        #div1 div{
+            width: 300px;
+            height: 200px;
+            border: 1px solid lightblue;
+            display: none;
+        }
+        .active{ background-color: lightblue;}
+    </style>
+    <script>
+        // window.onload=function(){
+        //     var div1=document.getElementById('div1');
+        //     var oInput=div1.getElementsByTagName('input');
+        //     var oDiv=div1.getElementsByTagName('div');
+        //     var num=0;
+        //     oDiv[num].style.display="block";
+        //     for(var i=0;i<oInput.length;i++){
+        //         oInput[i].index=i;
+        //         oInput[i].onclick=function(){
+        //             for(var i=0;i<oInput.length;i++){
+        //                 oInput[i].className='';
+        //                 oDiv[i].style.display="";
+        //             }
+        //             this.className="active";
+        //             oDiv[this.index].style.display="block";
+        //         };
+        //     }
+        // };
+
+
+    //    先变形
+    // 原则：1.尽量不要出现函数嵌套函数 
+    // 2.可以有全局变量
+    // var div1=null;
+    // var oInput=null;
+    // var oDiv=null;
+
+    // window.onload=function(){
+    //         div1=document.getElementById('div1');
+    //         oInput=div1.getElementsByTagName('input');
+    //         oDiv=div1.getElementsByTagName('div');
+    //         init()；
+    //     };
+    //     function init(){
+    //         for(var i=0;i<oInput.length;i++){
+    //             oInput[i].index=i;
+    //             oInput[i].onclick=change;
+    //         }
+    //     }
+    //     function change(){
+    //         for(var i=0;i<oInput.length;i++){
+    //             oInput[i].className='';
+    //             oDiv[i].style.display="";
+    //         }
+    //         this.className="active";
+    //         oDiv[this.index].style.display="block";
+    //     };
+
+    // 改成面向对象
+    // 全局变量就是属性
+    // 函数就是方法
+    // onload中创建对象
+
+    // this的指向问题
+    // oDiv.onclick=function(){
+    //     // this: oDiv
+    // }
+
+    // oDiv.onclick=show;
+    // function show(){
+    //     // this:oDiv
+    // } 
+
+// oDiv.onclick-function(){
+//     show()
+// }
+// function show(){
+//     console.log(this);//这里的指向是window
+// }
+
+//改this的指向问题：事件或者定时器，尽量让面向对象中的this指向对象
+    window.onload=function(){
+        var t1=new Tab();
+        t1.init()
+    }
+    function Tab(){
+        this.div1=document.getElementById('div1');
+        this.oInput=this.div1.getElementsByTagName('input');
+        this.oDiv=this.div1.getElementsByTagName('div');
+    }
+    Tab.prototype.init=function(){
+        var This=this;
+        for(var i=0;i<this.oInput.length;i++){
+            this.oInput[i].index=i;
+            this.oInput[i].onclick=function(){
+                This.change(this);
+            };
+        }
+    }
+    Tab.prototype.change=function(obj){
+        for(var i=0;i<this.oInput.length;i++){
+            this.oInput[i].className='';
+            this.oDiv[i].style.display="";
+        }
+        obj.className="active";
+        this.oDiv[obj.index].style.display="block";
+    }
+    
+//这里的this完全不懂
+
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <input type="button" value="1" class="active">
+        <input type="button" value="2">
+        <input type="button" value="3">
+        <div style="display: block;">1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>
