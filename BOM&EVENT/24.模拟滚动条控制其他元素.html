@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>模拟滚动条</title>
+    <title>模拟滚动条控制其他元素</title>
     <style>
         #div1{
             width: 30px;
@@ -22,11 +22,20 @@
             left: 0;
             top: 0; 
         }
+        #div3{
+            width: 500px;
+            height: 0;
+            background-color:green;
+            position:absolute;
+            left: 50px;
+            top: 10px; 
+        }
     </style>
     <script>
         window.onload=function(){
             var oDiv1=document.getElementById('div1');
             var oDiv2=document.getElementById('div2');
+            var oDiv3=document.getElementById('div3');
             var iMaxTop=oDiv1.offsetHeight-oDiv2.offsetHeight;
             oDiv2.onmousedown=function(ev){
                 var ev=ev||window.event;
@@ -40,6 +49,9 @@
                         T = iMaxTop;
                     }
                     oDiv2.style.top=T+'px';
+                    var iScale=T/iMaxTop;//这里是算出点击位置在总高度中所占的比例;
+                    oDiv3.style.height=iScale*500+'px';
+                    // oDiv3.style.height=iScale*oDiv1.offsetHeight+'px';
                 }
                 document.onmouseup=function(){
                     document.onmousemove=document.onmouseup=null;
@@ -52,6 +64,7 @@
     <div id="div1">
         <div id="div2"></div>
     </div>
+    <div id="div3"></div>
 
 </body>
 </html>
