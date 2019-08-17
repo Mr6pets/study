@@ -52,7 +52,7 @@
 
         // var a=[1,2,3]
         // var b=a;
-        // var b=[1,2,3,4];
+        // var b=[1,2,3,4];//这里是赋值操作 会在内存中重新生成 所以不会改变原a的数组；
         // confirm.log(b)//[1,2,3,4]
         // console.log(a)//[1,2,3]
 
@@ -75,9 +75,9 @@
         alert(this.name);
     }
     var c1=new CreatFactory("小明");
-    c1.showName();
+    c1.showName();//小明
     var c2=new CreatFactory("小里");
-    c1.showName();
+    c1.showName();//小里
     // console.log(c1.showName==c2.showName)//true
 
     </script>
