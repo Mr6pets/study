@@ -74,6 +74,13 @@ vue-cli脚手架搭建同时配合vux组件模块写的一个仿网易新闻的�
 
 - jQuery插件库的使用
 
+> nodeJS(git)
+
+- nodeJS的基本了解
+
+>	vue-router前端路由原理剖析(git)
+- vue的路由的深度解析
+
 内容不全,后续补充中.....
 
 
