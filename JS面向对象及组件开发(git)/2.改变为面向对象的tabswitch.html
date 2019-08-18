@@ -13,6 +13,12 @@
             display: none;
         }
         .active{ background-color: lightblue;}
+        #div2 div{
+            width: 300px;
+            height: 200px;
+            border: 1px solid lightblue;
+            display: none;
+        }
     </style>
     <script>
         // window.onload=function(){
@@ -87,13 +93,15 @@
 
 //改this的指向问题：事件或者定时器，尽量让面向对象中的this指向对象
     window.onload=function(){
-        var t1=new Tab();
+        var t1=new Tab('div1');
         t1.init()
+        var t2=new Tab('div2');
+        t2.init()
     }
-    function Tab(){
-        this.div1=document.getElementById('div1');
-        this.oInput=this.div1.getElementsByTagName('input');
-        this.oDiv=this.div1.getElementsByTagName('div');
+    function Tab(id){
+        this.parent=document.getElementById(id);
+        this.oInput=this.parent.getElementsByTagName('input');
+        this.oDiv=this.parent.getElementsByTagName('div');
     }
     Tab.prototype.init=function(){
         var This=this;
@@ -113,8 +121,7 @@
         this.oDiv[obj.index].style.display="block";
     }
     
-//这里的this完全不懂
-
+//这个函数主要的点就是this的指向问题;
     </script>
 </head>
 <body>
@@ -126,5 +133,13 @@
         <div>2</div>
         <div>3</div>
     </div>
+    <div id="div2">
+            <input type="button" value="1" class="active">
+            <input type="button" value="2">
+            <input type="button" value="3">
+            <div style="display: block;">1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
 </body>
 </html>
