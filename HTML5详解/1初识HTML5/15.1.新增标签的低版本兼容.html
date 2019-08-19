@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新增标签的低版本兼容</title>
+    <script>
+        // way1
+        // document.createElement('leo')//ie低版本下创建标签
+        //way2
+        // 引入html5shiv.js的库文件
+    </script>
+    <style>
+        body{
+            margin: 0;
+        }
+        header{
+            height: 100px;
+            background: #9f3;
+            }
+        article{
+            padding: 10px;
+            background: #cf6;
+            overflow:hidden;
+            zoom: 1;
+            position: relative;}
+        aside{
+            width: 200px;
+            height: 200px;
+            background: #f06;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+        section{
+            margin-left: 210px;
+            background: #f90;
+            height: 300px;}
+        footer{
+            height: 100px;
+            background: #c6c;
+        }
+        leo{
+            background: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <header>页面头部</header>
+    <article>
+        <aside>侧边栏</aside>
+        <section>内容区域</section>
+    </article>
+    <footer>页面底部</footer>
+    <leo>新增标签</leo>
+
+    <input type="text" list="valList">
+    <datalist id="valList">
+        <option value="javascript">javascript</option>
+        <option value="html">html</option>
+        <option value="css">css</option>
+    </datalist>
+    <details>
+        <summary>啦啦啦啦</summary>
+        <p>未来还是可以其他的的</p>
+    </details>  
+    <progress max="200" value="100">
+        <span>76</span>%
+    </progress>   
+</body>
+</html>
