@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跨域问题2</title>
+    <script>
+        // 基本的思路就是
+        function box(json){
+            alert(json.name);
+        }
+        //里面的对象表示接口取到的数据
+        // box({name:'miaov'});
+    </script>
+    <!-- <script type="text/javascript" src="接口地址?key=value1&key2=value2"></script> -->
+    <script type="text/javascript" src="./9.jsonp.js"></script>
+    <!-- 模拟接口取值 新建一个9.jsonp.js的文件 -->
+</head>
+<body>
+
+</body>
+</html>

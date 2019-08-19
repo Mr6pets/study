@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跨域问题3</title>
+    <script>
+        function creatJs(sUrl){
+            var oScript=document.createElement('script');
+            oScript.type='text/javascript';
+            oScript.src=sUrl;
+            document.getElementsByTagName('head')[0].appendChild(oScript);
+        }
+        creatJs('9.jsonp.js');
+        function box(json){
+            alert(json.name);
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
