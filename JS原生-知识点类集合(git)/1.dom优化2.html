@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom优化</title>
+    <script>
+        window.onload=function(){
+            var oUl=document.getElementById('ul1');
+            var str='';
+            // console.time('hellow')
+            // for(var i=0;i<5000;i++){
+            //     var oLi=document.createElement('li');
+            //     oUl.appendChild(oLi);
+            // }
+            // console.timeEnd('hellow');//9.702880859375ms
+
+            console.time('hellow')
+            for(var i=0;i<5000;i++){
+                str+='<li></li>';
+            }
+            oUl.innerHTML=str;
+            console.timeEnd('hellow');//5.935791015625ms
+
+            //Chrome dom方法比innerHTML性能要好
+
+        }
+    </script>
+</head>
+<body>
+    <ul id="ul1">
+
+    </ul>
+</body>
+</html>

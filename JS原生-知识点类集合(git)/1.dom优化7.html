@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom优化</title>
+    <style>
+    #div1{
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+    }
+    </style>
+    <script>
+        window.onload=function(){
+            var oDiv1=document.getElementById('div1');
+            var L=oDiv1.offsetLeft;
+            var T=oDiv1.offsetTop;
+            setInterval(function(){
+                L++;
+                T++;
+                oDiv1.style.left=L+1+'px';
+                oDiv1.style.top=T+1+'px';
+            },30)
+        }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

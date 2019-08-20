@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件委托</title>
+    <script>
+        window.onload=function(){
+            //事件委托:利用冒泡的原理将事件加到父级来触发
+        // 好处
+        // 1.提高性能
+        //2.新添加的元素也会含有事件
+            var  oBtn =document.getElementById('btn');
+            var  oUl1 =document.getElementById('ul1');
+            var oLi=oUl1.getElementsByTagName('li');
+            var iNow=5;
+
+            // for( var i=0;i<oLi.length;i++){
+            //     oLi[i].onmousemove=function(){
+            //         this.style.background="red";
+            //     }
+            //     oLi[i].onmouseout=function(){
+            //         this.style.background="";
+            //     }
+            // }
+
+            //新添加的元素也会含有事件====================
+            oUl1.onmousemove=function(ev){
+                var ev=ev||window.event;
+                var target=ev.target||ev.srcElement;
+                if(target.nodeName.toLowerCase()=='li'){
+                    target.style.background='red';
+                }
+            }
+            oUl1.onmouseout=function(ev){
+                var ev=ev||window.event;
+                var target=ev.target||ev.srcElement;
+                if(target.nodeName.toLowerCase()=='li'){
+                    target.style.background='';
+                }
+            }
+            //这里用创建节点的方式 创建后 原先的有效果
+            oBtn.onclick=function(){
+                iNow++;
+                var oLi=document.createElement('li');
+                oLi.innerHTML=1111*iNow;
+                oUl1.appendChild(oLi);
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" id="btn" value="点击按钮添加一个元素">
+    <ul id="ul1" style="margin-left: 20px;">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+        <li>555</li>
+    </ul>
+</body>
+</html>

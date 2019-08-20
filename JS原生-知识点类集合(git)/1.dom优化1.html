@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom优化</title>
+    <script>
+        window.onload=function(){
+            var oDiv1=document.getElementById('div1');
+            var str='';
+            // console.time('hellow')
+            // for(var i=0;i<5000;i++){
+            //     oDiv1.innerHTML+='a';
+            // }
+            // console.timeEnd('hellow');//175ms
+
+            console.time('hellow')
+            for(var i=0;i<5000;i++){
+                str+='a';
+            }
+            oDiv1.innerHTML=str;
+            console.timeEnd('hellow');//1.218017578125ms
+        }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom优化</title>
+    <script>
+        window.onload=function(){
+            var oUl=document.getElementById('ul1');
+            // console.time('hellow')
+            // for(var i=0;i<5000;i++){
+            //     var oLi=document.createElement('li');
+            //     oLi.innerHTML="li"
+            //     oUl.appendChild(oLi);
+            // }
+            // console.timeEnd('hellow');//55.494140625ms
+
+            console.time('hellow')
+            var oLi=document.createElement('li');
+            oLi.innerHTML='li';
+            for(var i=0;i<5000;i++){
+                var newLi=oLi.cloneNode(true);
+                oUl.appendChild(newLi);
+            }
+            console.timeEnd('hellow');//9.4248046875ms;
+
+
+        }
+    </script>
+</head>
+<body>
+    <ul id="ul1">
+
+    </ul>
+</body>
+</html>

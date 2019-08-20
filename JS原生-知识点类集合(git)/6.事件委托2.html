@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件委托</title>
+    <script>
+        window.onload=function(){
+            //事件委托:利用冒泡的原理将事件加到父级来触发
+        // 好处
+        // 1.提高性能
+        //2.新添加的元素也会含有事件
+            var oUl=document.getElementById('ul1');
+            var aLi=document.getElementsByTagName('li');
+        //    for(var i=0;i<aLi.length;i++){
+        //         aLi[i].onmousemove=function(){
+        //             this.style.background='red';
+        //         };
+        //         aLi[i].onmouseout=function(){
+        //             this.style.background='';
+        //         }
+        //    }
+
+
+            //事件对象：事件源：不管在哪个事件中，只要你操作的那个元素就是事件源
+            // IE: window.event.srcElement 标准下：event.target
+            // 找到事件源的标签名 nodeName
+            oUl.onmouseover=function(ev){
+                var ev=ev|| window.event;
+                var target=ev.target|| ev.srcElement;
+                // alert(target.innerHTML);
+                // alert(target.nodeName)//LI
+                if(target.nodeName.toLowerCase() == 'li'){
+                    target.style.background='red';
+                }
+            };
+            oUl.onmouseout=function(ev){
+                var ev=ev|| window.event;
+                var target=ev.target|| ev.srcElement;
+                if(target.nodeName.toLowerCase() == 'li'){
+                    target.style.background='';
+                }
+                
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul id="ul1" style="margin-left: 20px;">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+        <li>555</li>
+    </ul>
+</body>
+</html>
