@@ -21,21 +21,20 @@
                 -注意：网址是虚拟的 需要在服务器指定对应页面 不然刷新找不到页面
             */
            
+            //服务器端
             var aInput=document.getElementById('input1');
             var oDiv=document.getElementById('div1');
-            var a=document.getElementById('put')
-            var json={};
            
             aInput.onclick=function(){
-                var num=Math.random()
                 var arr=randomNum(35,7);
-                json[num]=arr;
+                // history.pushState(arr,'')//这样写的是在地址栏是没有哈希值显示的但是已经有历史记录了
+                history.pushState(arr,'',Math.random())//这样写的是在地址栏上每次都会有随机的0-1的值
                 oDiv.innerHTML=arr;
-                window.location.hash=num;
-
             };
-            window.onhashchange=function(){
-                oDiv.innerHTML= json[window.location.hash.substring(1)];
+            window.onpopstate=function(ev){
+                var ev=ev||window.event;
+                //ev.state的值就是改变的值
+                oDiv.innerHTML = ev.state
             }
             function randomNum(iAll,iNow){
                 var arr=[];

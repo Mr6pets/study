@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+    <style>
+        ul li{
+            list-style: none;
+            width: 100px;
+            height: 30px;
+            background: yellow;
+            margin: 10px;
+        }
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin-left: 200px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oDiv=document.getElementById('div1')
+            oDiv.ondragenter=function(){
+                this.innerHTML="将文字释放"
+            }
+            oDiv.ondragover=function(ev){
+                ev.preventDefault();
+            }
+            oDiv.ondragleave=function(){
+                this.innerHTML='将文件拖拽到此区域'
+            }
+            oDiv.ondrop=function(ev){
+                ev.preventDefault();
+                var fs=ev.dataTransfer.files;
+                var fd =new FileReader();
+                fd.readAsDataURL(fs[0]);
+                //当读取文件成功的时候 就会执行onload函数
+                fd.onload=function(){
+                    alert(this.result);
+                    //这里就可以将本地文件上传到服务器中去 
+                }
+
+            }   
+
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">将文件拖拽到此区域</div>
+</body>
+</html>

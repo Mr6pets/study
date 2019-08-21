@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+    <style>
+        ul li{
+            list-style: none;
+            width: 100px;
+            height: 30px;
+            background: yellow;
+            margin: 10px;
+        }
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 30%;
+            top: 40%;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oUl=document.querySelector('ul');
+            var aLi=oUl.getElementsByTagName('li');
+            var oDiv=document.getElementById('div1')
+            var i=0;
+            for (let i = 0; i < aLi.length; i++) {
+                aLi[i].ondragstart=function(ev){//dragstart拖拽的一瞬间就是触发了
+                    var ev=ev||window.event;
+                    ev.dataTransfer.setData('removeIndex','hello');
+                    // this.style.background='green';
+                    ev.dataTransfer.effectAllowed='link';//拖拽到目标对象的时候会在拖拽鼠标的下面显示自己设置的link样式
+                    ev.dataTransfer.setDragImage(oDiv,0,0)//拖拽元素为自己设定的样式进行拖住 比如这里就是用了odiv的样式来进行拖拽 并且拖拽的位置左边是 0 0
+                    //拖拽的话一般用图片 即使页面上img的display为none 也是可以找到的
+                }
+                aLi[i].ondrag=function(){//drag拖拽的时候回一直触发
+                    // document.title=i++;
+                }
+                aLi[i].ondragend=function(){//dragsend拖拽的结束瞬间就是触发了
+                    this.style.background='yellow';
+                }
+            }
+             //目标元素
+            oDiv.ondragenter=function(){
+                this.style.background='blue';
+            }
+            // oDiv.ondragover=function(){//enter 和leave 之间连续触发
+            //     document.title=i++;
+            // }
+            oDiv.ondragleave=function(){
+                this.style.background='red';
+            }
+
+
+            oDiv.ondragover=function(ev){//enter 和leave 之间连续触发
+                var ev=ev||window.event;
+                ev.preventDefault();
+            }
+            //如果想要触发drop事件，就必须在dragover当中阻止默认事件
+            oDiv.ondrop=function(ev){
+                var ev=ev||window.event;
+                // alert(ev.dataTransfer.getData('name'));
+                //    alert(123);
+                oUl.removeChild(aLi[ev.dataTransfer.getData('removeIndex')]);
+              
+            }   
+
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li draggable="true">a</li>
+        <li draggable="true">b</li>
+        <li draggable="true">c</li>
+    </ul>
+    <div id="div1"></div>
+</body>
+</html>

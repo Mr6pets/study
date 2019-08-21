@@ -32,19 +32,22 @@
                 json[num]=arr;
                 oDiv.innerHTML=arr;
                 window.location.hash=num;
-
             };
+            //当我的页面的哈希值改变的时候，触发了一个onhashchange的函数
             window.onhashchange=function(){
+                //window.location.hash//#0.47699869545688633
+                //window.location.hash.substring(1)//0.47699869545688633
                 oDiv.innerHTML= json[window.location.hash.substring(1)];
             }
-            function randomNum(iAll,iNow){
+            //生成35以内的随机7个数
+            function randomNum(iAll,iNow){//
                 var arr=[];
                 var newArr=[];
                 for(var i=0;i<iAll;i++){
                     arr.push(i);
                 }
                 for(var i=0;i<iNow;i++){
-                    newArr.push(arr.splice(Math.floor(Math.random()*arr.length),1))
+                    newArr.push(arr.splice(Math.floor(Math.random()*arr.length),1))//math.fllor去尾法
                 }
                 return newArr;
             }
