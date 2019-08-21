@@ -64,7 +64,35 @@
 
 > 3跨文档消息通信
 
+- postMessage对象
 
+  - 接收消息的窗口对象。postMessage（）
+  - 参数1：发送的数据，参数二：接收的域（带协议）
+  - 交互方式
+    - iframe:父页面：contentWindow，子页面：window.top
+    - 窗口页：父页面：window.open,子页面:window.opener
+  - 接收事件
+    - message
+    - ev.origin:发送数据源的域
+    - ev.data:发送的数据
+
+- XMLHttpRequest level 2
+
+  - XMLHttpRequest改进版本
+    - 请求页面于数据页面必须属于不同的域
+    - 服务器要设置响应头信息
+    - origin值展现
+    - IE：xDomainRequest
+    - 新的事件：onload等
+    - http://www.w3.org/TR/XMLHttpRequest2
+    - http://msdn.microsoft.com/en-us/library/cc288060(VS.85).aspx
+  - 进度事件
+    - upload.onprogress:上传
+    - FormData对象
+    - ev.total(已发送总量) ev.loaded(待发送的总量)
+    - onprogress 下载
+
+  
 
 
 
