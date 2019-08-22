@@ -111,7 +111,14 @@
     - 服务器必须支持websocket
     - -nodejs的简介
       - Ryan Dahl基于GoogleV8引擎创建的一套用来编写高性能网络服务器的JavaScript工具包
-    - nodejs：用js写的服务器应用
+    - nodejs：用 js写的服务器应用
+- node.js
+  - 安装node.js
+  - 转到项目目录
+  - 运行node scriptname.js
+  - http服务器的创建
+  - 安装websocket模块npm install socket.io
+  - websocket服务的创建
 
 
 
