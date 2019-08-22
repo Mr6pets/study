@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload=function(){
+			var btn=document.getElementById('btn');
+			btn.onclick=function(){
+				// window.opener:通过window.opener方法打开父级页面的窗口的window
+				window.opener.document.body.background = 'lightblue';
+			}
+		}
+	</script>
+</head>
+<body>
+	这是a.com 下的4.window.open的页面
+	<input type="button" id="btn" value="改变3.window.open.html的背景色">
+</body>
+</html>

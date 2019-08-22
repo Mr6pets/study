@@ -65,7 +65,6 @@
 > 3跨文档消息通信
 
 - postMessage对象
-
   - 接收消息的窗口对象。postMessage（）
   - 参数1：发送的数据，参数二：接收的域（带协议）
   - 交互方式
@@ -75,9 +74,7 @@
     - message
     - ev.origin:发送数据源的域
     - ev.data:发送的数据
-
 - XMLHttpRequest level 2
-
   - XMLHttpRequest改进版本
     - 请求页面于数据页面必须属于不同的域
     - 服务器要设置响应头信息
@@ -88,11 +85,33 @@
     - http://msdn.microsoft.com/en-us/library/cc288060(VS.85).aspx
   - 进度事件
     - upload.onprogress:上传
-    - FormData对象
+    - FormData对象(upload上传的时候使用的)
     - ev.total(已发送总量) ev.loaded(待发送的总量)
     - onprogress 下载
-
-  
+- websocket
+  - 互联网协议
+    - http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html
+    - TCP/IP协议
+      - 定义了电子设备如何连入因特网，以及数据在他们之间传输的标准（如何传输）
+      - 传输数据（协议）类型：email www ftp
+    - HTTP协议
+      - 浏览器和万维网服务器之间互相通信的规则
+  - HTTP协议的特点
+    - 功能很强大
+    - 采用请求 响应模式 单项通信
+    - 短链接 响应完成连接就断开
+  - 实时web交互
+    - 股票 聊天室 网游等应用
+    - 如何实现实时应用 服务器推送
+- 什么是websocket？
+  - 基于TCP的双向的 全双工的数据连接
+    - 双向的：客户端 服务器端
+    - 全双工：数据的发送与接收 两者同步进行
+  - 建立socket应用
+    - 服务器必须支持websocket
+    - -nodejs的简介
+      - Ryan Dahl基于GoogleV8引擎创建的一套用来编写高性能网络服务器的JavaScript工具包
+    - nodejs：用js写的服务器应用
 
 
 

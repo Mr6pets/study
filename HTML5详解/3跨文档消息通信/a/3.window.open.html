@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload=function(){
+			var oBtn=document.getElementById('btn');
+			var oBtn2=document.getElementById('btn2');
+			var newWindow=null;
+			oBtn.onclick=function(){
+				//window.open 返回被打开窗口的window的对象
+				newWindow=window.open('4.window.open.html','_blank');
+
+			}
+			oBtn2.onclick=function(){
+				newWindow.document.body.style.background ='red';
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="开启一个新的窗口">
+	<input type="button" id="btn2" value="改变打开的新窗口的背景色">
+</body>
+</html>
