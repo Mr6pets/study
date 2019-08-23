@@ -5,7 +5,7 @@ var documentRoot='E:/gitHub代码仓库/study/HTML5详解/3跨文档消息通信
 var httpServer=http.createServer(function(req,res){
     console.log('服务器开启成功');
     var url=req.url;
-    console.log(url);
+    // console.log(url);
     var file=documentRoot+url;
     // console.log(file);
     fs.readFile(file,function(err,data){
@@ -27,7 +27,7 @@ var httpServer=http.createServer(function(req,res){
 }).listen('8888');
 
 var socket=io.listen(httpServer);
-socket.sockets.on('connect',function(socket){
+socket.sockets.on('connection',function(socket){
     // socket
     console.log('有主机通过socket进来了')
 });
