@@ -146,3 +146,57 @@
   - intval()：转整型 float()：转浮点型 strval()：转字符串类型
   - settype(变量 数据类型)：改变变量本身的数据类型，数据类型有 int  float string array bool object NULL
 
+>	流程控制语句
+
+- 条件控制结构
+
+  - if(){}else{};
+
+- 循环结构
+
+  ~~~
+  switch(表达式){
+  	case 值1：
+  		语句块1
+  		break;
+  	case 值2：
+  		语句块2
+  		break;
+  	....
+  	default:
+  		语句块n
+  		
+  }
+  ~~~
+
+  
+
+- 程序跳转和终止语句
+
+  ~~~php
+  while（条件表达式）{语句块}
+  do{语句块}while（条件表达式）
+  for(表达式1;条件表达式2；表达式3){语句块}
+  
+  break:foreach for while do-while或者switch结构的执行
+  continue：在循环结构里，用于跳出本次循环中剩余的代码并开始执行下一次循环
+  exit/die：输出一个消息并退出当前脚本
+      
+      
+  ~~~
+
+- 自定义函数
+
+  ~~~php
+  function 函数名($param1,$param2,......,$paramn=默认值){
+      函数体
+      return 返回值
+  }
+  
+  函数名($param1,$param2,......,paramnvalue)
+  ~~~
+
+  
+
+  
+
