@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>instanceof</title>
+    <script>
+        // instanceof:对象与构造函数在原型链上是否有关系
+        function Aaa(){}
+        var a1=new Aaa();
+        alert(a1 instanceof Aaa);//ture//实例是表示 a1是不是在同一原型链上
+        alert(a1 instanceof Object); //true;
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
