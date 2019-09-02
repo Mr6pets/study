@@ -11,6 +11,17 @@
         var a1=new Aaa();
         alert(a1 instanceof Aaa);//ture//实例是表示 a1是不是在同一原型链上
         alert(a1 instanceof Object); //true;
+        //toString();是系统下面自带的 自己写的对象是通过原型链找object下面的
+        var arr=[];
+        alert(arr.toString==Object.prototype.toString);//false
+
+        function Aaa(){
+
+        }
+        var a1=new Aaa();
+        alert(a1.toString==Object.prototype.toString);//true;
+
+        // toString();就是对象装字符串
 
     </script>
 </head>
