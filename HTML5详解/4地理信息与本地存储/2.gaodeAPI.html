@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>高德地图api</title>
+    <style>
+        #t1{
+            width: 400px;
+            height: 400px;
+            border: 1px solid lightblue;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oInput1=document.getElementById('input1');
+            var t1=document.getElementById('t1');
+            oInput1.onclick=function(){
+                var map = new AMap.Map('t1', {
+                    zoom:11,//级别
+                    center: [116.397428, 39.90923],//中心点坐标
+                    viewMode:'3D'//使用3D视图
+                });
+                // if( navigator.geolocation){
+                //     navigator.geolocation.getCurrentPosition(function(position){
+                //         var x=position.coords.longitude;
+                //         var y=position.coords.latitude;
+                //         var map = new AMap.Map('t1', {
+                //             zoom:11,//级别
+                //             center: [y, x],//中心点坐标
+                //             viewMode:'3D'//使用3D视图
+                //         });
+                //     })
+                // }else{
+                //     alert("浏览器不支持LBS的地理引用");
+                // }
+               
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="map" id="input1">
+    <div id="t1"></div>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=55175db145fed4c1329177887853e760"></script>
+</body>
+</html>

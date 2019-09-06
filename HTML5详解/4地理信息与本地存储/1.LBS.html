@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>地理位置</title>
+    <style>
+		textarea{ width: 200px; height: 300px;border: 1px solid blue;  }
+	</style>
+</head>
+<body>
+    <script>
+        /*
+            LBS:基于地图信息的应用
+        */
+        window.onload=function(){
+			var oInput1=document.getElementById("input1");
+			var oT=document.getElementById("t1");
+            //单次定位请求
+			// oInput1.onclick=function(){
+			// 	 navigator.geolocation.getCurrentPosition(function(position){
+			// 		oT.value+='经度'+position.coords.longitude;
+			// 	},function(err){
+            //        alert(err.code);
+            //     },{
+            //         enableHighAcuracy:true,
+            //         timeout:5000,
+            //         maximumAge:5000
+            //     })
+			// }
+            //多次定位请求
+            oInput1.onclick=function(){
+				 navigator.geolocation.watchPosition(function(position){
+					oT.value+='经度'+position.coords.longitude;
+				},function(err){
+                   alert(err.code);
+                   navigator.geolocation.clearWatch(timer) 
+                },{
+                    enableHighAcuracy:true,
+                    timeout:5000,
+                    maximumAge:5000,
+                    frequency:1000
+                })
+			}
+		}
+    </script>
+    <input type="button" id="input1" value="获取经度">
+    <textarea id="t1" cols="30" rows="10"></textarea>
+</body>
+</html>
