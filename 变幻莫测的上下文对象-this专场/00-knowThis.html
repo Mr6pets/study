@@ -14,7 +14,7 @@
             //定时器中的this指向是window 解决办法 var that=this 这里的this的指向是box
             var that=this
             setTimeout(function(){
-                that.style.backgroundColor='red';
+                this.style.backgroundColor='red';
             },1000)
            
         }
