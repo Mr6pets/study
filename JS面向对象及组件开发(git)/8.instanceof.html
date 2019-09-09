@@ -6,23 +6,65 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>instanceof</title>
     <script>
-        // instanceof:对象与构造函数在原型链上是否有关系
+        // instanceof:运算符
+        //对象与构造函数在原型链上是否有关系
         function Aaa(){}
         var a1=new Aaa();
         alert(a1 instanceof Aaa);//ture//实例是表示 a1是不是在同一原型链上
         alert(a1 instanceof Object); //true;
-        //toString();是系统下面自带的 自己写的对象是通过原型链找object下面的
+
+        //toString();系统对象下面自带的 自己写的对象都是通过原型链找object下面的
         var arr=[];
+        alert(arr.toString);//function toString() { [native code] }
         alert(arr.toString==Object.prototype.toString);//false
 
         function Aaa(){
-
         }
         var a1=new Aaa();
+        alert(a1.toString);//function toString() { [native code] }
         alert(a1.toString==Object.prototype.toString);//true;
 
-        // toString();就是对象装字符串
-        
+        // toString();就是把对象装字符串
+
+        var arr=[1,2,3];
+        alert(typeof arr.toString());//string
+
+        var arr=[2,3,4];
+        Array.prototype.toString=function () { 
+            return this.join('+');
+        }
+        console.log(arr.toString());//2+3+4
+
+        var num =255;
+        console.log(num.toString(16));//ff 转化为16进制
+
+        //利用toString做类型的判断：
+        var arr =[];
+       alert(Object.prototype.toString.call(arr));//"[object Array]"
+       var arr ={};
+       alert(Object.prototype.toString.call(arr));//[object Object]
+       var arr=new Date (); 
+       alert(Object.prototype.toString.call(arr));//[object Date]
+       var arr=new RegExp; 
+       alert(Object.prototype.toString.call(arr));//[object RegExp]
+       var arr=null; 
+       alert(Object.prototype.toString.call(arr));//[object Null]
+
+        //判断数组
+        var arr =[];
+        alert(Object.prototype.toString.call(arr)=='[object Array]')//true;
+
+        // 为什么说tostring是目前看来最稳妥的判断数组的方法？
+        window.onload=function(){
+            var oF=document.createElement('iframe');
+            document.body.appendChild(oF);//添加到文档节点中
+            var ifArray = window.frames[0].Array;//找到iframe下的数组
+            var arr =new ifArray();//创建iframe下的数组
+
+            alert(arr.constructor==Array);//false
+            alert(arr instanceof Array);//false
+            alert(Object.prototype.toString.call(arr)=='[object Array]');//true
+        }
     </script>
 </head>
 <body>

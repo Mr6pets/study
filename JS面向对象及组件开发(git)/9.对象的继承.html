@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象的继承</title>
+    <script>
+        window.onload=function(){
+            //对象的继承：子类不影响父类 子类可以继承父类的一些功能（代码复用）
+            
+            //属性的继承：调用父类的构造函数 call改变thi的指向
+            //方法的继承：for in ：拷贝继承（jQuery中也是采用的拷贝继承）
+            // 创建一个构造函数
+            function CreatePerson(name,sex){//parent
+                this.name=name;
+                this.sex=sex;
+            }
+            CreatePerson.prototype.showName=function(){
+                alert(this.name);
+            }
+            var p1=new CreatePerson('小明','男');
+            p1.showName();//小明
+            
+            function CreateStar(name,sex,job){//child
+                CreatePerson.call(this,name,sex);//属性的继承：调用父类的构造函数 call改变thi的指向
+                this.job=job;
+            }
+            // 方法的继承：父类的原型全部赋值给子类的继承 如果下面子类的原型上添加了一个方法 那么会影响父类 这个方法也会被添加到父类上去
+            // CreateStar.prototype=CreatePerson.prototype;
+            // CreateStar.prototype.showJob=function(){
+            // }
+
+            //解决办法是：extend()函数中的思想：基本类型的赋值是不会改变父类的对象
+            extend(CreateStar.prototype,CreatePerson.prototype);
+            CreateStar.prototype.showJob=function(){
+            }
+            var p2=new CreateStar('高圆圆','女','演员')
+            p2.showName();//高圆圆
+        }
+
+        function extend(obj1,obj2){//obj1继承obj2
+            for(var attr in obj2){
+                obj1[attr]=obj2[attr];
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

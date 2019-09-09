@@ -8,7 +8,7 @@
     <script>
         //面向对象的一些属性和方法
         /*
-        hasOwnProperty()//看是不是对象自身下面的尚属性
+        hasOwnProperty()//看是不是对象自身下面的属性
         constructor:查看对象的构造函数
             每个原型都会自动添加constructor属性
             for in 的时候有些属性是找不到的
@@ -35,7 +35,6 @@
 
         // function Aaa(){}
         // Aaa.prototype.constructor=Aaa; //这里是程序自动生成的 当我写下一个构造函数时候
-        // Aaa.prototype.constructor=Array;//
 
 
         // function Aaa(){}
@@ -50,12 +49,10 @@
 
 
 
-
-
         // 如果你的构造函数没有内容，你要使用hasOwnProperty
         // function Aaa(){};
         // var a1=new Aaa();
-        // alert(a1.hasOwnProperty)//function hasOwnProperty() { [native code] }
+        // alert(a1.hasOwnProperty)//function hasOwnProperty() { [native code] } 这里的这个是最外面object下的系统方法
         // alert(a1.hasOwnProperty==Object.prototype.hasOwnProperty)//true;
         //这里的弹出其实是最外层 Object.prototype
         
