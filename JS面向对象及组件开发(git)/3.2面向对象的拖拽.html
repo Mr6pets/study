@@ -84,9 +84,7 @@
     this.disY=0;//this的指向是对象
   }
   Drag.prototype.init=function(){
-
     var This=this;//这里的this指向是对象 赋值给This
-
     this.oDiv.onmousedown=function(ev){//第一个this的指向是对象  //这里的onmouseup是事件函数 里面的调用不是事件函数 所以不能用ev
       var ev=ev || window.event;//只能出现在事件函数中
       This.fnDown(ev);
