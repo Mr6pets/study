@@ -52,9 +52,11 @@
         obj.className="active";
         this.oDiv[obj.index].style.display="block";
     }
+    //原型上添加一个自动播放的函数
     Tab.prototype.autoplay=function(){
-        var This=this;
+        var This=this;//这里的this指向t2 Tab这个对象
        setInterval(function(){
+        //这里要做个判断 走到最后要回到第一个
         if(This.iNow == This.oInput.length-1){
             This.iNow=0;
         }else{
@@ -72,20 +74,20 @@
 </head>
 <body>
     <div id="div1">
-        <input type="button" value="1" class="active">
-        <input type="button" value="2">
-        <input type="button" value="3">
-        <div style="display: block;">1</div>
-        <div>2</div>
-        <div>3</div>
+        <input type="button" value="按钮1" class="active">
+        <input type="button" value="按钮2">
+        <input type="button" value="按钮3">
+        <div style="display: block;">这是按钮1的内容</div>
+        <div>这是按钮2的内容</div>
+        <div>这是按钮3的内容</div>
     </div>
     <div id="div2">
-            <input type="button" value="1" class="active">
-            <input type="button" value="2">
-            <input type="button" value="3">
-            <div style="display: block;">1</div>
-            <div>2</div>
-            <div>3</div>
-        </div>
+        <input type="button" value="按钮1" class="active">
+        <input type="button" value="按钮2">
+        <input type="button" value="按钮3">
+        <div style="display: block;">这是按钮1的内容</div>
+        <div>这是按钮2的内容</div>
+        <div>这是按钮3的内容</div>
+    </div>
 </body>
 </html>
