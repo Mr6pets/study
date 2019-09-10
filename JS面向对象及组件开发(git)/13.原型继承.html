@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型继承</title>
+    <script>
+        window.onload=function(){
+            var a={
+                name:'liu'
+            };
+            var b=cloneObj(a);
+            b.name="li"
+            alert(a.name);//liu
+            alert(b.name);//li
+
+            function cloneObj(obj){
+                var F=function(){};
+                F.prototype=obj;
+                return new F();
+            }
+        }
+        //拷贝继承：extend 通用型的 有new或者无new的时候都是可以的
+        //类式继承：new 构造函数
+        //原型继承：无new的对象
+
+        // 还有些寄生继承可以看红宝书
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
