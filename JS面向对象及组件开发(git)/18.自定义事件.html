@@ -29,15 +29,39 @@
             bindEvent(oDiv,'click',function(){
                 alert('2');
             });
-            
+            bindEvent(oSpan,'show',function(){
+                alert('3');
+            });
+            bindEvent(oSpan,'show',function(){
+                alert('4');
+            });
+            bindEvent(oSpan,'hide',function(){
+                alert('5');
+            });
+            fireEvent(oSpan,'show');
         }
         
         //绑定事件的兼容处理
         function bindEvent(obj,events,fn){
+            // obj:楼层
+            // events:书架
+            // fn:一本书
+            //bindEvent(oSpan,'show',function(){
+                // alert('4');
+            // });
+            obj.listeners= obj.listeners || {};
+            obj.listeners[events]= obj.listeners[events] || [];
+            obj.listeners[events].push(fn);
             if(obj.addEventListener){
                 obj.addEventListener(events,fn,false);
             }else{
                 obj.attachEvent('on'+events,fn);
+            }
+        }
+        //主动触发自定义事件
+        function fireEvent(obj,events){
+            for(var i=0; i<obj.listeners[events].length;i++){
+                obj.listeners[events][i]();
             }
         }
     </script>
