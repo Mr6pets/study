@@ -7,9 +7,10 @@
     <title>弹窗_基于面向对象的组件开发</title>
     <style>
         *{margin: 0; padding: 0;}
-        .login{background-color: white; border: 1px solid #000; position: absolute; left: 0; top: 0;}
+        .login{background-color: white; border: 1px solid #000; position: absolute; z-index: 2}
         .title{height: 30px; background-color: lightgray; color: white;}
         .title .close{ float:right;}
+        #mask{ width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);position: absolute;left: 0;top: 0; z-index: 1}
     </style>
     <script>
         window.onload=function(){
@@ -17,16 +18,25 @@
             oInput[0].onclick=function(){
                 var d1=new Dialog();
                 d1.init({//配置参数区域
+                    iNow:0,//作为标识
                     title:'登录'
                 });
             }
             oInput[1].onclick=function(){
                 var d1=new Dialog();
                 d1.init({
+                    iNow:1,
                     w:100,
                     h:400,
                     dir:'right',
                     title:'公告'
+                });
+            }
+            oInput[2].onclick=function(){
+                var d1=new Dialog();
+                d1.init({
+                    iNow:2,
+                    mask:true
                 });
             }
         }
@@ -36,12 +46,25 @@
                 w:300,
                 h:300,
                 dir:'center',
-                title:''
+                title:'',
+                mask:false
             }
         };
+        Dialog.prototype.json={};
         Dialog.prototype.init=function(options){
             extend(this.settings,options);//如果是没有配置参数就用默认参数
-            this.create();
+            if(this.json[options.iNow]==undefined){//首先，这个json对象中看看是不是有传递进来inow的值，第一次一定是没有的 
+                this.json[options.iNow]=true;
+            }
+            if(this.json[options.iNow]){
+                this.create();
+                this.fnClose();
+                if(this.settings.mask){
+                    this.fnCreateMask();
+                }
+                this.json[options.iNow]=false;
+            }
+           
         }
         Dialog.prototype.create=function(){
             this.oLogin=document.createElement('div');
@@ -61,6 +84,28 @@
                 this.oLogin.style.left= (viewWidth()-this.oLogin.offsetWidth)+'px';
                 this.oLogin.style.top= (viewHeight()-this.oLogin.offsetHeight)+'px';
             }
+
+        }
+        //关闭按钮
+        Dialog.prototype.fnClose=function(){
+            var oClose=this.oLogin.getElementsByTagName('span')[1];
+            var that=this;
+            oClose.onclick=function(){
+                document.body.removeChild(that.oLogin);
+                if(that.settings.mask){
+                   document.body.removeChild(that.oMask) 
+                }
+                that.json[that.settings.iNow]=true;
+            }
+        }
+        //遮罩
+        Dialog.prototype.fnCreateMask=function(){
+            var oMask = document.createElement('div');
+            oMask.id='mask';
+            document.body.appendChild(oMask);
+            this.oMask=oMask;
+            oMask.style.width=viewWidth()+'px';
+            oMask.style.height=viewHeight()+'px';
 
         }
         //可是区域的宽
@@ -89,5 +134,6 @@
         </div>
         <div class="content">这里是内容区域</div>
     </div> -->
+    <!-- <div id="mask"></div> -->
 </body>
 </html>
