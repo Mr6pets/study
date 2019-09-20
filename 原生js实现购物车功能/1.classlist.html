@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>classlist</title>
+    <style>
+        .box{
+            width: 100px; height: 100px; background: lightblue;
+        }
+        .box2{
+            background: lightcyan;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var box=document.querySelector('.box');
+            box.onclick=function(){
+                this.classList.add('box2');
+                setTimeout(()=>{
+                    this.classList.remove('box2');
+                },1000)
+                // var that=this;
+                // setTimeout(function(){
+                //     that.classList.remove('box2');
+                // },1000)
+                console.dir(this);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box box1">11</div>
+</body>
+</html>
