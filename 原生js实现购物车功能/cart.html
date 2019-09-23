@@ -219,7 +219,7 @@
 			var ups=document.querySelectorAll('.up');
 			var inputNum=document.querySelectorAll('.num input');
 			var downs=document.querySelectorAll('.down');
-			var price=document.querySelectorAll('.cart-items .price');
+			var prices=document.querySelectorAll('.cart-top-items .price');
 			var subtotal=document.querySelectorAll('.cart-items .subtotal');
 			var chooseAll=document.querySelector('.choose-all .blue-checkbox-new');
 			var nowBuy=document.querySelector('.jianguo-blue-main-btn');
@@ -227,7 +227,7 @@
 			var checkedNum=document.querySelector('.shipping-total h4 i');
 			var moneyall=document.querySelector('.moneyall')
 
-			var allTrue=false;
+			var alltrue=false;
 			getTotalNum();
 			for(var i=0;i<blueCheckboxes.length;i++){
 				blueCheckboxes[i].ischecked=false;
@@ -244,7 +244,6 @@
 					this.ischecked=!this.ischecked;
 					setAllChecked();
 					setClass();
-					getTotalNum();
 					getCheckNum();
 				}
 				//数量的加加
@@ -264,7 +263,9 @@
 					// }
 					inputNum[this.index].value=num;
 					downs[this.index].classList.remove('down-disabled');
-					subtotal[this.index].innerHTML='￥'+ getPrice(price[this.index].innerHTML,inputNum[this.index].value).toFixed(2);
+					subtotal[this.index].innerHTML='￥'+ getPrice(prices[this.index].innerHTML,inputNum[this.index].value).toFixed(2);
+					getTotalNum();
+					getCheckNum();
 				}
 				//数量的减减
 				downs[i].onclick=function(){
@@ -273,7 +274,9 @@
 					num==1&&this.classList.add('down-disabled');
 					inputNum[this.index].value=num;
 					ups[this.index].classList.remove('up-disabled');
-					subtotal[this.index].innerHTML='￥'+ getPrice(price[this.index].innerHTML,inputNum[this.index].value).toFixed(2);
+					subtotal[this.index].innerHTML='￥'+ getPrice(prices[this.index].innerHTML,inputNum[this.index].value).toFixed(2);
+					getTotalNum();
+					getCheckNum();
 				}
 				//初始化判断加减是否可用
 				// if(inputNum[i].value==1){
@@ -285,24 +288,25 @@
 				ups[i].classList[inputNum[i].value==10?'add':'remove']('up-disabled');
 
 				//初始化小计
-				subtotal[i].innerHTML='￥'+ getPrice(price[i].innerHTML,inputNum[i].value);
+				subtotal[i].innerHTML='￥'+ getPrice(prices[i].innerHTML,inputNum[i].value);
 				// var totalMoney=0;
-				// totalMoney=price[i].innerHTML.slice(1)*inputNum[i].value;
+				// totalMoney=prices[i].innerHTML.slice(1)*inputNum[i].value;
 				// subtotal[i].innerHTML='￥'+totalMoney.toFixed(2);
 			}
-			//点击是否是全选状态
+			//点击全选状态
 			chooseAll.onclick=function(){
-				this.classList[allTrue?'remove':'add']('checkbox-on');
+				this.classList[alltrue?'remove':'add']('checkbox-on');
                 blueCheckboxes.forEach(item =>{
-                    item.classList[!allTrue?'add':'remove']('checkbox-on')
-                    item.isCheck = !allTrue;
+                    item.classList[!alltrue?'add':'remove']('checkbox-on')
+                    item.ischecked = !alltrue;
 				})
-				allTrue = !allTrue;
+				alltrue = !alltrue;
 				setClass()
+				getCheckNum();
 			}
 			//每个价格后小计
 			function getPrice(str,num){
-				let totalMoney=0;
+				var totalMoney=0;
 				str=str.slice(1).trim();
 				totalMoney=parseFloat(str)*num;
 				return Number(totalMoney.toFixed(2));
@@ -313,11 +317,7 @@
 				allTrue = isAllChecked;
 				chooseAll.classList[isAllChecked?'add':'remove']('checkbox-on')
 			}
-			//结算按钮的显示
-			function setClass() { 
-				var ischecked=[...blueCheckboxes].some(item=>item.ischecked);
-				nowBuy.classList[ischecked?'remove':'add']('disabled-btn');
-			}
+			
 			//获取总计件数
 			function getTotalNum(){
 				var TotalNums=0;
@@ -327,16 +327,21 @@
 				},0)
 				totalNum.innerHTML=TotalNums;
 			}
+			//结算按钮的显示
+			function setClass() { 
+				var isAllChecked=[...blueCheckboxes].some(item=>item.ischecked);
+				nowBuy.classList[isAllChecked?'remove':'add']('disabled-btn');
+			}
 			//选中的数量和价格
 			function getCheckNum(){
-				var checkNum=0;
+				var checknum=0;
 				var moneyA=0;
 				blueCheckboxes.forEach((item,index)=>{
 					if(item.ischecked){
-						checkNum += Number(inputNum[index].value);
-						moneyA+=getPrice(price[index].innerHTML,inputNum[index].value);
+						checknum += Number(inputNum[index].value);
+						moneyA+=getPrice(prices[index].innerHTML,inputNum[index].value);
 					}
-					checkedNum.innerHTML=checkNum;
+					checkedNum.innerHTML=checknum;
 					moneyall.innerHTML=moneyA;
 				})
 			}
