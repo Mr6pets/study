@@ -116,4 +116,31 @@
   	num_row>0
   ~~~
 
+> ​	回顾前端：ajax调用后台
+
+- 2.原生ajax
+
+  - 特点：局部刷新网页 用户体验度好
+  - 原生ajax步骤：
+    - 1.创建XMLHttpRequest对象
+    - 2.准备发送
+    - 3.执行发送动作
+    - 4.指定回调函数
+
+- jquery的ajax
+
+  ~~~javascript
+  $.ajax({
+  	type:'get/post',//请求的方式
+  	url:'',//地址 路径 接口地址
+  	async:true/false,//同步 false异步 默认是异步请求 js xhr.open('get',url,true)
+      data:{key:value},//data:'name=123&password=123'
+      				//data:{name:name,upsd:psd}
+      dataType:'json/html/xml/script',//返回的数据类型 来自后台的数据类型
+      success:function(){},//成功之后的回调函数
+      error:function(){}//失败的回调函数
+  })
+  ~~~
+
   
+
