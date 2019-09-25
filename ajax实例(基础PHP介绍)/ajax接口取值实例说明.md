@@ -142,5 +142,65 @@
   })
   ~~~
 
+- xml和json的区别
   
+  - json：是一种轻量级的数据交换格式，具有良好的可读性和便于快速编写的特性 可在不同的平台之间进行数据的交互 json采用的兼容性很高的文本格式
+  - xml：用于标记电子文件使其具有结构性的标记语言，可以用来标记数据 定义数据类型
+  
+- xml的缺点：
 
+  - xml文件庞大 文件格式复杂 传输速度慢
+  - 数据解析繁琐
+
+- json的优缺点：
+
+  - 数据格式比较简单 易于读写 格式都是压缩的 占用带宽小
+
+  - 易于解析
+
+  - 易于维护
+
+    -----------------
+
+  - json相对于xml来说 数据体积更小
+
+  - json于JavaScript的交互更加方便
+
+  - json对数据的描述性比xml差
+
+  - json的速度要远远快于xml
+
+- 利用ajax的beforeSend提高用户体验
+
+  - 1.防止重复提交数据
+
+    ~~~javascript
+    beforeSend:function(){
+    	//禁用按钮防止重复提价
+        $('#submit').attr({disabled:"disabled"});
+    },
+    complete:function(){
+        $("#submit").removeAttr("diaabled");
+    }
+    ~~~
+	  
+  - 1.模拟toast效果
+    
+    ~~~javascript
+    $.ajax({
+    	type:"post",
+    	url:"/home/getList.php",
+    	beforeSend:function(){
+    		$("loadingPic").show();
+    	},
+        success:function(data){},
+        complete:function(){
+            $("loadingPic").hide();
+        },
+        error:function(err){
+            console.info('error:'+data.responseText);
+        }
+    })
+    ~~~
+    
+    

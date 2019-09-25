@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery_ajax</title>
+</head>
+<body>
+    <button id="btn">请求数据</button>
+    <div class="show"></div>
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+            //点击按钮 请求数据
+            $("#btn").click(function(){
+                // $.ajax({
+                //     type:'get',
+                //     url:'9jquery_ajax.php',
+                //     //data{};
+                //     dataType:'html',
+                //     success:function(data){
+                //         console.log(data);
+                //         $('.show').html(data);
+                //     },
+                //     error:function(err){
+                //         console.log(err);
+                //         console.log('请求失败')
+                //     }
+                // })
+                $.ajax({
+                    type:'get',
+                    url:'data.json',
+                    //data{};
+                    dataType:'json',
+                    success:function(data){
+                        // console.log(data.data);
+                        var arr=data.data;
+                        var str='';
+                        for(let i=0;i<arr.length;i++){
+                            var str = '<li>'+arr[i].name+'</li>';
+                        }
+                        $('.show').html(str);
+                    },
+                    error:function(err){
+                        console.log(err);
+                        console.log('请求失败')
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

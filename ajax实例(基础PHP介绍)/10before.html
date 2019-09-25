@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery_ajax</title>
+</head>
+<body>
+    <button id="btn">请求数据</button>
+    <div class="show"></div>
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+            //点击按钮 请求数据
+            $("#btn").click(function(){
+                $.ajax({
+                    type:'get',
+                    url:'10before.php',
+                    //data{};
+                    // dataType:'json',
+                    beforeSend:function(){
+                        console.log("请求之前调用");//做一个loading的一个页面
+                        $('.show').html('这里是等待时间被调用的替换的内容,这个函数一般用于制作loading动画');
+                    },
+                    success:function(data){
+                        console.log("请求成功的调用");
+                        $('.show').html(data);
+                    },
+                    error:function(err){
+                        console.log(err);
+                        console.log('请求失败');
+                    },
+                    complete:function(){
+                        console.log('请求完成之后，执行这个函数,ajax完成后loading动图消失');
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>
