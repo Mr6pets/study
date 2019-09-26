@@ -118,7 +118,53 @@
 
 > ​	回顾前端：ajax调用后台
 
-- 2.原生ajax
+- **1.ajax请求**
+
+- 语法：xhr.open('请求类型'，‘URL地址’，是否异步)；
+
+  - 说明：
+
+    - 第一个参数是用来设置get/post请求
+    - 第二个参数是用来设置请求发送到URL地址
+    - 第三个参数是布尔值用来设置是否异步发送 默认false表示同步
+
+  - 1)get无参数请求方式
+
+  - 2)get有参数请求方式
+
+    - 描述：get请求 拼接地址栏信息 url=xxx.php?name=123$password=111;
+      - var url="...."
+      - xhr.open('get',url,true);
+      - xhr.send()
+
+  - 3)post请求方式
+
+    - 描述：post请求和get请求的差异就在于多一个表单数据
+      - 在xhr对象中可以通过formdata进行构建
+    - 语法：var formData = new formData();
+      - formData.append('key',value);//value如果是字符串要加引号
+      - xhr.send(formData)
+    - 说明：
+      - 至于formData的创建时机和位置，只要在能够发送请求之前 也就是xhr.send（）语句被写出之前添加给xhr对象
+
+  - 4）timeout监听超时
+
+    - 描述：timeout属性等于一个整数，用来设置当前请求发出后等待接收响应的时间 ontimeout()方法则是当等待超时后，自动执行的回调方法
+
+    - 语法：
+
+      ~~~javascript
+      xhr.timeout=xxx;
+      xhr.ontimeout=function(){
+      	console.error("the request for"+url地址+"time out);
+      }
+      //说明：timeout属性党委是毫秒，表示当请求发出后等待响应时间
+      //如果在设置的时间内没有接收到后台响应的数据，则默认请求超时（执行ontimeout）
+      ~~~
+  
+  
+  
+- **2.原生ajax**
 
   - 特点：局部刷新网页 用户体验度好
   - 原生ajax步骤：
@@ -127,7 +173,7 @@
     - 3.执行发送动作
     - 4.指定回调函数
 
-- jquery的ajax
+- **jquery的ajax**
 
   ~~~javascript
   $.ajax({
@@ -142,7 +188,7 @@
   })
   ~~~
 
-- xml和json的区别
+- **xml和json的区别**
   
   - json：是一种轻量级的数据交换格式，具有良好的可读性和便于快速编写的特性 可在不同的平台之间进行数据的交互 json采用的兼容性很高的文本格式
   - xml：用于标记电子文件使其具有结构性的标记语言，可以用来标记数据 定义数据类型
@@ -170,7 +216,7 @@
 
   - json的速度要远远快于xml
 
-- 利用ajax的beforeSend提高用户体验
+- **利用ajax的beforeSend提高用户体验**
 
   - 1.防止重复提交数据
 
@@ -184,9 +230,15 @@
     }
     ~~~
 	  
-  - 1.模拟toast效果
+  -  2.回调函数
     
     ~~~javascript
+    //beforeSend:当发送请求之前调用并且传入一个XMLHttpRequest作为参数
+    //error:当请求出错时调用 传入XMLHTTPRequest对象 描述错误类型的字符串以及一个异常的对象
+    //success:当请求之后调用，传入返回后的数据，以及包含成功代码的字符串
+    //complete:当请求完成之后调用这个函数，无论成功或者失败 传入XMLHttpRequest对象，以及一个包含成功或错误代码的字符串
+    
+    //2.模拟toast效果
     $.ajax({
     	type:"post",
     	url:"/home/getList.php",
@@ -204,3 +256,113 @@
     ~~~
     
     
+  
+- $.get()
+
+  ~~~javascript
+  语法：jQuery.get(url,[data],[callback],[type])
+  url:待载入页面的URL地址
+  data:待发送key/value参数
+  callback:载入成功时回调函数
+  type:返回内容格式.xml html script json text _default
+  ~~~
+
+- $.post()
+
+  ~~~javascript
+  语法：jQuery.post(url,[data],[callback],[type])
+  url:发送请求地址
+  data:待发送key/value参数
+  callback:发送成功时回调
+  type:返回内容格式.xml html script json text _default
+  ~~~
+  
+- $.getJSON()
+  
+  ~~~javascript
+  如果返回的数据格式都是json 那么也可以用getJSON()
+  语法：jQuery.getJSON(url,[data],[callback]);
+  url:发送请求地址
+  data:待发送key/value参数
+  callback:发送成功时回调函数
+  ~~~
+  
+- 音频视频api--js
+
+  ~~~javascript
+  <audio src='' autoplay controls> </audio>
+  常用属性：
+  autoplay:自动播放
+  controls:显示控件
+  currentTime:返回当前音频 视频的播放时间
+  duration:返回当前音频 视频总时长
+  ended:返回当前音频 视频是否播放结束
+  paused:暂停状态 暂停 true false 播放
+  src:音频 视频路径
+  volume:设置音量
+  
+  常用时间：
+  oncanplay:在用户可以开始播放视频/音频(audio/vedio)时触发 视频/音频(audio/vedio)在加载过程中，触发的
+  ontimeupdate:当前音频 视频播放时间改变时触发 以秒计
+  object.addEventListenner("timeupdate",myScript);function myscript(){}
+  play():播放
+  pause():暂停
+  
+  ~~~
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

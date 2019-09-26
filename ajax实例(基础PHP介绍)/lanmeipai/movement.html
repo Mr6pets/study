@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音频页面练习</title>
+    <link rel="stylesheet" href="./css/movement.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="header"></div>
+    <!-- 乐章 -->
+    <div class="container">
+        <div class="musicHeader">
+            <h3 class="title"></h3>
+            <div class="musicRight">
+                <span></span>播放
+            </div>
+        </div>
+        <div class="musicContent">
+            <div class="musicContent_pic">
+                <img src="" alt="">
+            </div>
+            <div class="musicContent_txt"></div>
+        </div>
+        <div class="musicBottom">
+            <!-- 播放图片 -->
+            <div class="start">
+                <div class="circle">
+                    <img src="./img/start.png" >
+                    <!-- <img src="./img/pause.png" > -->
+                </div>
+            </div>
+            <!-- 开始时间 -->
+            <div class="current"></div>
+            <!-- 进度条 -->
+            <div class="progress">
+                <div class="innerProgress"></div>
+            </div>
+            <!-- 总时间 -->
+            <div class="duration"></div>
+        </div>
+    </div>
+    <audio src="./12.mp3" controls id="audio" style="display: none"></audio>
+    <!-- 文章 -->
+    <div class="wenzhang_warp">
+       <div class="wenzhang_warp_left">
+            <div class="headline">
+                <h3 class="wenzhang_title">[游记]洱海仍有一片静谧，让你以梦为桨 </h3>
+                <div class="wenzhang_info">
+                    <span class="eye_num">56</span>
+                    <span class="wei_chat_num">22</span>
+                    <span class="create_time">创建时间:<b>2016/03/26</b></span>
+                </div>
+                <div class="wenzhang_main">
+                    <p>不知道多少人来到大理不想离开，也不知道多少人走了之后又想着回来。这就是大理，庸懒散拖，但又不失韵味。你可以窝在人民路晒太阳发呆，也可以骑着单车，沿着黄海西路，穿过一个个小村落，在洱海边听风观渔。
+                        大理有很多玩法，好像都和待着有关。但你可曾想过如此近距离的接近洱海？
+                        当你泛舟洱海的时候，你会发现云离你好近，苍山也近在咫尺，此时，眼前的一切都是属于你的，就像一个梦，我们划着桨，不愿离开，也不想醒来。
+                        
+                        阿男给了我们一个亲近洱海的机会，也给了我们待着一个特惠的价格。
+                        这里你不必担心大理旺季烦扰的人声鼎沸，更不用顾虑人山人海的景区客流，这里有一片美丽的海，有一艘简单的皮划艇，你可以在这里待着，什么都不想，也无人来打扰。
+                        
+                        我们可以在洱海上随波逐流，不用跟着人潮，拥挤在古城的洋人街与复兴路。
+                        希望这片海能给你夏日一份安宁，希望这次体验可以给你带来意外的收获。
+                        
+                        其实大理很美，只是我们忘了发现。 </p>
+                        <div class="peitu"><img src="./img/peitu1.jpg"></div>
+                        <div class="peitu"><img src="./img/peitu2.jpg"></div>
+                        <div class="peitu"><img src="./img/peitu3.jpg"></div>
+                </div>
+                <div class="wenzhang_label">
+                    <span>旅游</span>
+                    <span>咨询</span>
+                    <span>穷游</span>
+                </div>
+            </div>
+            <div class="end_icon"><img src="./img/end.png" alt=""></div>
+            <div class="related_reading">
+                <h3>相关阅读</h3>
+                <div class="related_reading_recom">
+                    <dl>
+                        <dd><img src="./img/related_read.jpg"/></dd>
+                        <dt>人散后一勾新月天如水，庆州的来去游记</dt>
+                    </dl>
+                    <dl>
+                        <dd><img src="./img/related_read.jpg"/></dd>
+                        <dt>人散后一勾新月天如水，庆州的来去游记</dt>
+                    </dl>
+                    <dl>
+                        <dd><img src="./img/related_read.jpg"/></dd>
+                        <dt>人散后一勾新月天如水，庆州的来去游记</dt>
+                    </dl>
+                                
+                </div>
+            </div>
+            <div class="share">
+                    <div class="share_plan">
+                        <span class="sinaweibo"></span>
+                        <span class="wechat"></span>
+                        <span class="huaban"></span>
+                        <span class="douban"></span>
+                    </div>  
+                    <div class="share_zan">
+                        <div class="share_sinaweibo_btn"><span>分享长微博</span></div>
+                        <div class="zan"><span>赞<b>22</b></span></div>
+                        <div class="shoucang"><span>收藏</span></div>
+                    </div>
+            </div>
+            <div class="share_text">
+               <a href="javascript:void(0)">喜欢就分享出去吧!</a>
+                <a href="javascript:void(0)">举报</a>
+            </div>
+            <div class="line"></div>
+            <div class="zan_person">
+                <h3><span>赞过的人</span></h3>
+                <dl>
+                    <dd><img src="./img/nic.png" /></dd>
+                    <dt>许西</dt>
+                </dl>
+                <dl>
+                    <dd><img src="./img/nic.png" /></dd>
+                    <dt>许西</dt>
+                </dl>
+            </div>
+            <div class="ad_pic">
+                <img src="./img/adv.jpg" alt="">
+            </div>
+            <div class="comment_area">
+                <textarea name="" id="" cols="30" rows="10" placeholder="在这里发表您的看法吧~" resize: none;></textarea>
+                <a href="javascript:void(0)" class="a_comment">评论</a>
+            </div>
+            <div class="exist_comment">
+                <div class="nicInfo">
+                    <div class="nic_pic"></div>
+                    <h3><span>小夏同学</span><span>5/23</span><span>16:15</span></h3>
+                </div>
+                <div class="comment_txt">内地流行乐双人组合「牛奶咖啡」，不久前为新专辑MV的拍摄，专程来到了龙井一所大房子取景，在这里跟大家分享这座大房子背后一对年轻夫妇的故事。</div>
+                <div class="comment_zanreply">
+                    <span class="comment_zan"></span>
+                    <span class="comment_reply"></span>
+                </div>
+            </div>
+       </div> 
+       <div class="wenzhang_warp_right">
+
+       </div>
+    </div>  
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="./js/movement.js"></script>
+</body>
+</html>

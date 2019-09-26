@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>get</title>
+</head>
+<body>
+   <button id="btn">请求数据</button> 
+   <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+   <script>
+       $(function(){
+           $("#btn").click(function(){
+            // jQuery.get(地址,数据,回调函数,json)
+            $.get('data.json',function(data){
+                console.log(data);
+            },'json');
+           });
+       });
+   </script>
+</body>
+</html>
