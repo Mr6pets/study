@@ -182,4 +182,38 @@
 
   catch+事件名：点击事件 catchtap 非冒泡事件
 
+- 7.获取当前页面的data数据和修改data的数据
+
+  获取 this.data.变量名
+
+  修改
+
+  ~~~javascript
+  this.setData({
+      变量名：value
+  })
+  ~~~
+
+- 8.*.json当前页面的配置
+
+  - 每一个小程序页面也可以使用同名 `.json` 文件来对本页面的窗口表现进行配置，页面中配置项会覆盖 `app.json` 的 `window` 中相同的配置项。
+
+- 9*.wxss
+
+  - 当前的页面的样式表 这时候配置的wxss 会覆盖app.wxss
+
+- 10.navigator 路由
+
+  - 功能：页面跳转
+  - 语法：navigator
+    - url:当前小程序内的跳转链接
+    - open-type:跳转方式
+      - navigate：保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。使用 [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html) 可以返回到原页面。小程序中页面栈最多十层。
+      - redirect：关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。
+      - switchTab:跳转到tabBar页面 并关闭其他所有非tabBar页面
+      - reLaunch:关闭所有页面 打开到应用内的某个页面
+      - navigateBack:关闭当前页面 返回上一页面或者多级页面
+
+  ​	
+
   
