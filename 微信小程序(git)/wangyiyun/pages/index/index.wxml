@@ -29,4 +29,12 @@
 </view>
 <!-- 新闻内容 -->
 <!-- 使用模板 -->
-<template is="newsList"></template>
+<view class="news">
+  <block wx:for="{{newslist}}" wx:key="index">
+    <view bindtap="">
+      <template is="newsList" data="{{item}}"></template>
+    </view>
+  </block>
+</view>
+
+

@@ -1,9 +1,9 @@
 <!-- 定义模板 -->
 <template name="newsList">
   <view class="newslist">
-    <view class="text">还是可以进行想上网的冲浪流程的法杖于</view>
+    <view class="text">{{item.content}}</view>
     <view class="pic">
-      <image src="../../image/1.jpg"></image>
+      <image src="{{item.imgUrl}}"></image>
     </view>
   </view>
 </template>
