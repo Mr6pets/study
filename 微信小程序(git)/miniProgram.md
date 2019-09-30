@@ -216,4 +216,54 @@
 
   ​	
 
-  
+- 1.template：模板
+
+  - WXML提供模板（template）,可以在模板中定义代码片段 然后在不同的地方调用
+
+  - 模板包含文件wxml wxss 但是不能是js/json;
+
+  - 语法：
+
+    - 定义模板 创建一个文件
+
+      ~~~javascript
+      <template name="模板的名字">
+          <view>..</view>
+      </template>
+      ~~~
+
+    - 使用这个模板
+
+      - 引用模板
+
+        - <import src='模板文件路径'/>
+
+      - 使用
+
+        - <template is="模板名字"></template>
+
+      - 模板传递数据
+
+        - <template is="模板名字" data="{{数据名}}"></template>
+
+        - es6:<template is="模板名字" data="{{...数据名}}"></template>
+
+- 2.模块化
+
+  - 可以将一些公共代码抽离成一个单独的js文件 作为一个模板
+  - 语法：
+    - 1.创建js文件 --模块只有通过module.exports 暴露出接口 module.exports.变量=数据；
+    - 需要使用这些模块的文件中，使用require将公共代码引入
+
+- 总结：文件引入
+
+  - 1.引入css
+    - 哪里需要样式 在当前页面的wxss里面引入 
+    - @import “路径”
+  - 2.引入模板 wxml
+    - 引入当前的页面wxml引入
+    - <import src="模板的wxml路径">
+  - 3.外部公共的js文件
+    - 当前的页面想使用这个数据 在当前的页面js文件中上引入js
+      - var books=require('../../data/nes.js')
+      - books是自己定义的变量名 接收js模块数据

@@ -1,0 +1,25 @@
+/* pages/moni/moni.wxss */
+.header{
+  width: 400rpx;
+  height: 800rpx;
+  background-color: lightgray;
+  margin: 0 auto;
+}
+.footer{
+  display: flex;
+}
+.footer>view{
+  flex: 1;
+  text-align: center
+}
+
+
+
+
+
+
+
+
+
+
+

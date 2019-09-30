@@ -1,0 +1,22 @@
+/**index.wxss**/
+.warpper{
+  padding: 40rpx;
+  display: flex;
+  text-align: center;
+  color: white;
+}
+.f1{
+  flex: 1;
+  height: 200rpx;
+  line-height: 200rpx;
+  background-color:lightcoral;
+  margin-right: 20rpx;
+}
+.f2{
+  flex: 1;
+  margin-left: 20rpx;
+  height: 200rpx;
+  line-height: 200rpx;
+  background-color: lightblue;
+  
+}
