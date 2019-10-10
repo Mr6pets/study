@@ -34,3 +34,121 @@
   - 点击当前的新闻信息  跳转到响应的详情页面
     - 点击事件 跳转页面 bindtap='';
     - 触发点击 跳转详情页 wx.navigateTo();
+  
+- 1.4页面交互
+
+  - 收藏 弹框
+
+    - wx.showLoading()显示loading
+
+      - 显示loading 提示框
+
+      - 需要主动调用wx.hideLoading才能关闭
+
+        ~~~javascript
+        wx.showLoading({
+          title: '加载中',
+        })
+        
+        setTimeout(function () {
+          wx.hideLoading()//隐藏loading
+        }, 2000)
+        ~~~
+    
+  - 信息提示框
+
+    ~~~JavaScript
+    wx.showToast({
+    	title:'提示文字信息'，
+    	icon:'success',
+    	duration:2000//默认1500自动隐藏
+    })
+    ~~~
+
+- 1.5数据存储
+
+  - 小程序数据存储 本地存储 永久的
+
+    - 两类：一类是后缀带sync 同步存储
+    - 一类是 不带sync异步存储
+
+  - 语法
+
+    - 设置存储
+
+      ~~~javascript
+      wx.setStorageSync(key, value);
+      
+      wx.setStorage({
+        key:"key",
+        data:"value"
+      })
+      ~~~
+
+    - 获取
+
+      ~~~javascript
+      wx.getStorageSync(key);
+      
+      wx.getStorage({
+        key: 'key',
+        success (res) {
+          console.log(res.data)
+        }
+      })
+      ~~~
+
+    - 删除
+
+      ~~~javascript
+      wx.removeStorageSync(key);
+      
+      wx.removeStorage({
+        key: 'key',
+        success (res) {
+          console.log(res)
+        }
+      })
+      
+      ~~~
+
+    - 清空
+
+      ~~~javascript
+      wx.clearStorageSync()
+      
+      wx.clearStorage()
+      
+      ~~~
+
+- 星星的收藏存储
+
+  - 1.进入页面先判断是否有存储 获取本地存储
+
+  - 存储的格式是
+
+    ```JavaScript
+    count={
+    condeId:true//页面收藏
+    codeID：false//页面没有收藏
+    }
+    ```
+
+    获取本地内容：wx.getStorageSync('key');
+
+  - 2.如果有存储 页面显示收藏  否则不收藏
+
+  - 3.点击事件 点击星星进行收藏或者不收藏
+
+    - 点击星星 判断当前页面是否有存储
+      - 如果有，点击后变取消收藏 同时本地存储 的count的id对应的值变false
+      - 如果没有 点击后收藏当前页面 同时本地设置 当前的页面id为true
+
+  - 4.点击事件后 数据本地存储
+
+    - wx.setStorageSync('count',JSON.stringfy(count));
+
+    
+
+  ​	
+
