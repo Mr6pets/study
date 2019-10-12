@@ -1,0 +1,19 @@
+<!-- 模板 文字图片 -->
+<template name="movieone">
+  <view class="movieone">
+    <image src="{{item.images.large}}"></image>
+    <!-- 名称 -->
+    <view class="author">{{item.title}}</view>
+    <!-- 星星点评 -->
+    <view class="star">
+      <!-- {{item.rating.stars}} -->
+      <!-- 星星：5个 [1,2,3,4,5] 获取数组中的每一项*10 和stars比较  num*10<=stars?显示亮色：显示灰色-->
+      <block wx:for="{{[1,2,3,4,5]}}" wx:for-item='num' wx:key='index'>
+        <image src="{{num*10<=item.rating.stars?'../../images/star_light.png':'../../images/star_grey.png'}}"></image>
+        <!-- <image src="../../images/star_grey.png"></image> -->
+        <!-- <image src="../../images/star_light.png"></image> -->
+      </block>
+      {{item.rating.average}}
+    </view>
+  </view>
+</template>

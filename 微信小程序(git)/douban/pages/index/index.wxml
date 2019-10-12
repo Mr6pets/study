@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<!-- 引入模板 -->
+<import src='../../templates/movielist/movielist.wxml'/>
+
+<!-- 使用模板 -->
+<template is='movielist' data="{{temp:nows}}"></template>
+<template is='movielist' data="{{temp:coming}}"></template>
+<template is='movielist' data="{{temp:top250}}"></template>

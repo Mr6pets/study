@@ -1,0 +1,11 @@
+<!--pages/more/more.wxml-->
+<!-- 引入模板 -->
+<import src="../../templates/movieone/movieone.wxml"/>
+<!-- 使用模板 -->
+<view class="warp">
+  <view class="single" wx:for="{{list}}" wx:key='index'>
+    <template is="movieone" data="{{item}}"></template>
+  </view>
+</view>
+
+

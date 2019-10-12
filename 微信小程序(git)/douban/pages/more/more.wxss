@@ -1,0 +1,11 @@
+/* pages/more/more.wxss */
+@import "../../templates/movieone/movieone.wxss";
+
+.warp{
+  width: 100%;
+  overflow: hidden
+}
+.warp>view{
+  float: left;
+  width: 33.33333%;
+}
