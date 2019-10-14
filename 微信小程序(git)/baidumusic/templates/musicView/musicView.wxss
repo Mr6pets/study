@@ -1,0 +1,14 @@
+.musicView{
+  display: flex;
+  margin-top: 30rpx;
+}
+.musicView>view{
+  flex: 1;
+}
+.musicView image{
+  width: 100%;
+  height: 240rpx;
+}
+.musicView_name{
+  text-align: center
+}

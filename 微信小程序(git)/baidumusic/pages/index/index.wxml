@@ -1,0 +1,28 @@
+<!-- 引入模板 -->
+<import src='../../templates/musicView/musicView.wxml'/>
+
+<!--index.wxml-->
+<view class="header">
+  <view class="jindian" bindtap="linkTo" data-type="{{jindian.type}}">
+    <view>
+      <image src="{{jindian.pic_big[0]}}" ></image>
+      <view>{{jindian.name}}</view>
+    </view>
+  </view>
+  <view class="rege" bindtap="linkTo" data-type="{{rege.type}}">
+    <view>
+      <image src="{{rege.pic_big[0]}}"></image>
+      <view>{{rege.name}}</view>
+    </view>
+  </view>
+</view>
+<!-- 使用模板 -->
+<view bindtap="linkTo" data-type="{{xingge.type}}" data-type="{{xingge.type}}">
+  <template is="musicView" data="{{temp:xingge}}"></template>
+</view>
+<view bindtap="linkTo" data-type="{{yaogun.type}}"  data-type="{{yaogun.type}}">
+  <template is="musicView" data="{{temp:yaogun}}"></template>
+</view>
+<view bindtap="linkTo" data-type="{{yinshi.type}}" data-type="{{yinshi.type}}">
+  <template is="musicView" data="{{temp:yinshi}}"></template>
+</view>

@@ -25,6 +25,7 @@
 	2.引入模板
     	wxml:<import src="模板路径*.wxml">
         wxss:@import 'wxss路径'
+		.js:require("js路径")
 	3.使用wxml
     	<template is='模板名字' data="{{传输的数据}}"></template>
 	4.模板中传递不同的数据
