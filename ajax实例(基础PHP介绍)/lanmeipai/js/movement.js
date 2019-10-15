@@ -52,7 +52,6 @@ function formtTime(time){
 }
 
 //ajax数据
-
 $.ajax({
     type:'get',
     url:'http://iwenwiki.com/api/blueberrypai/getSongInfo.php',
@@ -65,7 +64,7 @@ $.ajax({
         $('.title').html(songInfo.song_title);
         $('.musicRight span').html(songInfo.play_num);
         $('.musicContent_txt').html(songInfo.song_intro_cont);
-        //图片的路径需要拼接下 真确的地址是http://http://iwenwiki.com/api/blueberrypai/indexImg/naying.png
+        //图片的路径需要拼接下 正确的地址是http://http://iwenwiki.com/api/blueberrypai/indexImg/naying.png
         $('.musicContent_pic img').attr('src','http://iwenwiki.com/api/blueberrypai/'+songInfo.song_pic);
         //音乐的地址 也是错误的 正确的地址是  http://iwenwiki.com/api/blueberrypai/那英-默.mp3
         //res.song_source:http://wwtliu.com/sxtstu/blueberrypai/那英-默.mp3\
@@ -82,6 +81,30 @@ $.ajax({
 })
 
 // 文章数据获取
+$.get('http://iwenwiki.com/api/blueberrypai/getInterestingInfo.php',function(data){
+    console.log(data);
+    $('.wenzhang_title').html(data.interestingInfo.interest_title);
+    $('.eye_num').html(data.interestingInfo.eye_num);
+    $('.wei_chat_num').html(data.interestingInfo.wei_chat_num);
+    $('.create_time b').html(data.interestingInfo.interest_create_time);
+    $('.wenzhang_main p').html(data.interestingInfo.interest_cont);
+    // 旅游标签
+    console.log(data.labels);
+    var str='';
+    for(var i=0;i<data.labels.length;i++){
+        str+='<span>'+data.labels[i]+'</span>';
+    }
+    $('.wenzhang_label').html(str);
+    //相关阅读
+    var read='';
+    for(var i=0;i<data.related_read.length;i++){
+        read+='<dl>'+
+        '<dd><img src="http://iwenwiki.com/api/blueberrypai/'+data.related_read[i].related_read_pic+'"/></dd>'+
+        '<dt>'+data.related_read[i].related_read_summary+'</dt>'+
+    '</dl>'
+    }
+    $('.related_reading_recom').html(read);
+},'json');
 
 
 
