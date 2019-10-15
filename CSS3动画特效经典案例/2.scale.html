@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scale</title>
+    <style>
+         .box{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            /* 变化 scale(宽度缩放倍数,高度缩放倍数) */
+            transform: scale(2,3);
+            /* 变化 scale() 宽高同时缩放一样的倍数*/
+            transform: scale(2);
+/* 变化 scale() 宽高同时缩放一样的倍数*/
+            transform: scaleX(2);
+            transform: scaleY(2);
+
+            /* 低版本兼容 */
+            /* 360 qq 谷歌 兼容低版本--浏览器私有前缀 */
+            -webkit-transform: scaleX(2);
+            /* -moz- 火狐浏览器 */
+            -moz-transform: scaleX(2);
+            /* -ms- ie浏览器 */
+            -ms-transform: scaleX(2);
+
+
+            /* 旋转 rotate(deg) deg度数 deg为正值 为顺时针  同理 相反 */
+            transform: rotate(60deg);
+            transform: rotate(-60deg);
+
+
+
+         }
+    </style>
+</head>
+<body>
+        <div class="box">这是一个盒子</div>
+</body>
+</html>

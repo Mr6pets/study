@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>translate</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            /* 平移 translate(水平方向，垂直方向) */
+            transform: translate(100px,100px);
+            /* 水平平移 translateX(水平方向) */
+            transform: translateX(100px);
+            /* 垂直平移 translateY(水平方向，垂直方向) */
+            transform: translateY(100px);
+
+            /* 360 qq 谷歌 兼容低版本--浏览器私有前缀 */
+            -webkit-transform: translateY(100px);
+            /* -moz- 火狐浏览器 */
+            -moz-transform: translateY(100px);
+            /* -ms- ie浏览器 */
+            -ms-transform: translateY(100px);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
