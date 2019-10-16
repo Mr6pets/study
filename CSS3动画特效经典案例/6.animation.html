@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animation</title>
+    <style>
+        .box{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: pink;
+            left: 0;
+            top: 0;
+            /* 动画 animation:动画名字 时间 运动曲线 延迟 次数（默认为1） */
+            /* infinite 无限 */
+            animation:move 1s linear infinite;
+            /* 兼容 私有前缀 */
+        }
+        /* 定义动画 */
+        @keyframes move{
+            0%{
+               transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">盒子</div>
+</body>
+</html>
