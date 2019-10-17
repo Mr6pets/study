@@ -17,8 +17,19 @@
 - lanmeipai-蓝莓派的一个PC端页面练习
 
 <hr>
+> ajax基础使用
+
+- 原生js Ajax请求数据，demo小样记录（主要包含：）
+  -  1.请求文本 
+  - 2.请求json 
+  - 3.GitHub实例接口请求
+  - 4.PHP文件请求
+  - 本地数据库操作说明
+
+<hr>
 
 ###	B
+
 >	BOM&EVENT
 
 - 浏览器BOM的基本操作小计

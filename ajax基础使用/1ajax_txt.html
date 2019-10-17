@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>请求纯文本</title>
+</head>
+<body>
+	<button id="button">请求纯文本</button>
+	<div id="txt"></div>
+	<script>
+		document.getElementById('button').addEventListener('click',loadText);
+		function loadText(){
+			// console.log('hello world');
+			//创建一个XMLHttpRequest
+			var xhr =new XMLHttpRequest();
+			// xhr.open(类型，url/file，async);
+			xhr.open('GET','sample.txt',true);
+
+			// onprogress 这里可以放加载圈圈 
+			xhr.onprogress=function(){
+				console.log("测试")
+			}
+
+			// 两种方式请求 onload onreadystatechange
+			xhr.onload=function(){
+				console.log(this.responseText);
+				document.getElementById('txt').innerHTML=this.responseText;
+			}
+			xhr.send();
+
+			
+			// xhr.onreadystatechange=function(){
+			// 	console.log("READYSTATE:",xhr.readyState);
+			// 	if(this.status==200 && this.readyState==4){
+			// 		console.log(this.responseText);
+			// 		document.getElementById('txt').innerHTML=this.responseText;
+			// 	}else if(this.status==404){
+			// 		console.log("您请求的网页不存在！")
+			// 	}
+			// }
+			// xhr.send();
+			/*
+				readystate 状态码
+				0：请求未初始化
+				1：服务器连接已建立
+				2：请求已接受
+				3：请求处理中
+				4：请求已完成 且响应已就绪
+
+				HTTP 状态码
+				200：服务器成功返回网页；
+				404：请求的网页不存在；
+				503：服务器暂时不可用；
+			*/
+		}		
+	</script>
+
+</body>
+</html>
