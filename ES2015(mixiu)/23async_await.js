@@ -40,7 +40,7 @@ async function getUsers() {
   const data = await response.json();
   return data
 }
-getUsers().then(users => c  onsole.log(users))
+getUsers().then(users => console.log(users))
 
 
 
