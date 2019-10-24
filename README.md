@@ -210,15 +210,23 @@
 
 <hr>
 
+>	vue_base_cdn(mixiu)
+
+-	基于Vue线上cdn的一些Vue基础的语法与使用方式
+<hr>	
+
 ### W
 > 微信小程序(git)
 
 - 百度音乐的一个微信小程序
 
 <hr>
-> ​	WEBBASIC(mixiu)
+
+> 	WEBBASIC(mixiu)
+
 
 - 基础知识查漏补缺包含 HTML CSS JavaScript 移动端........
+
 
 
 ###	X

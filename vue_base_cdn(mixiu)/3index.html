@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="3style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1>键盘事件</h1>
+    <label>姓名：</label>
+    <input type="text" v-on:keydown.enter="logName">
+    <label>年龄：</label>
+    <input type="text" v-on:keyup.alt.enter="logAge">
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="3app_keyboard.js"></script>
+</body>
+
+</html>
