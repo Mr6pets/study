@@ -126,3 +126,50 @@
 - dropdown-header
 - divider
 - 例子：运动且带图标的菜单
+
+> 标签页
+
+- 头部
+  - nav
+  - nav-tabs
+  - nav-justified
+  - nav-tabs-justified
+  - nav-pills
+  - nav-stacked
+  - 带下拉菜单的头部
+- 内容
+  - tab-content
+  - tab-pane
+  - data-toggle="tab"
+  - href对应id
+  - 淡入淡出
+  - 鼠标移入方式
+  - 带下拉菜单的切换
+- 导航条
+  - navbar
+  - navber-default
+  - nav navbar-nav
+  - navbar-inverse
+  - navbar-static-top
+  - navbar-fixed-top:固定定位在头部
+  - navbar-fixed-bottom：固定定位在尾部
+  - 遮挡内容的问题
+- 导航条
+  - navbar-header
+  - navbar-brand
+  - navbar-left
+  - navbar-right
+  - navbar-btn
+  - navbar-link
+  - navbar-text
+  - navbar-form
+  - 例子：知乎导航条
+- 导航条
+  - 下拉菜单
+  - 响应式导航条
+    - nav-bar-toggle
+    - collapse navbar-collapse
+  - 滚动监听
+    - data-spy
+    - data-target
+    - data-offset

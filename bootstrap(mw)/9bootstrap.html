@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>bootstrap</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<style type="text/css">
+		.tab-content{
+			border: 1px solid #ddd;
+			border-top:none;
+			padding: 50px;
+			border-radius: 0 0 5px 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#a" data-toggle="tab">one</a></li>
+			<li ><a href="#b" data-toggle="tab">two</a></li>
+			<li ><a href="#c" data-toggle="tab">three</a></li>
+		</ul>
+		<ul class="tab-content">
+			<li id="a" class="tab-pane active">aaaaaa</li>
+			<li id="b" class="tab-pane">bbbbb</li>
+			<li id="c" class="tab-pane">cccc</li>
+		</ul>
+		<br><br>
+		<div style="width: 400px;">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#a1" data-toggle="tab">one</a></li>
+				<li ><a href="#b1" data-toggle="tab">two</a></li>
+				<li ><a href="#c1" data-toggle="tab">three</a></li>
+			</ul>
+			<ul class="tab-content">
+				<li id="a1" class="tab-pane active">aaaaaa</li>
+				<li id="b1" class="tab-pane">bbbbb</li>
+				<li id="c1" class="tab-pane">cccc</li>
+			</ul>
+		</div>
+		<br><br>
+		<div style="width: 400px;">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#a2" data-toggle="tab">one</a></li>
+				<li ><a href="#b2" data-toggle="tab">two</a></li>
+				<li ><a href="#c2" data-toggle="tab">three</a></li>
+			</ul>
+			<ul class="tab-content">
+				<li id="a2" class="tab-pane fade in active">aaaaaa</li>
+				<li id="b2" class="tab-pane fade">bbbbb</li>
+				<li id="c2" class="tab-pane fade">cccc</li>
+			</ul>
+		</div>
+		<br><br>
+		<div style="width: 400px;">
+			<ul id="myTabs" class="nav nav-tabs">
+				<li class="active"><a href="#a3" data-toggle="tab">one</a></li>
+				<li ><a href="#b3" data-toggle="tab">two</a></li>
+				<li ><a href="#c3" data-toggle="tab">three</a></li>
+			</ul>
+			<ul class="tab-content">
+				<li id="a3" class="tab-pane fade in active">aaaaaa</li>
+				<li id="b3" class="tab-pane fade">bbbbb</li>
+				<li id="c3" class="tab-pane fade">cccc</li>
+			</ul>
+		</div>
+		<br><br>
+		<div style="width: 400px;">
+			<ul id="myTabs" class="nav nav-tabs">
+				<li class="active"><a href="#a4" data-toggle="tab">one</a></li>
+				<li ><a href="#b4" data-toggle="tab">two</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">three<sanp class="caret"></sanp></a>
+					<ul class="dropdown-menu">
+						<li><a href="#c4" data-toggle="tab">child1</a></li>
+						<li><a href="#d4" data-toggle="tab">child2</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="tab-content">
+				<li id="a4" class="tab-pane  active">aaaaaa</li>
+				<li id="b4" class="tab-pane ">bbbbb</li>
+				<li id="c4" class="tab-pane ">cccc</li>
+				<li id="d4" class="tab-pane ">dddd</li>
+			</ul>
+		</div>
+		
+	</div>
+	 <script src="https://www.jq22.com/jquery/jquery-1.9.1.js"></script>
+	 <script src="js/bootstrap.js"></script>
+	 <script >
+	 	$('#myTabs a').mouseover(function(){
+	 		$(this).tab('show');
+	 	})
+	 </script>
+</body>
+</html>

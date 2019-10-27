@@ -25,7 +25,7 @@
 <body>
 	<div class="container">
 		<div class="dropdown own">
-		  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" >
+		  <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown">
 		    Dropdown
 		    <span class="caret"></span>
 		  </button>
@@ -40,12 +40,21 @@
 	 <script src="https://www.jq22.com/jquery/jquery-1.9.1.js"></script>
 	 <script src="../js/bootstrap.js"></script>
 	 <script>
-	 	if(window.navigator.userAgent.toLowerCase().indexOf('mobile')==-1){
-	 		$('.dropdown-toggle').on('mouseover',function(){
-	 			console.log(1);
+	 	if(window.navigator.userAgent.toLowerCase().indexOf('mobile')==-1){//pc
+	 		// $('.dropdown-toggle').on('mouseover',function(){
+	 		// 	alert(1);
+	 		// })
+	 		var timer=null;
+	 		$('.dropdown-toggle').hover(function(){
+	 			$('.dropdown').addClass('open')
+	 		},function(){
+	 			timer=setTimeout(function(){$('.dropdown').removeClass('open')},1000)
 	 		})
-	 	}else{
-
+	 		$('.dropdown-menu').hover(function(){
+	 			clearTimeout(timer)
+	 		},function(){
+	 			timer=setTimeout(function(){$('.dropdown').removeClass('open')},100)
+	 		})
 	 	}
 	 </script>
 </body>
