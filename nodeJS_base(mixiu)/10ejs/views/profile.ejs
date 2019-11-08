@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>这里是一个index的首页</title>
+  <style>
+    body {
+      background-color: lightblue;
+      color: white;
+      padding: 80px;
+    }
+
+    h1 {
+      font-size: 48px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 16px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>welcome to <%= wbbsite_id %> site</h1>
+  <h2>遍历</h2>
+  <ul>
+    <% data.forEach(item => { %>
+    <li><%= item.age%></li>
+    <% item.name.forEach(item=>{ %>
+    <li><%= item.name%></li>
+    <%})%>
+    <%});%>
+  </ul>
+</body>
+
+</html>
