@@ -2,22 +2,29 @@
 //引入mongoose模块
 var mongoose = require('mongoose');
 //链接数据库
-mongoose.connect('mongodb+srv://alvis:alvispets@cluster0-rzg8n.mongodb.net/test?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://alvis:alvispets@cluster0-rzg8n.mongodb.net/test?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+  // useCreateIndex: true,
+  // useFindAndModify: false
+},
+  () => {
+    console.log("we are connected")
+  }
+).catch(err => console.log(err));
 //创建一个图表；类似是存取进去是一个什么样的模板
 var todoSchema = new mongoose.Schema({
   item: String
 });
 //向数据库中存储数据
 // 第一个参数：具体的名字 第二个参数：就是具体的图标
-var Todo = mongoose.model('todo', todoSchema);
+var Todo = mongoose.model('Todo', todoSchema);
 //存储一个{item: "hello world!"}的对象 中有一个回调函数 里面会有返回的错误信息和数据
 //如果有错误抛出 没有就打印值
 Todo({ item: "hello world!" }).save(function (err, data) {
-  if (err) { throw err };
-  console.log("have been saved")
+  if (err) throw err;
+  console.log("have been saved11")
 })
-
-
 
 var bodyParser = require('body-parser');
 //对数据进行解析
