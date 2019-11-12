@@ -7,11 +7,11 @@ mongoose.connect('mongodb+srv://alvis:alvispets@cluster0-rzg8n.mongodb.net/test?
   useUnifiedTopology: true
   // useCreateIndex: true,
   // useFindAndModify: false
-},
-  () => {
-    console.log("we are connected")
-  }
-).catch(err => console.log(err));
+})
+  .then(() => {
+    console.log("mongoDB connected")
+  })
+  .catch(err => console.log(err));
 //创建一个图表；类似是存取进去是一个什么样的模板
 var todoSchema = new mongoose.Schema({
   item: String
