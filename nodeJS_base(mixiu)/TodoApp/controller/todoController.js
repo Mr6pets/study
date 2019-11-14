@@ -5,8 +5,6 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://alvis:alvispets@cluster0-rzg8n.mongodb.net/test?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
-  // useCreateIndex: true,
-  // useFindAndModify: false
 })
   .then(() => {
     console.log("mongoDB connected")
