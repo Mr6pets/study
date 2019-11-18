@@ -172,12 +172,17 @@
 
 <hr>	
 
->	nodeJS课程管理(mixiu)
+>	nodeJS课程管理(mixiu)（目前文件夹为空，没有放置相应的笔记）
 
 -	nodeJS课程管理
 
 <hr>
 
+>	nodeJS搭建接口（mixiu）
+
+-	nodeJS搭建接口的一些知识点零碎记录
+
+<hr>
 
 
 ###	O
