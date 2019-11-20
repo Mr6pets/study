@@ -1,5 +1,9 @@
 ##关于nodejs搭建接口说明
 
+到创建的文件夹中
+
+npm init 初始一个package.json 文件
+
 ~~~js
 安装express模块
 npm install express
@@ -22,6 +26,12 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
 	console.log(`server running on port ${port}`);
 })
+~~~
+
+全局安装nodemon
+
+~~~js
+npm install nodemon -g
 ~~~
 
 
@@ -48,14 +58,34 @@ bcrypt.genSalt(10, function(err, salt) {
 });
 ~~~
 
-> ​	jwt
+> ​	jwt:jsonwebtoken
+
+~~~js
+npm install jsonwebtoken
+~~~
+
+~~~js
+var jwt = require('jsonwebtoken');
+// 开始存储的时候 开始加jsonwebtoken
+// jwt.sign("规则","加密的名字","过期时间","箭头函数");
+//定义规则:用存储中的id和用户名进行token的规则 其实也可以添加 跟多 比如邮箱等
+const rule={id:user.id,name:user.name};
+jwt.sign(rule,keys.secretOrKey,{expiresIn:3600},(err,token)=>{
+if(err) throw err;
+  res.json({
+    success:true,
+    token:"alvis"+token
+  })
+})
+~~~
 
 
 
-> ​	token:jsonwebtoken
+> ​	验证token 
 
 ~~~
-npm install jsonwebtoken
+npm install passport
+npm install passport-jwt
 ~~~
 
 
