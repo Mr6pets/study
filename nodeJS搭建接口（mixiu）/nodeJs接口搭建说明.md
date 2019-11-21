@@ -74,7 +74,7 @@ jwt.sign(rule,keys.secretOrKey,{expiresIn:3600},(err,token)=>{
 if(err) throw err;
   res.json({
     success:true,
-    token:"alvis"+token
+    token:"Bearer "+token
   })
 })
 ~~~
@@ -87,6 +87,12 @@ if(err) throw err;
 npm install passport
 npm install passport-jwt
 ~~~
+
+
+
+> ​	使用第三方的validator进行前端验证
+
+
 
 
 
