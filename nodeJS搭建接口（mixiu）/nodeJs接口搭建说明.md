@@ -92,6 +92,19 @@ npm install passport-jwt
 
 > ​	使用第三方的validator进行前端验证
 
+~~~js
+npm i validator
+~~~
+
+~~~
+if(Validator.isEmpty(data.email)){
+		errors.name="邮箱不能为空"
+	}
+	if(!Validator.isEmail(data.email)){
+		errors.name="邮箱不合法"
+	}
+~~~
+
 
 
 
