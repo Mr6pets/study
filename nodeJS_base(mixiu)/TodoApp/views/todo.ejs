@@ -84,6 +84,7 @@
 </body>
 <script>
   $(document).ready(function () {
+    //使用jQuery
     $('header').on('submit', function () {
       // 获取input中的值
       var item = $('form input');
@@ -99,7 +100,8 @@
           type: 'POST',
           url: '/todo',
           data: todo,
-          success: function () {
+          success: function (data) {
+            console.log(data);
             //coding.....
           }
         })
@@ -107,7 +109,7 @@
     })
     //删除数据
     $('.remove').on('click', function () {
-      //动态获取点击文本内容
+      //动态获取点击文本内容（整个的li）
       var item = $.trim($(this).parent().parent().text());
       //将数据传递到服务器中去
       //这里是click事件地址栏是看不到你要传递的值的所以到带值

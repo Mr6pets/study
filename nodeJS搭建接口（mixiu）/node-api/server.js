@@ -8,7 +8,7 @@ const app = express();
 // 引入users.js
 const users=require("./routes/api/users.js")
 // 引入profile.js
-const profile=require("./routes/api/profile.js")
+// const profile=require("./routes/api/profile.js")
 //DB 配置
 const db=require("./config/keys.js");
 
@@ -21,11 +21,11 @@ mongoose.connect(db.mongoURI,{useNewUrlParser:true,useUnifiedTopology:true})
 			.then(()=>{console.log("success connecting")})
 			.catch((err)=>{console.log(err)})
 //使用中间件实现跨域
-app.use((req,res,next)=>{
-	res.header("Access-Control-Allow-Origin","*");
-	res.header("Access-Control-Allow-Headers","Content-Type");
-	res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-})
+// app.use((req,res,next)=>{
+// 	res.header("Access-Control-Allow-Origin","*");
+// 	res.header("Access-Control-Allow-Headers","Content-Type");
+// 	res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+// })
 
 
 //使用passport初始化
@@ -42,7 +42,7 @@ require("./config/passport.js")(passport);
 //如果访问了localhost:5000/api/users的时候 就是找到users localhost:5000/api/users/test返回login works的信息
 //添加/api/users到users这路由上面
 app.use("/api/users",users);
-app.use("/api/profile",profile);
+// app.use("/api/profile",profile);
 //设置端口号如果有设置的端口就用设置的端口号如果没有就用5000
 const port = process.env.PORT || 5000;
 

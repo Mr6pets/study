@@ -1,11 +1,9 @@
 //主文件入口
-
 //加载需要的express模块
 var express = require('express');
 
 //自定义模块todoController
 var todoController = require('./controller/todoController');
-
 //实例化express
 var app = express();
 //设置视图引擎
@@ -18,6 +16,6 @@ app.use(express.static('./public'));
 todoController(app);
 
 //监听端口号
-app.listen(3333);
+app.listen(3000);
 
 

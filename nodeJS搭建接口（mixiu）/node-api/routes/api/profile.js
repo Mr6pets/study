@@ -6,21 +6,21 @@ const mongoose=require("mongoose");
 const passport=require("passport");
 
 //引入了2张表
-const Profile=require("../../models/Profiles");
-const User=require("../../models/Users.js")
+const Profile =require("../../models/Profiles.js")
+const User=require("../../models/Users.js");
 
 //$route GET api/profile/test
 //@desc 返回的请求的json数据
 //@access public
-router.get("/test",(req,res)=>{
-	res.json({msg:"donedone"})
-});
+router.get("/test",(req,res) => {
+  res.json({msg:"profile works"})
+})
 
 //$route GET api/profile
 //@desc 获取当前登录用户的个人信息
 //@access private
-router.get("/",(req,res)=>{
-	res.json({msg:"oooo"})
-})
+// router.get("/",(req,res)=>{
+// 	res.json({msg:"oooo"})
+// })
 
 module.exports=router;
