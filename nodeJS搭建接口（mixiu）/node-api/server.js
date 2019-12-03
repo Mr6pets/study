@@ -1,6 +1,8 @@
-//引入express模块
+//引入express模块,搭建网络
 const express = require("express");
+//数据库
 const mongoose=require("mongoose");
+//获取前端输入的值
 const bodyParser=require("body-parser");
 const passport=require("passport")
 // 实例化express

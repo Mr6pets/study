@@ -11,6 +11,7 @@ const ProfileSchema=new Schema({
 		//关联那张表
 		ref:"users"
 	},
+	//登录的用户名
 	handle:{
 		type:String,
 		require:true,
@@ -34,6 +35,7 @@ const ProfileSchema=new Schema({
 		type:[String],
 		require:true
 	},
+	//个人简介
 	bio:{
 		type:String
 	},
