@@ -211,19 +211,19 @@
 
 <hr>
 
->vue实战开发系列
+>	vue实战开发系列
 
 - vue的脚手架vue-cli搭建的一些小例子 基本上就是组件复用的一些小效果
 
 <hr>
 
->vue精品实战案例-四步搞定
+>	vue精品实战案例-四步搞定
 
 - vue的小例子
 
 <hr>
 
->vue进阶
+>	vue进阶
 
 - ....
 
@@ -234,6 +234,7 @@
 - vue的路由的深度解
 
 <hr>
+
 
 >	vue_base_cdn(mixiu)
 
@@ -247,11 +248,17 @@
 
 <hr>
 
-> 	WEBBASIC(mixiu)
-
+>	WEBBASIC(mixiu)
 
 - 基础知识查漏补缺包含 HTML CSS JavaScript 移动端........
 
+<hr>
+
+> webpack4(mixiu)
+
+- webpack4打包工具的一些使用方法
+
+<hr>
 
 
 ###	X
