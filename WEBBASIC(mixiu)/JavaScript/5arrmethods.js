@@ -21,7 +21,7 @@ numbers.unshift(11);
 numbers.pop();
 // 从前面删除
 numbers.shift();
-//  删除多个
+//  删除多个,cong下标1开始删 删除3个
 numbers.splice(1, 3);
 // 反转
 numbers.reverse();
