@@ -1,5 +1,5 @@
 //存储模型
-const mongoose =require("mongoose");
+const mongoose =require("mongoose");s
 //实例化一个schema
 const Schema=mongoose.Schema;
 //create Schema
@@ -51,7 +51,7 @@ const ProfileSchema=new Schema({
 			//id会自动生成 不用写表样式
 			title:{
 				type:String,
-				require:true
+				require:true 
 			},
 			company:{
 				type:String,
