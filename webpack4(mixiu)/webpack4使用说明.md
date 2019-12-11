@@ -216,3 +216,53 @@ webpack-dev-server --config=config/webpack.dev.js
 npm install html-loader extract-loader file-loader
 ~~~
 
+将dist文件下的index.html移动到src下
+
+~~~js
+mv dist/index.html src/
+
+删除ming-bundle.js
+rm -rf dist/main-bundle.js
+~~~
+
+
+
+> ​	加载babel-core 
+
+~~~js
+npm install babel-core
+~~~
+
+在根路径下创建，.babelrc  文件  就是一个自动加载的文件
+
+~~~js
+{
+  "plugins": [
+    "transform-es2015-arrow-functions"
+  ]
+}
+~~~
+
+> ​	转换es6 为可读取的es5
+
+~~~
+npm install babel-plugin-transform-es2015-arrow-functions
+~~~
+
+使用babel的命令需要全局安装babel-cli
+
+~~~
+npm install -g babel-cli
+
+这样的就可以用
+babel src/main.js 转化es6的文件了
+~~~
+
+
+
+> ​	安转加载器 babel-loader
+
+~~~
+npm install babel-loader
+~~~
+
