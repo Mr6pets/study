@@ -92,6 +92,14 @@
 
 ###	G
 
+> ​	Gulp的基本操作
+
+- Gulp的基本操作 包含 task src dest watch 等..
+
+<hr>
+
+
+
 ###	H
 > HTML5详解
 

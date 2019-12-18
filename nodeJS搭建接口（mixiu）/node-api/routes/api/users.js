@@ -29,7 +29,7 @@ router.get("/test",(req,res)=>{
 //@desc 返回的请求的json数据
 //@access public
 router.post("/register",(req,res)=>{
-	console.log(11);
+	// console.log(11);
 	// console.log(req.body);
 	//注册validate验证 使用es6的解构得到validateRegisterInput这个函数的返回的值
 	const { errors,isValid } = validateRegisterInput(req.body);
