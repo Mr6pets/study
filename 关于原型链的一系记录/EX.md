@@ -17,3 +17,20 @@ console.dir(alvisliuan);
 对象的时候，通过__proto__添加方法
 ~~~
 
+![构造函数](/Users/liuan/Downloads/构造函数.png)
+
+图表说明：
+
+~~~js
+function User(){};
+let hd=new User();
+
+Object.protoype.show=function(){
+  console.log("Object add prototype");
+}
+图片左边：构造函数User 的父级有2个 hd是通过User构造函数出来的 他的父级别User的prototype
+如果在Object的原型上添加方法 其他的都是可以调用到的。
+~~~
+
+
+
