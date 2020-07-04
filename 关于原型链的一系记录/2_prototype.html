@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>关于原型的一些理解和记录</title>
+	<style type="text/css">
+		.main{
+			text-align: center;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">这是关于原型的一些记录和理解，具体请看script中记录</div>
+</body>
+	<script type="text/javascript">
+		//**********************给他的原型上添加方法***************************************
+		let alvis={
+			show:function(){
+				console.log("this a mark");
+			}
+		}
+		alvis.__proto__.render=function(){
+			console.log("i am is a add function")
+		}
+		alvis.render();
+
+		//**********************给他的原型上添加方法***************************************
+		function alvisliuan(){};
+		console.dir(alvisliuan);
+		//**********************关于其原型的使用***************************************
+		function User(){}
+		User.prototype.show=function(){
+			console.log("add prototype function");
+		};
+
+		let alvisan=new User();//初始化构造函数
+		 alvisan.show();
+
+		 console.log(User.prototype==alvisan.__proto__);
+
+	</script>
+</html>
+</html>
