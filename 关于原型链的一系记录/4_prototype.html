@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>关于原型的一些理解和记录</title>
+	<style type="text/css">
+		.main{
+			text-align: center;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">这是关于原型的一些记录和理解，具体请看script中记录</div>
+</body>
+	<script type="text/javascript">
+		//**********************给他的原型上添加方法***************************************
+		let alvis_arr=[];//new Array
+		console.log(alvis_arr.__prpto__ == Array.prototype);//false
+
+		let str="";//new String
+		console.log(str.__prpto__ ==String.prototype);
+
+		let bool=true;
+		console.log(bool.__prpto__ == Boolean.prototype);
+
+		let reg=/a/i;
+		console.log(reg.__prpto__ == RegExp.prototype);
+
+		let obj={};
+		console.log(obj.__prpto__ == Object.prototype);
+
+	</script>
+</html>
+</html>
