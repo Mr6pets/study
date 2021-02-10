@@ -1,0 +1,10 @@
+/* pages/about/about.wxss */
+swiper image{
+  width: 100%;
+}
+.box{
+  width: 200rpx;
+  height: 200rpx;
+  background-color: pink;
+  color: white;
+}

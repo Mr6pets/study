@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>empty</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>v-if</h1>
+    <button @click="error=!error">toggle</button>
+    <button @click="sucess=!sucess">toggle</button>
+    <!-- <p v-if="error">如果条件error为真 显示</p>
+    <p v-else-if="sucess">如果条件为suc为真 显示</p>
+    <p v-else>other</p> -->
+
+    <h1>v-show</h1>
+    <p v-show="error">1111111</p>
+    <p v-show="sucess">2222222</p>
+
+
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="8app_vif.js"></script>
+</body>
+
+</html>

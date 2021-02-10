@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>原型链1</title>
+	<style type="text/css">
+		.random{
+			width: 1200px;
+			height: auto;
+			border: 1px solid lightblue;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+<div class="random">
+	<h3>原型链说明</h3>
+	<p>
+	</p>
+</div>	
+</body>
+<script type="text/javascript">
+	// let arr=['alvis'];
+	// console.log(arr);
+
+	// let la={};
+	// let lw={};
+	// console.log(Object.getPrototypeOf(la)==Object.getPrototypeOf(lw));//拥有同一个父亲节点
+
+	let al= Object.create(null,{
+		name:{
+			value:"alvis"
+		}
+	});
+	console.log(al);//
+
+
+
+</script>
+</html>	

@@ -1,0 +1,13 @@
+/**index.wxss**/
+@import '../../templates/musicView/musicView.wxss'
+.header{
+  display: flex;
+  text-align: center;
+}
+.header>view{
+  flex: 1;
+}
+.header image{
+  width: 100%;
+  height: 340rpx;
+}

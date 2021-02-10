@@ -7,18 +7,16 @@
     <title>事件处理函数</title>
 </head>
 <body>
-    <div id="box">1111111111111111111</div>
+    <div id="box">1111</div>
     <div id="oo" onclick="console.log(this)"></div><!--this指的是 <div id="oo" onclick="console.log(this)"></div>-->
     <div id="oo" onclick="(function(){console.log(this)})()"></div><!--window-->
     <script>
         // 例子1
         // var box=document.getElementById('box');
         // box.onclick=function(){
-        //     console.log(this)//事件处理函数中this 该事件右谁触发 就是指的是谁 <div id="box">1111111111111111111</div>
+        //     console.log(this)//事件处理函数中this 该事件右谁触发 就是指的是谁 <div id="box">1111</div>
         // }
-
-        //例子2
-
+        
     </script>
 </body>
 </html>

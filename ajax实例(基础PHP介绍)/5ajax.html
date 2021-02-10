@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原生数据ajax请求</title>
+</head>
+<body> 
+    <button id="btn">按钮</button>
+    <script>
+        //入口函数
+        window.onload=function(){
+            //点击按钮
+            var btn=document.getElementById('btn');
+            btn.onclick=function(){
+                //1.请求数据
+                //创建一个XMLHttpRequest;
+                var xhr=new XMLHttpRequest();
+                // console.log('创建的状态码是多少:'+xhr.readyState);//创建的状态码是多少:0
+
+                //2.准备发送这个请求
+                // open('请求的方式get/post','请求的地址','是否是异步:true是异步请求数据 false同步请求数据');
+                xhr.open('get','arr.json',true);
+                // console.log('创建的状态码是多少:'+xhr.readyState);//创建的状态码是多少:1
+                //3.发送请求
+                //send();get请求下 send是不用带参数的 如果是post请求 那就需要带上参数；
+                xhr.send();
+
+                //4.成功后的回调函数
+                xhr.onreadystatechange=function(){
+                    // console.log('创建的状态码是多少:'+xhr.readyState);//2 3 4
+                    //状态码：0 是创建XHRHttpRequest对象 1准备发送数据 创建连接服务器 2：服务器接收请求返回响应的数据
+                    //3客户端接收数据 4 数据接收完成
+                    if(xhr.readyState==4){//请求的状态是完成的状态
+                        if(xhr.status==200){//http协议状态码 200成功 404错误
+                            console.log(xhr.responseText);
+                            //json格式
+                            console.log(JSON.parse(xhr.responseText));
+                        }
+                    }else{
+                        // console.log("请求失败");
+                    }
+                }
+                
+            };
+        }
+    </script>
+</body>
+</html>

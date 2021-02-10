@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax上传</title>
+	<script>
+		window.onload=function(){
+			var oBtn=document.getElementById('btn');
+			var oMyFile=document.getElementById('myFile');
+			oBtn.onclick=function(){
+				// alert(oMyFile.value)//获取到是file控件的value值，这个内容是显示给你看的文字，不是我们要获取的文件
+				// oMyFile.file控件中的文件列表对象
+				// 
+				// for(var attr in oMyFile.files[0]){
+				// 	console.log(attr+':'+oMyFile.files[0][attr])
+				// }
+				//通过ajax将oMyFile.files[0]数据发送给后端
+				//
+				var xhr = new XMLHttpRequest();
+				// xhr.onreadystatechange=function(){
+				// 	if(xhr.readyState==4){
+				// 		if(xhr.status==200){
+				// 			alert(xhr.responseText);
+				// 		}
+				// 	}
+				// }
+				xhr.onload=function(){
+					// var d=JSON.parse(this.responseText);
+					// console.log(d.msg+':'+d.url);
+				}
+
+				var oUpload=xhr.upload;
+				// alert(oUpload);
+				oUpload.onprogress=function(ev){
+					console.log(ev.total+':'+ev.loaded);
+				}
+				xhr.open('post','post_file.php',true);//异步
+				xhr.setRequestHeader('X-Request-With', 'XMLHttpRequest')
+				var oFormData=new FormData();//通过这个对象构建2进制表单数据
+				oFormData.append('file',oMyFile.files[0]);
+				// xhr.send('file='+oMyFile.files[0]);
+				xhr.send(oFormData);
+
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="file" id="myFile"/>
+	<input type="button" id="btn" value="上传">
+</body>
+</html>

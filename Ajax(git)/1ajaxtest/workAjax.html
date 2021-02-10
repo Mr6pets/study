@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>请求一个动态文件</title>
+	<script>
+		
+		// post
+		// post数据提交 是放在send中的
+		// post提交前要设置请求头
+		// post是不用考虑缓存问题的
+		// post 发送汉字不用编码
+		window.onload=function(){
+			var oBtn=document.getElementById('btn');
+			oBtn.onclick=function(){
+				var xhr=null;
+				try {
+					xhr=new XMLHttpRequest();
+				} catch(e) {//ie下
+					xhr=new ActiveXObject('Microsoft.XMLHTTP');
+				};
+				xhr.open('post','workAjax_post.php',true)
+				// post数据提交 是放在send中的
+				// 
+				xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded')//申明发送数据类型
+				xhr.send('username=leo&age=30');
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4){
+						if(xhr.status==200){
+							alert(xhr.responseText);
+						}else{
+							alert('出错le,err'+xhr.status)
+						}
+					}
+				}
+			};	
+		};	
+	</script>
+</head>
+<body>
+	<input type="button" value="按钮" id="btn">
+</body>
+</html>

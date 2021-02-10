@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transform</title>
+    <style>
+        #box{
+          width: 100px;
+          height: 100px;
+          border: 1px solid #000;
+          padding: 100px;  
+        }
+        #div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            transition: .5s;
+            /* 移动的中心点设置 */
+            transform-origin: center center;
+            -webkit-transform-origin: center center
+        }
+    </style>
+    <script>
+        document.addEventListener('touchstart',function(ev){
+            ev.preventDefault();
+        })
+        /*
+            rotate：
+                旋转:deg:rotate(90deg)；
+                斜切：skew
+                    skewX:skew(40deg)
+                    skewY:skewY(40deg)
+                    skew(-40deg,-40deg)
+
+                缩放：scale：scale(2);
+                    scaleX:
+                    scaleY:
+                    scale(0.1,2)
+                位移：translate 
+                    translate(100px,100px)
+
+        */
+        window.onload=function(){
+          var div=document.getElementById('div');  
+          div.addEventListener('touchend',function(){
+              div.style.WebkitTransform=div.style.transform='rotate(90deg)';
+          })
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <div id="div"></div>
+    </div>
+</body>
+</html>

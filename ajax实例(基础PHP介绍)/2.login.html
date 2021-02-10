@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <form action="">
+        用户：<input type="text" class="name" placeholder="请输入用户名"><br>
+        密码：<input type="text" class="password" placeholder="请输入密码"><br>
+        <button class="btn" type="button">登录</button>
+    </form>
+    <script>
+        $(function(){
+            //get btn
+            $('.btn').click(function(){
+                //get elem
+                var name=$('.name').val();
+                var password=$('.password').val();
+                alert(name);
+                // ajax请求数据 比较登录 账号密码正确
+                $.ajax({
+                    type:'post',
+                    url:'login.php',
+                    data:{
+                        //账号密码 发送到PHP key:value key是PHP接收的变量 value 是用户输入的账号密码
+                        uname:name,
+                        upsd:password
+                    },
+                    success:function(data){
+                        console.log(data);
+                    }
+                })
+
+            })
+        })
+    </script>
+    
+</body>
+</html>

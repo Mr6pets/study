@@ -8,41 +8,41 @@
 </head>
 <body>
     <script>
-        // var a=1;
-        // var obj={
-        //     a:2,
-        //     fn1:function(){
-        //         console.log(this.a);
-        //     }
-        // }  
-        // obj.fn1()//2
-        // obj.fn1.bind({a:"momo"})()//momo
+        var a=1;
+        var obj={
+            a:2,
+            fn1:function(){
+                console.log(this.a);
+            }
+        }  
+        obj.fn1()//2
+        obj.fn1.bind({a:"pets"})()//pets
 
         //=====================================
-        // var obj={
-        //     a:1
-        // }
-        // var fn=function(){
-        //     console.log(this.a);
-        // }
-        // obj.fn=fn;
-        // obj.fn();//1
+        var obj={
+            a:1
+        }
+        var fn=function(){
+            console.log(this.a);
+        }
+        obj.fn=fn;
+        obj.fn();//1
         //============================================
-        // var obj={
-        //     a:1
-        // }
-        // var fn=function(){
-        //     console.log(this.a);
-        // }
-        // obj.fn=fn;
+        var obj={
+            a:1
+        }
+        var fn=function(){
+            console.log(this.a);
+        }
+        obj.fn=fn;
 
-        // var fn1=()=>{
-        //     console.log(this.a);
-        // }
-        // obj.fn1=fn1;
+        var fn1=()=>{
+            console.log(this.a);
+        }
+        obj.fn1=fn1;
 
-        // obj.fn()//1
-        // obj.fn1();//window
+        obj.fn()//1
+        obj.fn1();//window
         //=========================================
             var a=1;
             var obj={

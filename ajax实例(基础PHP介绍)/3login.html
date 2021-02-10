@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>login登录</title>
+	<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+</head>
+<body>
+	<form action="">
+		用户：<input type="text" class="name"><br>
+		密码：<input type="text" class="password"><br>
+		<button class="btn" type="button">登录</button>
+	</form>
+	<script>
+		$(function(){
+			$('.btn').click(function(){
+				var name=$('.name').val();
+				var password=$('.password').val();
+				//ajax请求数据 比较登录 账号密码正确
+				$.ajax({
+					type:'post',
+					url:'login.php',
+					data:{
+						uname:name,
+						upsd:password
+					},
+					success:function(data){
+						console.log(data);
+					}
+				})
+			});	
+		});
+	</script>
+</body>
+</html>

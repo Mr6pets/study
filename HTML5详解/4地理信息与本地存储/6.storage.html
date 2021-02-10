@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>storage共享页面的同步改动</title>
+    <script>
+        /*
+            共享页面改动的同步
+        */
+        window.onload=function(){
+            var oCheck=document.querySelectorAll('input');
+            for(var i=0;i<oCheck.length;i++){//遍历所有的单选框添加事件
+                oCheck[i].onclick=function(){
+                    if(this.checked){//如果是当前是选中状态，那么localstorage中存储键名为sel的选中的value值
+                        window.localStorage.setItem('sel',this.value);
+                    }else{//如果是当前是不是选中状态，那么localstorage中存储键名为onSel的选中的value值
+                        window.localStorage.setItem('onSel',this.value);
+                    }
+                }
+            }
+            window.addEventListener('storage',function(ev){////这里的storage事件是在原来的页面修改后   在新的共享页面触发
+                var ev=ev||window.event;
+                if(ev.key=='sel'){//改动的键是选中的
+                    for(var i=0;i<oCheck.length;i++){//遍历下所有的单选框，如果新的值和原先的value值是一样的那就让这个的checked为true;
+                        if(ev.newValue==oCheck[i].value){
+                            oCheck[i].checked=true;
+                        }
+                    }
+                }else if(ev.key=='onSel'){
+                    for(var i=0;i<oCheck.length;i++){
+                        if(ev.newValue==oCheck[i].value){
+                            oCheck[i].checked=false;
+                        }
+                    }
+                }
+            },false)
+        }
+    </script>
+</head>
+<body>
+    <input type="checkbox" value="水果1">水果1<br/>
+    <input type="checkbox" value="水果2">水果2<br/>
+    <input type="checkbox" value="水果3">水果3<br/>
+    <input type="checkbox" value="水果4">水果4
+</body>
+</html>

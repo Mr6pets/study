@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象引用</title>
+</head>
+<body>
+    <script>
+        /*
+            对象引用 深拷贝 浅拷贝
+        */
+        //====================这里是赋值操作，这里是b的改变不会影响到a的值
+        // var a=5;
+        // var b=a;
+        // b+=3;
+        // alert(b)//8
+        // alert(a)//5
+
+
+
+        //对象和函数都有引用的关系
+        var a=[1,2,3];
+        var b=a;
+        b.push(4);
+        alert(b)//[1,2,3,4]
+        alert(a)//[1,2,3,4]
+        
+        var a=[1,2,3];
+        var b=a;
+        b=[1,2,3,4]
+        alert(b)//[1,2,3,4]
+        alert(a)//[1,2,3]
+    </script>
+</body>
+</html>

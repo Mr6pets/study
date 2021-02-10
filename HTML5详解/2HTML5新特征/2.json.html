@@ -11,12 +11,12 @@
     </script>
 </head>
 <body>
-    <script>
+    <script> 
         /*
             JSON的新方法：
             parse():把字符串转成json
                 -字符串中的属性要严格加上引号
-            stringify():吧json转化成字符串
+            stringify():把json转化成字符串
                 -会自动的把双引号加上
             新方法和eval的区别：
                 深度克隆新对象
@@ -31,7 +31,7 @@
     //    alert(str)//{"name":"hello"}
 
     // 对象引用
-    // 例子1
+    // 例子1//这个例子中就是引用赋值在一个引用线上 所以改变后a的值也会变化
     // var a={
     //     name:"hello"
     // }
@@ -39,7 +39,7 @@
     // b.name="hi";
     // alert(a.name)//hi 改变了原先的a对象中的值
 
-    // 例子二
+    // 例子二//这里相当于一个浅拷贝
     // var a={
     //     name:"hello"
     // };

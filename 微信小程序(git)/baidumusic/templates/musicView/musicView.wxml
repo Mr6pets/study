@@ -1,0 +1,8 @@
+<template name="musicView">
+  <view class="musicView">
+    <view wx:for="{{temp.pic_big}}" wx:key='index'>
+      <image src="{{item}}"></image>
+    </view>
+  </view>
+  <view class="musicView_name">{{temp.name}}</view>
+</template>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数声明很函数表达式</title>
+</head>
+<body>
+    <script>
+        // var a=function aaa(){
+        //     alert(1);
+        //     alert(typeof aaa)//function
+        // }
+        // // a()//1
+        // aaa()//firefox 报错，ff下是无法找到的， ie下是可以弹出1的
+
+        // 面试题
+        // (function aaa(){alert(1)})
+        // aaa()//firefox 报错 
+
+        // function aaa(){
+        //     return bbb();
+        // }
+        // function bbb(){
+        //     debugger
+        // }
+        // aaa();   //先执行了aaa() 之后执行了 bbb();
+
+
+        function aaa(){
+            return bbb();
+        }
+        var bbb=(function bbb(){
+            return function(){
+                debugger
+            }
+        })();
+        aaa(); //?.......
+
+    </script>
+</body>
+</html>

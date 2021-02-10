@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<!-- 引入模板 -->
+<import src='../../templates/newsList/newsList.wxml' />
+<view class="nav">
+  <scroll-view scroll-x="true" style="height: 300rpx;" >
+    <view data-val="yaowen" bindtap="change" class="{{selected=='yaowen'?'active':''}}">要闻</view>
+    <view data-val="suzhou" bindtap="change" class="{{selected=='suzhou'?'active':''}}">苏州</view>
+    <view data-val="guonei" bindtap="change" class="{{selected=='guonei'?'active':''}}">国内</view>
+    <view data-val="guoji" bindtap="change" class="{{selected=='guoji'?'active':''}}">国际</view>
+    <view data-val="dujia" bindtap="change" class="{{selected=='dujia'?'active':''}}">独家</view>
+    <view data-val="junshi" bindtap="change" class="{{selected=='junshi'?'active':''}}">军事</view>
+    <view data-val="tiyu" bindtap="change" class="{{selected=='tiyu'?'active':''}}">体育</view>
+    <view data-val="caijin" bindtap="change" class="{{selected=='caijin'?'active':''}}">财经</view>
+    <view data-val="keji" bindtap="change" class="{{selected=='keji'?'active':''}}">科技</view>
+  </scroll-view>
+</view>
+<!-- 轮播图 -->
+<view class="banner">
+  <swiper indicator-dots="{{true}}">
+  <!-- 获取data中返回的轮播数据 -->
+  <block>
+    <swiper-item wx:for="{{swiperData}}" wx:key="index">
+      <image src="{{item.imgUrl}}"></image>
+      <text>{{item.title}}</text>
+    </swiper-item>
+  </block>
+    
+  </swiper>
+</view>
+<!-- 新闻内容 -->
+<!-- 使用模板 -->
+<view class="news">
+  <block wx:for="{{newslist}}" wx:key="index">
+    <view bindtap="">
+      <template is="newsList" data="{{item}}"></template>
+    </view>
+  </block>
+</view>
+
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>module</title>
+    <script src="./sea.js"></script>
+</head>
+<body>
+    <script>
+        //接收2个参数：第一个参数：模块的地址 第二个是加载好的回调函数
+        //sea的默认根目录：sea.js这个文件
+        seajs.use('./2.module1.js',function(ex){
+            ex.show()
+        });
+        seajs.use('./2.module2.js',function(ex){
+            ex.show()
+        });
+        function show(){
+            alert("我是主页的中的函数")
+        }
+        show();
+    </script>
+</body>
+</html>

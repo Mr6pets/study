@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1.iframe</title>
+	<script>
+		/*
+		postMessage：可以通过这个对象下的一些方法给另外一个窗口发送消息
+		接收消息的窗口window对象.postMessage（）
+
+		 */
+		window.onload=function(){
+			var oBtn=document.getElementById('btn');
+			var oMyIframe=document.getElementById('myframe');
+			oBtn.onclick=function(){
+				//当本页面和被包含的页面不在同一个域名下，这样的操作就会有跨域操作的安全限制问题
+				// oMyIframe.contentWindow.document.body.style.background = 'red';
+				oMyIframe.contentWindow.postMessage('1','http://www.b.com');
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="点击改变www.b.com下的3.postMessage中背景色为红色">
+	<iframe id="myframe" src="http://www.b.com/3.postMessage.html"></iframe>
+</body>
+</html>

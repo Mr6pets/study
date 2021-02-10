@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<!-- baner -->
+<view class="banner_pic"></view>
+<!-- 内容区域 -->
+<view class="warpper">
+  <!-- 个人中心 -->
+  <view class="f1">
+    <navigator url="../user/user">个人中心</navigator>
+  </view>
+  <!-- 模拟考试 -->
+  <view class="f2">
+    <navigator url="../moni/moni">模拟考试</navigator>
+  </view>
+
+</view>
+

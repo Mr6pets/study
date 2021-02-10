@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>回调函数的理解</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function login(callback){//this method login plant 这里的callback其实就是代表的传入的check方法
+			var user={
+				name:"liu",
+				password:123
+			}
+			callback(user);//这里的callback其实就是传入进来的check方法，然后将用来做验证的参数带给 check去做其他的验证方法 例如在数据库中找是够有这个登录的用户
+
+		}
+
+		function check(u){//this method check user input value 
+			//	这里的u就是user对象传递了进来；
+		}
+
+		login(check);//用户点击登陆按钮 传入check方法
+	</script>
+</body>
+</html>

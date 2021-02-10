@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax跨域</title>
+	<script>
+		window.onload=function(){
+			/*
+			
+			在标准浏览器下，XMLhttpRequest对象已经升级到最新版本 支持更多的特性 可以跨域了
+			但是需要实现跨域请求还是需要后端的配合:header('Access-Control-Allow-Origin:http://www.a.com');
+
+			XMLhttpRequest:增加了很多功能 它自身也不推荐使用onreadystatechange这个事件来监听，
+			推荐使用 onload来监听
+
+			IE下如果想要实现跨域请求 需要使用另外一个对象去实现 XDomainRequest()
+
+			 */
+			var btn=document.getElementById('btn');
+			btn.onclick=function(){
+				// 标准下的跨域和同域的请求
+				// var xhr=new XMLHttpRequest();
+				// xhr.onreadystatechange=function(){
+				// 	if(xhr.readyState==4){
+				// 		if(xhr.status==200){
+				// 			alert(xhr.responseText);
+				// 		}
+				// 	}
+				// }
+				// xhr.open('get','http://www.b.com/7b.ajax.php',true)//异步
+				// xhr.send();
+
+				// IE下如果想要实现跨域请求
+				
+				var xDomainRequest=new XDomainRequest();
+				xDomainRequest.onload=function(){
+					alert(this.responseText)
+				}
+				xDomainRequest.open('get','http://www.b.com/7b.ajax.php',true)//异步
+				xDomainRequest.send();
+			}
+			
+
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="获取同域下的内容" id="btn">
+</body>
+</html>

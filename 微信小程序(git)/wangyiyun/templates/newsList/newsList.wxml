@@ -1,0 +1,9 @@
+<!-- 定义模板 -->
+<template name="newsList">
+  <view class="newslist">
+    <view class="text">{{item.content}}</view>
+    <view class="pic">
+      <image src="{{item.imgUrl}}"></image>
+    </view>
+  </view>
+</template>

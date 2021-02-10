@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>bootstrap</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<style type="text/css">
+		.own button{width: 100px;height: 50px; border: none; background: #f6f8f8}
+		.own .dropdown-menu{
+			animation:0.2s linear fadeIn;
+		}
+		@keyframes fadeIn{
+			0%{
+				opacity: 0;
+				transform: translateY(-20px);
+			}
+			100%{
+				opacity: 1;
+				transform: translateY(0px);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="dropdown own">
+				  <button class="btn btn-default dropdown-toggle" type="button" >
+				    Dropdown
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" >
+				    <li><a href="#">Action</a></li>
+				    <li><a href="#">Another action</a></li>
+				    <li><a href="#">Something else here</a></li>
+				    <li><a href="#">Separated link</a></li>
+				  </ul>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="dropdown own">
+				  <button class="btn btn-default dropdown-toggle" type="button" >
+				    Dropdown
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" >
+				    <li><a href="#">Action</a></li>
+				    <li><a href="#">Another action</a></li>
+				    <li><a href="#">Something else here</a></li>
+				    <li><a href="#">Separated link</a></li>
+				  </ul>
+				</div>
+			</div>
+			<div class="col-lg-3"></div>
+		</div>
+		
+	</div>
+	 <script src="https://www.jq22.com/jquery/jquery-1.9.1.js"></script>
+	 <script src="../js/bootstrap.js"></script>
+	 <script>
+	 	//了解jQuery的插件的使用
+	 	
+	 	// $('.dropdown-toggle').dropdown();
+	 	// $('.dropdown-toggle').dropdown('toggle');
+	 	$(".dropdown").on('show.bs.dropdown',function(){
+	 		alert('11')
+	 	})
+
+	 	//配置 方法 自定义事件
+	 </script>
+</body>
+</html>

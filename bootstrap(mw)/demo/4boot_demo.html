@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>bootstrap</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<style type="text/css">
+		.own button{width: 100px;height: 50px; border: none; background: #f6f8f8}
+		.own .dropdown-menu{
+			animation:0.2s linear fadeIn;
+		}
+		@keyframes fadeIn{
+			0%{
+				opacity: 0;
+				transform: translateY(-20px);
+			}
+			100%{
+				opacity: 1;
+				transform: translateY(0px);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="dropdown own">
+		  <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown">
+		    Dropdown
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" >
+		    <li><a href="#">Action</a></li>
+		    <li><a href="#">Another action</a></li>
+		    <li><a href="#">Something else here</a></li>
+		    <li><a href="#">Separated link</a></li>
+		  </ul>
+		</div>
+	</div>
+	 <script src="https://www.jq22.com/jquery/jquery-1.9.1.js"></script>
+	 <script src="../js/bootstrap.js"></script>
+	 <script>
+	 	if(window.navigator.userAgent.toLowerCase().indexOf('mobile')==-1){//pc
+	 		// $('.dropdown-toggle').on('mouseover',function(){
+	 		// 	alert(1);
+	 		// })
+	 		var timer=null;
+	 		$('.dropdown-toggle').hover(function(){
+	 			$('.dropdown').addClass('open')
+	 		},function(){
+	 			timer=setTimeout(function(){$('.dropdown').removeClass('open')},1000)
+	 		})
+	 		$('.dropdown-menu').hover(function(){
+	 			clearTimeout(timer)
+	 		},function(){
+	 			timer=setTimeout(function(){$('.dropdown').removeClass('open')},100)
+	 		})
+	 	}
+	 </script>
+</body>
+</html>

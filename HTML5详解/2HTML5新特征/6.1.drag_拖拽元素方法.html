@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+    <style>
+        ul li{
+            list-style: none;
+            width: 100px;
+            height: 30px;
+            background: yellow;
+            margin: 10px;
+        }
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 30%;
+            top: 40%;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var aLi=document.getElementsByTagName('li');
+            var i=0;
+            for (let i = 0; i < aLi.length; i++) {
+                aLi[i].ondragstart=function(){//dragstart拖拽的一瞬间就是触发了
+                    this.style.background='green';
+                }
+                aLi[i].ondrag=function(){//drag拖拽的时候回一直触发
+                    document.title=i++;
+                }
+                aLi[i].ondragend=function(){//dragsend拖拽的结束瞬间就是触发了
+                    this.style.background='yellow';
+                }
+
+                
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li draggable="true">a</li>
+        <li draggable="true">b</li>
+        <li draggable="true">c</li>
+    </ul>
+    <div id="div1"></div>
+</body>
+</html>

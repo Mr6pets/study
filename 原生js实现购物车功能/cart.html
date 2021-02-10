@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/cart.css"/>
+	</head>
+	<body>
+		<div id="main" class="hander-car">
+			<div class="store-content">
+				<div class="cart-box">
+					<div class="title">
+						<h2>购物清单</h2>
+					</div>
+					<div class="cart-inner">
+						<div>
+							<div class="cart-table-title">
+								<span class="name">商品信息</span>
+								<span class="operation">操作</span>
+								<span class="subtotal">小计</span>
+								<span class="num">数量</span>
+								<span class="price">单价</span>
+							</div>
+							<div class="cart-table">
+								<div class="cart-group">
+									<!--购物列表-->
+									<div class="cart-top-items">
+										<div class="cart-items">
+											<div class="items-choose">
+												<!-- 勾选商品  选中：checkbox-on -->
+												<span class="blue-checkbox-new"><a></a></span>
+											</div>
+											<div class="items-thumb">
+												<img src="./img/goods/s1.jpg">
+												<a href="javascript:;" target="_blank"></a>
+											</div>
+											<div class="name hide-row" >
+												<div class="name-table">
+													<a href="javascript:;" target="_blank">坚果 Pro 钢化玻璃手感膜 无孔 （后壳用）</a>
+													<ul class="attribute">
+														<li>透明</li>
+													</ul>
+												</div>
+											</div>
+											<div class="operation">
+											</div>
+											<!-- 小计 -->
+											<div class="subtotal">¥ 49.00</div>
+											<!-- 件数的操作 -->
+											<div class="item-cols-num">
+												<div class="select js-select-quantity">
+													<span class="down down-disabled">-</span>
+													<span class="num">
+														<input type="text" value="1" style="display: inline-block;">
+													</span>
+													<span class="up">+</span>
+
+												</div>
+											</div>
+											<!-- 单价 -->
+											<div class="price">¥ 100.00</div>
+										</div>
+									</div>
+									<div class="cart-top-items">
+										<div class="cart-items">
+											<div class="items-choose">
+												<span class="blue-checkbox-new"><a></a></span>
+											</div>
+											<div class="items-thumb">
+												<img src="./img/goods/s1.jpg">
+												<a href="javascript:;" target="_blank"></a>
+											</div>
+											<div class="name hide-row" >
+												<div class="name-table">
+													<a href="javascript:;" target="_blank">坚果 Pro 钢化玻璃手感膜 无孔 （后壳用）</a>
+													<ul class="attribute">
+														<li>透明</li>
+													</ul>
+												</div>
+											</div>
+											<div class="operation">
+											</div>
+											<div class="subtotal">¥ 49.00</div>
+											<div class="item-cols-num">
+												<div class="select js-select-quantity">
+													<span class="down down-disabled">-</span>
+													<span class="num">
+														<input type="text" value="1" style="display: inline-block;">
+													</span>
+													<span class="up">+</span>
+
+												</div>
+											</div>
+											<div class="price">¥ 200.00</div>
+										</div>
+									</div>
+									<div class="cart-top-items">
+										<div class="cart-items">
+											<div class="items-choose">
+												<span class="blue-checkbox-new"><a></a></span>
+											</div>
+											<div class="items-thumb">
+												<img src="./img/goods/s1.jpg">
+												<a href="javascript:;" target="_blank"></a>
+											</div>
+											<div class="name hide-row" >
+												<div class="name-table">
+													<a href="javascript:;" target="_blank">坚果 Pro 钢化玻璃手感膜 无孔 （后壳用）</a>
+													<ul class="attribute">
+														<li>透明</li>
+													</ul>
+												</div>
+											</div>
+											<div class="operation">
+											</div>
+											<div class="subtotal">¥ 49.00</div>
+											<div class="item-cols-num">
+												<div class="select js-select-quantity">
+													<span class="down down-disabled">-</span>
+													<span class="num">
+														<input type="text" value="4" style="display: inline-block;">
+													</span>
+													<span class="up">+</span>
+
+												</div>
+											</div>
+											<div class="price">¥ 49.00</div>
+										</div>
+									</div>
+									<div class="cart-top-items">
+										<div class="cart-items">
+											<div class="items-choose">
+												<span class="blue-checkbox-new"><a></a></span>
+											</div>
+											<div class="items-thumb">
+												<img src="./img/goods/s1.jpg">
+												<a href="javascript:;" target="_blank"></a>
+											</div>
+											<div class="name hide-row" >
+												<div class="name-table">
+													<a href="javascript:;" target="_blank">坚果 Pro 钢化玻璃手感膜 无孔 （后壳用）</a>
+													<ul class="attribute">
+														<li>透明</li>
+													</ul>
+												</div>
+											</div>
+											<div class="operation">
+											</div>
+											<div class="subtotal">¥ 49.00</div>
+											<div class="item-cols-num">
+												<div class="select js-select-quantity">
+													<span class="down down-disabled">-</span>
+													<span class="num">
+														<input type="text" value="2" style="display: inline-block;">
+													</span>
+													<span class="up">+</span>
+
+												</div>
+											</div>
+											<div class="price">¥ 58.00</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cart-bottom-bg fix-bottom">
+						<div class="cart-bar-operation">
+							<div>
+								<div class="choose-all js-choose-all">
+									<span class="blue-checkbox-new"><a></a></span>
+									全选
+								</div>
+								<!-- <div class="delete-choose-goods">删除选中的商品</div> -->
+							</div>
+						</div>
+						<div class="shipping">
+							<div class="shipping-box">
+								<div class="shipping-total shipping-num">
+									<h4 class="">
+										已选择 <i>0</i> 件商品
+									</h4>
+									<h5>
+										共计 <i >3</i> 件商品
+									</h5>
+								</div>
+								<div class="shipping-total shipping-price">
+									<h4 class="">
+										应付总额：<span>￥</span><i class="moneyall">0</i>
+									</h4>
+									<h5 class="shipping-tips">
+										应付总额不含运费
+									</h5>
+
+								</div>
+							</div>
+							<span class="jianguo-blue-main-btn big-main-btn js-checkout disabled-btn"><a>现在结算</a></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			/*普通版本制作*/
+			/*
+				列表
+					- 勾选商品
+					- 数量
+					- 小计
+				统计
+					- 全选
+					- 已勾选商品件数
+					- 总计商品件数
+					- 总额计算
+					- 现在结算的点击
+			*/
+			var  blueCheckboxes=document.querySelectorAll('.cart-items .blue-checkbox-new');
+			var ups=document.querySelectorAll('.up');
+			var inputNum=document.querySelectorAll('.num input');
+			var downs=document.querySelectorAll('.down');
+			var prices=document.querySelectorAll('.cart-top-items .price');
+			var subtotal=document.querySelectorAll('.cart-items .subtotal');
+			var chooseAll=document.querySelector('.choose-all .blue-checkbox-new');
+			var nowBuy=document.querySelector('.jianguo-blue-main-btn');
+			var totalNum=document.querySelector('.shipping-total h5 i');
+			var checkedNum=document.querySelector('.shipping-total h4 i');
+			var moneyall=document.querySelector('.moneyall')
+
+			var alltrue=false;
+			getTotalNum();
+			for(var i=0;i<blueCheckboxes.length;i++){
+				blueCheckboxes[i].ischecked=false;
+				// 商品单选
+				blueCheckboxes[i].onclick=function(){
+					// if(this.ischecked){
+					// 	this.classList.add('checkbox-on')
+					// }else{
+					// 	this.classList.remove('checkbox-on')
+					// }
+
+					// this.ischecked ? this.classList.add('checkbox-on') : this.classList.remove('checkbox-on');
+					this.classList[this.ischecked?'remove':'add']('checkbox-on');
+					this.ischecked=!this.ischecked;
+					setAllChecked();
+					setClass();
+					getCheckNum();
+				}
+				//数量的加加
+				ups[i].index=i;
+				downs[i].index=i;
+				ups[i].onclick=function(){
+					var value=inputNum[this.index].value;
+					var num=Math.min(10,Number(value)+1);//在给定的这些数值中取最小的值，这里的意思就是 取小于等于10的值；
+					num==10&&this.classList.add('up-disabled');//左边为真返回右侧，这里的意思是 当value的值为10 的时候 给当前加上一个classname为up-disabled的类名
+
+					// value++;
+					// if(value>10){
+					// 	value=10;
+					// }
+					// if(value==10){
+					// 	this.classList.add('up-disabled');
+					// }
+					inputNum[this.index].value=num;
+					downs[this.index].classList.remove('down-disabled');
+					subtotal[this.index].innerHTML='￥'+ getPrice(prices[this.index].innerHTML,inputNum[this.index].value).toFixed(2);
+					getTotalNum();
+					getCheckNum();
+				}
+				//数量的减减
+				downs[i].onclick=function(){
+					var value=inputNum[this.index].value;
+					var num=Math.max(1,Number(value)-1);
+					num==1&&this.classList.add('down-disabled');
+					inputNum[this.index].value=num;
+					ups[this.index].classList.remove('up-disabled');
+					subtotal[this.index].innerHTML='￥'+ getPrice(prices[this.index].innerHTML,inputNum[this.index].value).toFixed(2);
+					getTotalNum();
+					getCheckNum();
+				}
+				//初始化判断加减是否可用
+				// if(inputNum[i].value==1){
+				// 	downs[i].classList.add('down-disabled');
+				// }else{
+				// 	downs[i].classList.remove('down-disabled');
+				// }
+				downs[i].classList[inputNum[i].value==1?'add':'remove']('down-disabled');
+				ups[i].classList[inputNum[i].value==10?'add':'remove']('up-disabled');
+
+				//初始化小计
+				subtotal[i].innerHTML='￥'+ getPrice(prices[i].innerHTML,inputNum[i].value);
+				// var totalMoney=0;
+				// totalMoney=prices[i].innerHTML.slice(1)*inputNum[i].value;
+				// subtotal[i].innerHTML='￥'+totalMoney.toFixed(2);
+			}
+			//点击全选状态
+			chooseAll.onclick=function(){
+				this.classList[alltrue?'remove':'add']('checkbox-on');
+                blueCheckboxes.forEach(item =>{
+                    item.classList[!alltrue?'add':'remove']('checkbox-on')
+                    item.ischecked = !alltrue;
+				})
+				alltrue = !alltrue;
+				setClass()
+				getCheckNum();
+			}
+			//每个价格后小计
+			function getPrice(str,num){
+				var totalMoney=0;
+				str=str.slice(1).trim();
+				totalMoney=parseFloat(str)*num;
+				return Number(totalMoney.toFixed(2));
+			}
+			//是够是全选状态
+			function setAllChecked(){
+				var isAllChecked=[...blueCheckboxes].every(item=>item.ischecked);
+				allTrue = isAllChecked;
+				chooseAll.classList[isAllChecked?'add':'remove']('checkbox-on')
+			}
+			
+			//获取总计件数
+			function getTotalNum(){
+				var TotalNums=0;
+				TotalNums=[...inputNum].reduce((a,b)=>{
+					b=Number(b.value);
+					return a+b;
+				},0)
+				totalNum.innerHTML=TotalNums;
+			}
+			//结算按钮的显示
+			function setClass() { 
+				var isAllChecked=[...blueCheckboxes].some(item=>item.ischecked);
+				nowBuy.classList[isAllChecked?'remove':'add']('disabled-btn');
+			}
+			//选中的数量和价格
+			function getCheckNum(){
+				var checknum=0;
+				var moneyA=0;
+				blueCheckboxes.forEach((item,index)=>{
+					if(item.ischecked){
+						checknum += Number(inputNum[index].value);
+						moneyA+=getPrice(prices[index].innerHTML,inputNum[index].value);
+					}
+					checkedNum.innerHTML=checknum;
+					moneyall.innerHTML=moneyA;
+				})
+			}
+			/**
+				选中: checkbox-on
+				结算按钮样式: disabled-btn
+				加减按钮禁用：down-disabled
+			*/
+		</script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包</title>
+    <script>
+        //IE下会引发内存泄漏
+
+        //内存泄漏的条件是：一个dom节点或者是数组对象，这个节点或者对象的一个方法中又引入了外部的变量 这样就会存在内存泄漏的问题
+
+
+        // window.onload=function(){
+        //     var oDiv=document.getElementById('div1');
+        //     oDiv.onclick=function(){
+        //         alert(oDiv.id);
+        //     }
+        //     // 解决内存泄漏的方法
+        //     window.onunload=function(){
+        //         oDiv.onclick=null;
+        //     }
+        // }
+
+
+        window.onload=function(){
+            var oDiv=document.getElementById('div1');
+            var id = oDiv.id;
+            oDiv.onclick=function(){
+                alert(id);
+            }
+            oDiv=null;
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">aaaa</div>
+</body>
+</html>

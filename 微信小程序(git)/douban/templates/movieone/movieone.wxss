@@ -1,0 +1,25 @@
+.movieone{
+  width: 210rpx;
+  height: 380rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+}
+.movieone image{
+  width: 100%;
+  height: 280rpx;
+}
+.author{
+  font-size: 30rpx;
+  width: 210rpx;
+  /* 文字超出点点点 */
+  overflow: hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.star{
+  font-size: 26rpx;
+}
+.star image{
+  width: 30rpx;
+  height: 30rpx;
+}

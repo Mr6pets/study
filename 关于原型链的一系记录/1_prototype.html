@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>关于原型的一些理解和记录</title>
+	<style type="text/css">
+		.main{
+			text-align: center;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">这是关于原型的一些记录和理解，具体请看script中记录</div>
+</body>
+	<script type="text/javascript">
+		//**********************数组的原型链有三级***************************************
+		let arr=['alvisliu'];
+		console.log(arr.concat("liuan"));
+		//***************************************对象的原型链有两级***************************************
+		var la={};
+		console.log("获取la的原型",Object.getPrototypeOf(la));
+		let zjx={};
+		console.log(zjx);
+		//通过getPrototypeOf获取其原型
+		//通过Object.getPrototypeOf(la)==Object.getPrototypeOf(zjx)，可以判断这2个对象是一个父亲
+		//***************************************没有原型的情况***************************************
+		let lw={name:"刘伟"};
+		console.log(lw.hasOwnProperty("name"));//这里是采用其父亲的属性来判断是否这个对象中有name这个属性，这里的判断为true
+		// Object.create(参数1，参数2);参数1代表的是指定其父亲或者原型，参数2 代表是其属性
+		//这里就是完全的数据字面量对象，或者叫做完全的字典对象
+		let alvis=Object.create(null,{
+			name:{
+				value:"alvisliu"
+			}
+		});
+		console.log(alvis);
+	</script>
+</html>
+</html>

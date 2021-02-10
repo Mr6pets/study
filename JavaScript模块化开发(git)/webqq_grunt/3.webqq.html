@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>webqq的一些测试</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            display: none;
+        }
+        #div2{
+            width: 30px;
+            height: 30px;
+            background-color: yellow;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        #div3{
+            width: 100px; 
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    </style>
+    <script src="./sea.js"></script>
+    <script>
+        seajs.use('./3.main.js')
+    </script>
+</head>
+<body>
+    <input type="button" value="弹框" id="input1">
+    <div id="div1">
+        <div id="div2"></div> 
+    </div>
+    <div id="div3">拖拽</div>
+</body>
+</html>

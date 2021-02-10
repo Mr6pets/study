@@ -1,0 +1,1 @@
+function sum(o,l){return o+l}console.log("这是file1中的文件"),sum(1,5),console.log("这是file2下的审计局");

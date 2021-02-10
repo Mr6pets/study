@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽改变大小</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+            position: absolute;
+            left: 500px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <script>
+        var oDiv=document.getElementById('div1');
+        oDiv.onmousedown=function(ev){
+            var ev=ev || event;
+            //原来的宽度
+            var disW=this.offsetWidth
+            //down下去的鼠标位置
+            var disX=ev.clientX
+            //原来的left值
+            var disL=this.offsetLeft;
+
+            var b="";
+            if(disX>disL+disW-10){
+                // alert('right');
+                b='right'
+            }
+            if(disX<disL+10){
+                // alert('left')
+                b='left'
+            }
+            document.onmousemove=function(ev){
+                var ev=ev || event;
+                switch(b){
+                    case 'right':
+                        //原来的宽度加上鼠标移动的距离
+                        //鼠标移动的距离就是等于 移动过程中的鼠标位置-down下去的鼠标位置
+                        oDiv.style.width=disW+(ev.clientX-disX)+'px';
+                    break;
+                    case 'left':
+                        oDiv.style.width=disW-(ev.clientX-disX)+'px';
+                        oDiv.style.left=disL+(ev.clientX-disX)+'px';
+                    break;
+                }
+            }
+            document.onmouseup=function(){
+                document.onmousemove=document.onmouseup=null;
+            }
+            return false
+        }
+    </script>
+</body>
+</html>

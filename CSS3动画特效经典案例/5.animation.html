@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animation</title>
+    <style>
+        .box{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: pink;
+            left: 0;
+            top: 0;
+            /* 动画 animation:动画名字 时间 运动曲线 延迟 */
+            animation:move 2s;
+            /* 兼容 私有前缀 */
+        }
+        /* 定义动画 */
+        @keyframes move{
+            0%{
+                left: 0px;
+                top: 0px;
+            }
+            25%{
+                left: 200px;
+                top: 0;
+            }
+            50%{
+                left: 200px;
+                top: 200px; 
+            }
+            75%{
+                left: 0px;
+                top: 200px; 
+            }
+            100%{
+                left: 0px;
+                top: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

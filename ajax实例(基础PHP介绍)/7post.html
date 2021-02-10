@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>get请求</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" class="name"><br\>
+        <input type="password" class="psd"><br\>
+        <button class="btn" type="button">登录</button>
+    </form>
+    <script>
+        window.onload=function(){
+            var btn=document.querySelector('.btn');
+            //点击事件
+            btn.onclick=function(){
+                //获取用户输入的值
+                var name=document.querySelector('.name').value;
+                var psd=document.querySelector('.psd').value;
+                //ajax创建一个对象
+                var xhr=new XMLHttpRequest();
+                // post请求方式
+                xhr.open('post','7post.php',true);
+                //3.发送 post传递数据 利用formdata
+                var from=new FormData();//对象 存储数据 from.append(key, value) key第一个参数 后台接收的变量 第二个参数 是我们传递的值
+                from.append('uname',name);
+                from.append('upsd',psd);
+                xhr.send(from);
+                //回调函数
+                xhr.onreadystatechange=function(){
+                    if(xhr.readyState==4 && xhr.status==200){
+                        console.log(xhr.responseText);
+                    }
+                }
+
+            }
+        };  
+    </script>
+</body>
+</html>

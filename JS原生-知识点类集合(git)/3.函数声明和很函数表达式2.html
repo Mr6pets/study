@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数声明很函数表达式</title>
+</head>
+<body>
+    <script>
+        //函数声明和函数表达式的区别
+        /*
+            1.函数声明式不可以执行的，但是函数表达式是可以执行的
+            2.函数声明是可以被提前解析出来的 也叫作预解析
+        */
+
+
+        // function aaa(){alert(1);}()//这里是不执行的 这里是函数的声明
+        var a = function aaa(){alert(1)}()//这里就是函数表达式
+        // ~function aaa(){alert(1)}()//1
+
+        if(true){
+            function aaa(){
+                alert(1)
+            }
+        }else{
+            function aaa(){
+                alert(2)
+            }
+        }
+        //firefox 弹出1 IE下弹出2
+        if(true){
+           var a= function aaa(){
+                alert(1)
+            }
+        }else{
+            var a=  function aaa(){
+                alert(2)
+            }
+        }
+        a()//弹出的是1；
+
+        
+    </script>
+</body>
+</html>

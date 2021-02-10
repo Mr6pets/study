@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue</title>
+
+</head>
+
+<body>
+  <div id="app">
+    <h1>data binding</h1>
+    {{ message }}
+    <!-- <p><a v-bind:href="website">绑定baidu</a></p> -->
+    <p><a :href="website">绑定baidu</a></p>
+    <!-- <p>{{websiteTag}}</p> -->
+    <p v-html="websiteTag"></p>
+    <p><input type="text" :value="name"></p>
+
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="1app_data.js"></script>
+</body>
+
+</html>

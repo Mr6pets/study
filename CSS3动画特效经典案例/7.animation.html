@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animation</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* 动画 animation:动画名字 时间 运动曲线 延迟 次数（默认为1） */
+            /* 
+            infinite 无限
+            forwards:固定在最后一帧 就是100%的位置
+             */
+            animation:move 1s linear forwards;
+            /* 兼容 私有前缀 */
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background: lightcyan;
+            position: absolute;
+            left: 900px;
+            top: 200px;
+            /* 动画 animation:动画名字 时间 运动曲线 延迟 次数（默认为1） */
+            /* infinite 无限 */
+            animation:change 1s linear forwards;
+            /* 兼容 私有前缀 */
+        }
+        /* 定义动画 */
+        @keyframes move{
+            0%{
+               left: 100px;
+            }
+            100%{
+                left: 700px;
+            }
+        }
+        @keyframes change{
+            0%{
+               left: 900px; 
+            }
+            100%{
+                left: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">盒子</div>
+    <div class="box2">盒子2</div>
+</body>
+</html>

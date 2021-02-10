@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pk</title>
+    <style>
+        .pk{
+            width: 400px;
+            height: 400px;
+            border: 1px solid red;
+            margin: 30px auto;
+            padding: 140px;
+            position: relative;
+        }
+        .pk img{
+            border: 2px solid #999;
+            position: absolute;
+            /* 以底部中心旋转 */
+            transform-origin: bottom center;
+            transition: all 1s;
+        }
+        .pk:hover img:nth-child(13){
+            transform: rotate(60deg);
+        }
+        .pk:hover img:nth-child(12){
+            transform: rotate(50deg);
+        }
+        .pk:hover img:nth-child(11){
+            transform: rotate(40deg);
+        }
+        .pk:hover img:nth-child(10){
+            transform: rotate(30deg);
+        }
+        .pk:hover img:nth-child(9){
+            transform: rotate(20deg);
+        }
+        .pk:hover img:nth-child(8){
+            transform: rotate(10deg);
+        }
+        .pk:hover img:nth-child(7){
+            transform: rotate(0deg);
+        }
+        .pk:hover img:nth-child(6){
+            transform: rotate(-10deg);
+        }
+        .pk:hover img:nth-child(5){
+            transform: rotate(-20deg);
+        }
+        .pk:hover img:nth-child(4){
+            transform: rotate(-30deg);
+        }
+        .pk:hover img:nth-child(3){
+            transform: rotate(-40deg);
+        }
+        .pk:hover img:nth-child(2){
+            transform: rotate(-50deg);
+        }
+        .pk:hover img:nth-child(1){
+            transform: rotate(-60deg);
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="pk">
+        <img src="images/joke.png" alt="1">
+        <img src="images/joke.png" alt="2">
+        <img src="images/joke.png" alt="3">
+        <img src="images/joke.png" alt="4">
+        <img src="images/joke.png" alt="5">
+        <img src="images/joke.png" alt="6">
+        <img src="images/joke.png" alt="7">
+        <img src="images/joke.png" alt="8">
+        <img src="images/joke.png" alt="9">
+        <img src="images/joke.png" alt="10">
+        <img src="images/joke.png" alt="11">
+        <img src="images/joke.png" alt="12">
+        <img src="images/joke.png" alt="13">
+    </div>
+</body>
+</html>

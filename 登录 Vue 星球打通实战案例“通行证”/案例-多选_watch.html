@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            margin: 100px auto 0;
+            width: 80%;
+        }
+        .clear:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .checkbox {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            list-style: none;
+        }
+        .checkbox .item {
+            float: left;
+            position: relative;
+            padding: 12px 20px 12px 30px;
+            cursor: pointer;
+            transition: .2s all;
+        }
+        .checkbox .item:before {
+            position: absolute;
+            left: 10px;
+            top: 16px;
+            display: inline-block;
+            border: 1px solid #333;
+            width: 12px;
+            height: 12px;
+            content: '';
+            transition: .2s all;
+        }
+        .checkbox .item.checked, .checkbox .item:hover {
+             color: #409eff;
+         }
+        .checkbox .item.checked:before {
+            border-color: #409eff;
+            background: #409eff;
+            content: '√';
+            color: #fff;
+            font-size: 12px;
+            text-align: center;
+            line-height: 12px;
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div class="box">
+		<div>
+			<div class="checkbox clear">
+				<div class="item" :class="{'checked':isCheckdAll}" @click="checkAll">全选</div>
+			</div>
+		</div>
+	    <ul class="checkbox clear">
+	        <li class="item" 
+	        	v-for="item in citys"
+	        	v-bind:class="{'checked':item.ischecked}"
+	        	@click="selectedHandle(item)"
+	        >{{item.name}}</li>
+	    </ul>
+		<div>
+			当前选中了{{checkedTotal}}
+		</div>
+    </div>
+	<script type="text/javascript">
+		let vm =new Vue({
+			el:".box",
+			data:{
+				citys:[
+				{name:'北京',ischecked:true},
+				{name:'上海',ischecked:false},
+				{name:'广州',ischecked:false},
+				{name:'深圳',ischecked:false},
+				{name:'武汉',ischecked:false}
+				],
+				isCheckdAll:false
+			},
+			methods:{
+				selectedHandle(item){
+					item.ischecked=!item.ischecked
+				},
+				checkAll(){
+					this.isCheckdAll=!this.isCheckdAll
+				}
+			},
+			watch:{
+				isCheckdAll(){
+//					console.log('1')
+					this.citys.forEach(city=>{
+						city.ischecked=this.isCheckdAll
+					})
+				}
+			},
+			computed:{
+				checkedTotal:{
+					//checkedTotal这个属性的get方法是用来确定当前的值如何计算
+					get(){
+						return this.citys.filter(city=>city.ischecked).length
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

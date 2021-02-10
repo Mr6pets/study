@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>碰撞检测</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+            position: absolute;
+        }
+        #changearear{
+            width: 100px;
+            height: 100px;
+            background-color: lightgray;
+            position: absolute;
+            left: 500px;
+            top: 300px;
+        }
+    </style>
+    <script type="text/javascript">
+  
+        window.onload=function(){
+            var oDiv=document.getElementById('div1');
+            var changearear=document.getElementById('changearear')
+            drag(oDiv)
+            function drag(obj){
+                obj.onmousedown=function(ev){
+                    var ev=ev||window.event;
+                    var disX=ev.clientX-this.offsetLeft;
+                    var disY=ev.clientY-this.offsetTop;
+                    if(obj.setcapture){//设置全局捕获 这样选中的文字就不会再IE下被拖动 参考20.drag3.html
+                        obj.setcapture()
+                    }
+                    document.onmouseover=function(ev){
+                        var ev=ev||window.event;
+                        var L = ev.clientX-disX;
+                        var T = ev.clientY-disY;
+
+                        var L1=L;
+                        var R1=L+obj.offsetWidth;
+                        var T1=T;
+                        var B1=T+obj.offsetHeight;
+
+                        var L2=changearear.offsetLeft;
+                        var R2=L2+changearear.offsetWidth;
+                        var T2=changearear.offsetTop;
+                        var B2=T2+changearear.offsetHeight;
+
+                        if(R1<L2){
+                            changearear.style.backgroundColor="lightgray"
+                        }else{
+                            changearear.style.backgroundColor="lightgreen"
+                        }
+
+                        if(B2<T2){
+                            changearear.style.backgroundColor="lightgray"
+                        }else{
+                            changearear.style.backgroundColor="lightgreen"
+                        }
+                        if(R1<L2 || L1>R2 || B1<T2 || T1>B2){
+                            changearear.style.backgroundColor="lightgray"
+                        }else{
+                            changearear.style.backgroundColor="lightgreen"
+                        }
+
+
+                        if(L<0){
+                            L=0
+                        }else if(L>document.documentElement.clientWidth-obj.offsetWidth){//可视区域的宽-元素的框
+                            L = document.documentElement.clientWidth-obj.offsetWidth+'px'
+                        }
+                        if(T<0){
+                            T=0
+                        }else if(T>document.documentElement.clientHeight-obj.offsetHeight){
+                            T = document.documentElement.clientHeight-obj.offsetHeight+'px'
+                        }
+                        obj.style.left= L +'px';
+                        obj.style.top= T +'px';
+                    };
+                    document.onmouseup=function(){
+                        document.onmouseover=document.onmouseup=null;
+                        //释放全局捕获 releaseCapture()
+                        if(obj.releaseCapture){
+                            obj.releaseCapture()
+                        }
+                    }
+                    //标准下阻止默认的文字拖拽阴影方法
+                    return false;
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="changearear">我是改变区域</div>
+</body>
+</html>

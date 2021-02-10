@@ -1,0 +1,341 @@
+*{
+    margin:0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+img{
+    vertical-align: middle;
+}
+/* 内容 */
+.header{
+    width: 100%;
+    height: 90px;
+    background-color: black;
+}
+.container{
+    width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 0 4px 4px #eee;
+    margin-top: 30px;
+}
+.musicHeader{
+    height: 70px;
+    line-height: 70px;
+}
+.musicHeader .title{
+    display: inline-block;
+    padding-left: 20px;
+}
+.musicRight{
+    float:right;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+.musicRight span{
+    color: lightgreen;
+}
+
+.musicContent{
+    height: 340px;
+    box-sizing: border-box;
+    padding: 40px;
+    background: url(../img/bg1.jpg) no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+}
+.musicContent_pic{
+    float: left;
+}
+.musicContent_pic img{
+    width: 260px;
+}
+.musicContent_txt{
+     color: white; 
+     box-sizing: border-box; 
+     padding-left:290px; 
+}
+.musicBottom{
+    height: 60px;
+    line-height: 60px;
+    display: flex;
+}
+.start,.current,.duration{
+    flex: 1;
+    text-align: center;
+}
+.progress{
+    flex: 7;
+    width: 100%;
+    height: 10px;
+    background-color: #aaa;
+    margin-top: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.innerProgress{
+    background-color: #109d59;
+    width: 0%;
+    height: 10px;
+    border-radius: 10px 0 0 10px;
+}
+.circle{
+    width: 46px;
+    height: 46px;
+    border-radius:50%;
+    border: 1px solid #999;
+    text-align: center;
+    line-height: 46px;
+    margin-left: 70px;
+    margin-top: 6px;
+    position: relative; 
+    cursor: pointer;
+}
+.circle img{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top:15px;
+    left: 15px;
+}
+/* 文章 */
+.wenzhang_warp{
+    width: 1200px;
+    margin: 15px auto 0 auto;
+}
+.wenzhang_warp_left{
+    width: 870px;
+    box-sizing: border-box;
+    padding: 50px 30px 45px 30px;
+    box-shadow: 0 0 4px 4px #eee;
+}
+.wenzhang_title{
+    text-align: center;
+    font-size: 22px;
+    color: #333333;
+}
+.wenzhang_info{
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    border-bottom: 1px solid #999;
+}
+.eye_num{
+float: left;
+background: url(../img/icon_eye.png) no-repeat left center;
+padding-left: 25px;
+}
+.wei_chat_num{
+    float: left;
+    background: url(../img/icon_chat.png) no-repeat left center;
+    padding-left: 25px; 
+    margin-left: 10px;
+}
+.create_time{
+    float:right;
+}
+.create_time b{ 
+    font-weight: normal
+}
+.wenzhang_main{
+    box-sizing: border-box;
+    padding-top:35px; 
+}
+.peitu{
+    margin-top: 20px;
+}
+.wenzhang_label{
+    background: url(../img/icon_label.png) no-repeat left center;
+    background-size: 16px 14px;
+    padding-left: 30px;
+    margin-top: 10px; 
+}
+.wenzhang_label span{
+    padding: 5px 10px;
+    background-color: #999999;
+    border-radius:20px; 
+    font-size: 12px;
+    color: white;
+}
+.end_icon{
+    text-align: center;
+}
+.related_reading{
+    padding-top: 60px;
+}
+.related_reading h3{
+    font-size: 14px;
+    color: #4d4d4d;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #999999;
+}
+.related_reading_recom{
+    height: 380px;
+    box-sizing: border-box;
+    padding: 0px 10px;
+}
+.related_reading_recom dl{
+    margin-top: 20px;
+}
+.related_reading_recom dl:nth-child(2n-1){
+    float: left;
+}
+.related_reading_recom dl:nth-child(2n){
+    float: right;
+}
+.related_reading_recom dl dt{
+    line-height: 35px;
+}
+.share{
+    padding-top: 60px;
+    overflow: hidden;
+}
+.share_plan{
+    float: left;
+}
+.share_plan span{
+    display: inline-block;
+    background:url(../img/plant.png) no-repeat;
+    width:40px; 
+    height:40px;
+}
+.share_plan span:nth-child(1){
+    background-position:0px 0px; 
+}
+.share_plan span:nth-child(2){
+    background-position:-50px 0px; 
+}
+.share_plan span:nth-child(3){
+    background-position:-100px 0px; 
+}
+.share_plan span:nth-child(4){
+    background-position:-150px 0px; 
+}
+.share_zan{
+    float: right;
+    line-height: 40px;
+}
+.share_sinaweibo_btn{
+    height: 40px;
+    color:#14abd1;
+    background-color: #e5f2f5;
+    display: inline-block;
+    padding: 0 13px;
+    border-radius: 20px;
+    cursor: pointer;    
+}
+.zan{
+    height: 40px;
+    color:#8b8f8d;
+    border:1px solid #8b8f8d;
+    display: inline-block;
+    padding: 0 13px;
+    border-radius: 20px;
+    cursor: pointer; 
+}
+.zan span{
+    background: url(../img/icon_zan.png) no-repeat left center;
+    background-size:16px 16px;
+    padding-left: 20px;
+}
+.shoucang{
+    height: 40px;
+    color:#8b8f8d;
+    border:1px solid #8b8f8d;
+    display: inline-block;
+    padding: 0 13px;
+    border-radius: 20px;
+    cursor: pointer;  
+}
+.shoucang span{
+    background: url(../img/icon_shoucan.png) no-repeat left center;
+    background-size:19px 18px;
+    padding-left: 20px;
+}
+.share_text{
+    height: 50px;
+    line-height: 50px;
+}
+.share_text a{
+    font-size: 14px;
+    color: #999999;
+    overflow: hidden;
+}
+.share_text a:nth-child(1){
+    float: left;
+}
+.share_text a:nth-child(2){
+    float: right;
+}
+.line{
+    height: 1px;
+    background-color: #999;
+    margin-top: 10px;
+}
+.zan_person{
+    overflow: hidden;
+}
+.zan_person h3{
+    padding: 20px 0;
+    font-size:14px;
+    color: #333333; 
+    
+}
+.zan_person h3 span{
+    border-left:3px solid #f68344;
+    padding-left:5px; 
+}
+.zan_person dl{
+    float: left;
+    width: 50px;
+    margin-right: 20px;
+}
+.zan_person dl dt{
+    text-align: center;
+    color: #666666;
+    line-height: 30px;
+}
+.ad_pic{
+    margin: 30px 0;
+}
+.comment_area textarea{
+    width: 100%;
+    resize:none;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.comment_area{
+    overflow: hidden;
+}
+.a_comment{
+    display: inline-block;
+    float: right;
+    width: 100px;
+    height: 40px;
+    background-color: #f68344;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

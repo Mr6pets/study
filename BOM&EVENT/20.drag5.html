@@ -19,12 +19,14 @@
             var oDiv=document.getElementById('div1')
             drag(oDiv)
             function drag(obj){
-                oDiv.onmousedown=function(ev){
+                obj.onmousedown=function(ev){
                     var ev=ev||window.event;
 
                     var disX=ev.clientX-this.offsetLeft;
                     var disY=ev.clientY-this.offsetTop;
                     if(obj.setcapture){//设置全局捕获 这样选中的文字就不会再IE下被拖动 参考20.drag3.html
+                    //设置全局捕获，当我们给一个元素设置全局捕获以后，那么这个元素就会监听后续发生的所有事件，
+                    //当有事件发生的时候，就会被当前设置了全局捕获的元素触发
                         obj.setcapture()
                     }
                     document.onmouseover=function(ev){
@@ -33,13 +35,13 @@
                         var T = ev.clientY-disY;
                         if(L<0){
                             L=0
-                        }else if(L>document.documentElement.clientWidth-obj.offsetLeft){
-                            L = document.documentElement.clientWidth-obj.offsetLeft+'px'
+                        }else if(L>document.documentElement.clientWidth-obj.offsetWidth){//可视区域的宽-元素的框
+                            L = document.documentElement.clientWidth-obj.obj.offsetWidth+'px'
                         }
                         if(T<0){
                             T=0
-                        }else if(T>document.documentElement.clientHeight-obj.offsetTop){
-                            T = document.documentElement.clientHeight-obj.offsetTop+'px'
+                        }else if(T>document.documentElement.clientHeight-obj.offsetHeight){
+                            T = document.documentElement.clientHeight-obj.offsetHeight+'px'
                         }
                         obj.style.left= L +'px';
                         obj.style.top= T +'px';
@@ -51,6 +53,7 @@
                             obj.releaseCapture()
                         }
                     }
+                    //标准下阻止默认的文字拖拽阴影方法
                     return false;
                 }
             }

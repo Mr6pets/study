@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+    <style>
+    *{
+      margin: 0;
+      padding:0;
+    }
+    .div1{
+      width: 100px;
+      height: 100px;
+      background: lightblue;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+  <script type="text/javascript">
+    // window.onload=function(){
+    //   var oDiv=document.querySelector('.div1');
+    //   var disX=0;
+    //   var disY=0;
+    //   oDiv.onmousedown=function(ev){
+    //     var ev=ev||window.event;
+    //     disX=ev.clientX-oDiv.offsetLeft;
+    //     disY=ev.clientY-oDiv.offsetTop;
+    //     document.onmousemove =function(ev){
+    //       var ev=ev||window.event;
+    //       oDiv.style.left=ev.clientX-disX+'px';
+    //       oDiv.style.top=ev.clientY-disY+'px';
+    //     }
+    //     document.onmouseup=function(){
+    //       document.onmousemove =null;
+    //       document.onmouseup=null
+    //     }
+    //     return false;
+    //   }
+    // }
+
+  //普通变形============================================================
+//   var oDiv=null;
+//   var disX=0;
+//   var disY=0;
+//     window.onload=function(){
+//       oDiv=document.querySelector('.div1');
+//       init();
+//     }
+//     function init(){
+//       oDiv.onmousedown=fnDown;
+//     }
+//     function fnDown(ev){
+//       var ev=ev||window.event;
+//       disX=ev.clientX-oDiv.offsetLeft;
+//       disY=ev.clientY-oDiv.offsetTop;
+//       document.onmousemove =fnOver;
+//       document.onmouseup=fnUp;
+//       return false;
+//     }
+//     function fnOver(ev){
+//       var ev=ev||window.event;
+//       oDiv.style.left=ev.clientX-disX+'px';
+//       oDiv.style.top=ev.clientY-disY+'px';
+//     }
+//     function fnUp(){
+//       document.onmousemove =null;
+//       document.onmouseup=null
+//     }
+//========================================================================================================
+   // 改变为面向对象写法
+  // 全局变量就是属性
+  // 函数就是方法
+  // onload中创建对象
+  window.onload=function(){
+    var d1=new Drag('div1');
+    d1.init();
+  };
+  function Drag(id){
+    this.oDiv=document.getElementById(id);//this的指向是对象
+    this.disX=0;//this的指向是对象
+    this.disY=0;//this的指向是对象
+  }
+  Drag.prototype.init=function(){
+    var This=this;//这里的this指向是对象 赋值给This
+    this.oDiv.onmousedown=function(ev){//第一个this的指向是对象  //这里的onmouseup是事件函数 里面的调用不是事件函数 所以不能用ev
+      var ev=ev || window.event;//只能出现在事件函数中
+      This.fnDown(ev);
+      return false;
+    };
+  };
+  Drag.prototype.fnDown=function(ev){
+    var This=this;
+    this.disX=ev.clientX-this.oDiv.offsetLeft;
+    this.disY=ev.clientY-this.oDiv.offsetTop;
+    document.onmousemove =function(ev){
+      var ev=ev||window.event;
+      This.fnMove(ev);
+    };
+    document.onmouseup = this.fnUp;
+  };
+  Drag.prototype.fnMove=function(ev){
+    this.oDiv.style.left=ev.clientX-this.disX+'px';
+    this.oDiv.style.top=ev.clientY-this.disY+'px';
+  };
+  Drag.prototype.fnUp=function(){
+    document.onmousemove =null;
+    document.onmouseup=null
+  };
+  </script>
+</head>
+<body>
+    <div class="div1" id="div1"></div>
+</body>
+</html>

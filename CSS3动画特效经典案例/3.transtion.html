@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transtion</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            /* 过度属性从一种状态到另外一种状态 */
+            /* 语法 transtion：属性 事件 */
+            /* transition: width 2s, background 2s; */
+            /* 简写 缺点 事件都是固定都是时间 */
+            /* transition: all 2s; */
+            /* transition: 属性中还有运动曲线  all 2s 运动曲线：匀速 延迟2秒执行*/
+            /* 运动曲线：
+                ease:速度由快到慢（默认值）
+                linear:速度恒速（匀速运动）
+                ease-in:速度越来越快（渐显效果）
+                ease-out:速度越来越慢（渐隐效果）
+                ease-in-out:速度先加速后减速（渐显渐隐效果）
+            */
+            transition: all 2s linear 2s;
+        }
+        .box:hover{
+            width: 600px;
+            background: green;
+            height: 500px;
+            transform: rotate(360deg) scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">这是一个盒子</div>
+</body>
+</html>

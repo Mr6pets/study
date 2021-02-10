@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <style>
+        .box {
+            margin: 100px auto 0;
+            width: 80%;
+        }
+        .clear:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .rate {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            list-style: none;
+        }
+        .rate .item {
+            float: left;
+            padding: 0 5px;
+            font-size: 30px;
+            cursor: pointer;
+            transition: .2s all;
+            color: #ccc;
+        }
+        .rate .item.checked {
+            color: rgb(247, 186, 42);
+        }
+        .rate .item:hover {
+            transform: scale(1.3);
+        }
+        .rate .text {
+            float: left;
+            padding-left: 15px;
+            font-size: 30px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div class="box">
+        <ul class="rate clear">
+            <!--<li class="item checked">
+                <i class="fas fa-star"></i>
+            </li>
+            <li class="item checked">
+                <i class="fas fa-star"></i>
+            </li>
+            <li class="item">
+                <i class="far fa-star"></i>
+            </li>
+            <li class="item">
+                <i class="far fa-star"></i>
+            </li>
+            <li class="item">
+                <i class="far fa-star"></i>
+            </li>-->
+             <li 
+             	class="item" 
+             	v-for="item in num"
+             	:class="{'checked':item<=n}"
+             	@mousemove="overHandle(item)"
+             	@mouseout="outHandle"
+             	@click="clickHandle(item)"
+            >
+             	
+                <i 
+                	class="fa-star" 
+                	:class="item<=n ? 'fas': 'far'"
+                >
+                </i>
+            </li>
+            
+            <li class="text">{{texts[n-1]}}</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    	let vm =new Vue({
+			el:".box",
+			data:{
+				texts:['很差','一般','不错','非常好','优秀'],
+				num:5,
+				//记录星星的最大值
+				n:3,
+				//记录当前的分数
+				m:3
+			},
+			methods:{
+				overHandle(index){
+					this.n=index
+				},
+				outHandle(){
+					this.n=this.m
+				},
+				clickHandle(item){
+					this.m=item
+				}
+			}
+		})
+    </script>
+	
+</body>
+</html>

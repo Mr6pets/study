@@ -1,0 +1,39 @@
+/**index.wxss**/
+/* 导入模板wxss */
+@import '../../templates/newsList/newsList.wxss'
+/* 导航 */
+.nav{
+  overflow: hidden;
+  white-space: nowrap;
+  height: 70rpx;
+}
+.nav view{
+  /* 不能使用floa */
+  display: inline-block;
+  margin: 0 20rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 32rpx;
+}
+.nav .active{
+  font-weight: bold;
+  color: #e12926;
+}
+.banner swiper{
+  height: 400rpx;
+}
+.banner image{
+  width: 100%;
+  height: 400rpx;
+}
+.banner text{
+  position: absolute;
+  width: 100%;
+  bottom: 20rpx;
+  left:0;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  color: white;
+}

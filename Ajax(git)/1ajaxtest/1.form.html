@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>表单提交</title>
+</head>
+<body>
+	<!-- 表单：数据的提交 -->
+	<!-- action:数据提交的地址，默认是当前页面 -->
+	<!-- method：数据提交的方式，默认是get方式 -->
+	<!-- 1.get:把数据名称和数据值用=连接 如果有多个的话，那么他会把多个数据组合用&进行连接，然后把数据放到URL？后面传到指定的页面
+	URL长度的限制原因 我们不要通过get传递过度的数据 -->
+	<!-- 2.post 理论无限制 -->
+	<!-- enctype:提交的数据格式。默认application/x-www-form-urlencoded -->
+	<form action="1.get.php">
+		<input type="text" name="username">
+		<input type="submit" value="提交">
+	</form>
+</body>
+</html>

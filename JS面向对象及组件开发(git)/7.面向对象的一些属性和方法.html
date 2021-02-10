@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面向对象的一些属性和方法</title>
+    <script>
+        //面向对象的一些属性和方法
+        /*
+        hasOwnProperty()//看是不是对象自身下面的属性
+        constructor:查看对象的构造函数
+            每个原型都会自动添加constructor属性
+            for in 的时候有些属性是找不到的
+            避免修改construtor属性
+        instanceof:运算符
+            对象与构造函数在原型链上是否有关系
+        toString()object上的方法
+        */
+        // var arr=[];
+        // arr.num=10;
+        // Array.prototype.num2=20;
+        // alert(arr.hasOwnProperty(num))//true;这里的意思num这个属性只属于arr
+        // alert(arr.hasOwnProperty(num2))//false这个属性是所的数组都有的属性
+
+        // constructor查看对象的构造函数
+        // function A(){
+        // }
+        // var a1= new A();
+        // alert(a1.constructor)//A
+
+        // var arr=[];
+        // alert(arr.constructor==Array)//true
+
+
+        // function Aaa(){}
+        // Aaa.prototype.constructor=Aaa; //这里是程序自动生成的 当我写下一个构造函数时候
+
+
+        // function Aaa(){}
+        // var a1=new Aaa();
+        // Aaa.prototype.constructor=Aaa;的时候以下输出
+        // alert(a1.constructor);//function Aaa(){}
+
+        // function Aaa(){}
+        // var a1=new Aaa();
+        // Aaa.prototype.constructor=Array//的时候以下输出
+        // alert(a1.constructor)//function Array() { [native code] }
+
+
+
+        // 如果你的构造函数没有内容，你要使用hasOwnProperty
+        // function Aaa(){};
+        // var a1=new Aaa();
+        // alert(a1.hasOwnProperty)//function hasOwnProperty() { [native code] } 这里的这个是最外面object下的系统方法
+        // alert(a1.hasOwnProperty==Object.prototype.hasOwnProperty)//true;
+        //这里的弹出其实是最外层 Object.prototype
+        
+
+        //以下你会无意中改变你的构造函数的constroctor的指向
+        // function Aaa(){}
+        // Aaa.prototype.name='name';
+        // Aaa.prototype.age=20;
+        // var a1=new Aaa();
+        // alert(a1.constructor);//function Aaa(){}
+
+        // function Aaa(){};
+        // Aaa.prototype={
+        //     name:'小明',
+        //     age:20
+        // };
+        // var a1=new Aaa();
+        // alert(a1.constructor);//function Object() { [native code] }
+        // // 这里constroctor的指向就是object  这里的就相当于于赋值了  所以如果要正确的使用这个一定要把指向修正下  
+
+        //  Aaa.prototype={
+        //     constructor:Aaa,
+        //     name:'小明',
+        //     age:20
+        // };                                          
+
+        function Aaa(){};
+        Aaa.prototype.name='liu';
+        for(var attr in Aaa.prototype){
+            alert(attr);
+        }
+        //系统本身的属性是没有办法循环出来的 但是自己添加的属性是可以循环出来的
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

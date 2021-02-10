@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp点击按钮加载我们需要的资源</title>
+	<script>
+		function fn1(data){
+			var oUl1=document.getElementById('ul1');
+			var html='';
+			for(var i=0;i<data.length;i++){
+				html+='<li>'+data[i]+'</li>'
+			}
+			oUl1.innerHTML=html;
+		}
+		function fn2(data){
+			var oUl2=document.getElementById('ul2');
+			var html='';
+			for(var i=0;i<data.length;i++){
+				html+='<li>'+data[i]+'</li>'
+			}
+			oUl2.innerHTML=html;
+		}
+	</script>
+	<script>
+		window.onload=function(){
+			var btn1=document.getElementById('btn1');
+			var btn2=document.getElementById('btn2');
+			btn1.onclick=function(){
+				var oScript=document.createElement('script');
+				oScript.src="5.getData.php?callback=fn1";
+				document.body.appendChild(oScript);
+			};
+			btn2.onclick=function(){
+				var oScript=document.createElement('script');
+				oScript.src="5.getData.php?callback=fn2&t=str";
+				document.body.appendChild(oScript);
+			};
+
+
+		}
+	</script>
+</head>
+<body>
+	<button id="btn1">加载数字</button>
+	<ul id="ul1"></ul>
+	<button id="btn2">加载字母</button>
+	<ul id="ul2"></ul>
+	<button id="btn3">加载数字</button>
+	<ul id="ul3"></ul>
+</body>
+</html>

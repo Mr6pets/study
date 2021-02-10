@@ -1,0 +1,15 @@
+<!--pages/moni/moni.wxml-->
+<text>模拟考试</text>
+<view class="header"></view>
+<!-- 底部选项 -->
+<view  class="footer">
+  <view>
+    <navigator url="../index/index" open-type="reLaunch">首页</navigator>
+  </view>
+  <view>
+    <navigator url="../user/user">个人中心</navigator>
+  </view>
+  <view>
+    <navigator>选项</navigator>
+  </view>
+</view>

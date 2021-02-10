@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>保存注册信息</title>
+    <script>
+        window.onload=function(){
+            var oInput=document.getElementsByTagName('input');
+            var t1=document.getElementById('t1');
+            if(window.localStorage.getItem('name')){
+                oInput[0].value=window.localStorage.getItem('name');
+            }
+            if(window.localStorage.getItem('sex')){
+                for(var i=1;i<oInput.length;i++){
+                    if(oInput[i].value==window.localStorage.getItem('sex')){
+                        oInput[i].checked=true;
+                    }
+                }
+            }
+            if(window.localStorage.getItem("com")){
+                t1.value=window.localStorage.getItem('com');
+            }
+            //当我关闭浏览器的时候触发unload事件
+            window.onunload=function(){
+                if(oInput[0].value){
+                    window.localStorage.setItem("name",oInput[0].value);
+                }
+                for(var i=1;i<oInput.length;i++){
+                    if(oInput[i].checked==true){
+                        window.localStorage.setItem("sex",oInput[i].value);
+                    }
+                }
+                if(t1.value){
+                    window.localStorage.setItem("com",t1.value);
+                }
+               
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>
+        用户名：<input type="text">
+    </p>
+    <p>
+        性别：<input type="radio" value="男" name="sex">男
+        <input type="radio" value="女" name="sex">女
+    </p>
+    内容： <textarea id="t1" cols="30" rows="10"></textarea>
+</body>
+</html>

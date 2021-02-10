@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload=function(){
+			/*
+			message:当窗口接收到通过postMessage发送过来的数据的时候触发
+			 */
+			window.addEventListener('message',function(ev){
+				// alert('b.com下的页面接收到了内容了');
+				// message事件的事件对象下保存了发送过来的内容
+				// ev.data:发送过来的数据
+				// ev.origin:发送数据源的域
+				// alert('我接受到了a.com页面发送过来的数据，内容是：'+ev.data);
+				
+				// ev.origin 可以用来做判断 那个域名过来是没办法做改动的
+				alert(ev.origin)//http://www.a.com
+				if(ev.data==1){
+					document.body.style.background = 'red';
+				}
+			},false)
+		}
+	</script>
+</head>
+<body>
+	这里是www.b.com下3.postMessage下的内容
+</body>
+</html>

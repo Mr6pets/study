@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽组件开发</title>
+    <style>
+        #div1{width: 100px; height: 100px; background: lightblue;position: absolute;}
+        #div2{width: 100px; height: 100px; background: lightcoral;position: absolute; left: 100px;}
+        #div3{width: 100px; height: 100px; background: lightgreen;position: absolute; left: 200px;}
+        #div4{width: 100px; height: 100px; background: lightgray;position: absolute; left: 300px;}
+    </style>
+    <script>
+        window.onload=function(){
+            var d1=new Drag();
+            d1.init({//配置参数
+                id:'div1'
+            });
+            var d2=new Drag();
+            d2.init({//配置参数
+                id:'div2'
+            });
+            bindEvent(d2,'toDown',function(){
+                document.title="我是第二个div点击下出现"
+            });
+            var d3=new Drag();
+            d3.init({//配置参数
+                id:'div3'
+            });
+            bindEvent(d3,'toDown',function(){
+                document.title="我是第三个div点击下出现"
+            });
+            bindEvent(d3,'toUp',function(){
+                document.title="我是第三个div抬起下出现"
+            });
+            var d4=new Drag();
+            d4.init({//配置参数
+                id:'div4'
+            });
+            bindEvent(d4,'toDown',function(){
+                document.title="我是第四个div点击下出现"
+            });
+        }
+        function Drag(){
+            this.disX=0;
+            this.disY=0;
+            this.settings={//默认参数
+                
+            }
+        }
+        Drag.prototype.init=function(options){
+            var that=this;
+            this.obj=document.getElementById(options.id);
+            //不配置参数 使用默认参数
+            extend(this.settings,options);
+            this.obj.onmousedown=function (ev) { 
+                var ev=ev|| window.event;
+                that.fnDown(ev);
+                // that.settings.toDown();
+                return false;
+            }; 
+        }
+        Drag.prototype.fnDown=function(ev){
+            var that=this;
+            this.disX=ev.clientX-this.obj.offsetLeft;
+            this.disY=ev.clientY-this.obj.offsetTop;
+            document.onmousemove= function(ev){
+                var ev=ev|| window.event;
+                that.fnMove(ev)
+                fireEvent(that,'fnDown');
+            };
+            document.onmouseup=function(){
+                that.fnUp();  
+                // that.settings.toUp();  
+                fireEvent(that,'fnUp');
+            };
+        }
+        Drag.prototype.fnMove=function(ev){
+            this.obj.style.left=ev.clientX-this.disX+'px';
+            this.obj.style.top=ev.clientY-this.disY+'px';
+        };
+        Drag.prototype.fnUp=function(){
+            document.onmousemove=null;
+            document.onmouseup=null;
+        }
+        function extend(obj1,obj2){//obj1继承obj2
+            for(var attr in obj2){
+                obj1[attr]=obj2[attr];
+            }
+        }
+        //绑定事件的兼容处理
+        function bindEvent(obj,events,fn){
+            // obj:楼层
+            // events:书架
+            // fn:一本书
+            //bindEvent(oSpan,'show',function(){
+                // alert('4');
+            // });
+            obj.listeners= obj.listeners || {};
+            obj.listeners[events]= obj.listeners[events] || [];
+            obj.listeners[events].push(fn);
+            //obj这里是一个对象，不是一个或者dom对象
+            if(obj.nodeType){
+                if(obj.addEventListener){
+                    obj.addEventListener(events,fn,false);
+                }else{
+                    obj.attachEvent('on'+events,fn);
+                }
+            }
+        }
+        //主动触发自定义事件
+        function fireEvent(obj,events){
+            if(obj.listeners && obj.listeners[events]){
+                for(var i=0; i<obj.listeners[events].length;i++){
+                    obj.listeners[events][i]();
+                }
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+</body>
+</html>

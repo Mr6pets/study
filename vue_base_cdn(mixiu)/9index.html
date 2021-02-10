@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>empty</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>v-for</h1>
+    <div>
+      <ul>
+        <!-- <li v-for="item in arr">
+          {{item}}
+        </li> -->
+        <!-- <li v-for="(item, index) in arr">
+          {{index}}.{{item}}
+        </li> -->
+      </ul>
+    </div>
+    <!-- <ul>
+      <li v-for="(item, index) in users">{{item.age}}</li>
+    </ul> -->
+
+    <!-- <div v-for="(user,index) in users">
+      <h3>{{user.name}}</h3>
+      <p>{{user.age}}</p>
+    </div> -->
+    <!-- <template v-for="(user,index) in users">
+      <h3>{{user.name}}</h3>
+      <p>{{user.age}}</p>
+    </template> -->
+
+    <!-- <template v-for="(user,index) in users">
+      <h3>{{user.name}}</h3>
+      <p>{{user.age}}</p>
+    </template> -->
+
+    <template v-for="(user,index) in users">
+      <div v-for="(value,key) in user">
+        {{key}}.{{value}}
+      </div>
+    </template>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="9app_vfor.js"></script>
+</body>
+
+</html>

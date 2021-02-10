@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>瀑布流ajax</title>
+	<style>
+		body{ margin: 0; }
+		#ul1{ width: 1080px; margin: 100px auto 0; }
+		li{ list-style: none; width: 247px; float: left; margin-right: 10px; }
+		li div{ border: 1px solid black; padding: 10px; margin-bottom: 10px; }
+		li div img{ width: 225px; display: block; }
+	</style>
+	<script src="ajax.js"></script>
+	<script>
+		window.onload=function(){
+			ajax('get','getPics.php','',function(data){
+				console.log(data);
+			});
+		};
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li></li>
+	</ul>
+</body>
+</html>

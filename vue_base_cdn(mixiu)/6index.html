@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>empty</title>
+  <link rel="stylesheet" href="6style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1>computed计算属性</h1>
+    <!-- methods -->
+    <button @click="a++">Add to a</button>
+    <button @click="b++">Add to b</button>
+    <p>A-{{a}}</p>
+    <p>B-{{b}}</p>
+
+    <!-- <p>Age+A={{addToA()}}</p>
+    <p>Age+B={{addToB()}}</p> -->
+
+    <!-- computed -->
+    <p>Age+A={{addToA}}</p>
+    <p>Age+B={{addToB}}</p>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="6app_computed.js"></script>
+</body>
+
+</html>

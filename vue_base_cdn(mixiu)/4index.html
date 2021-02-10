@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>model</title>
+  <link rel="stylesheet" href="empty_style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1>双向数据绑定 input select textarea</h1>
+    <label>name</label>
+    <input type="text" v-model="name" />
+    <span>{{name}}</span>
+    <label>age</label>
+    <input type="text" v-model.lazy="age" />
+    <span>{{age}}</span>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="4app_model.js"></script>
+</body>
+
+</html>

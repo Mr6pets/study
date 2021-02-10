@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            margin: 100px auto 0;
+            width: 80%;
+        }
+        .clear:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .checkbox {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            list-style: none;
+        }
+        .checkbox .item {
+            float: left;
+            position: relative;
+            padding: 12px 20px 12px 30px;
+            cursor: pointer;
+            transition: .2s all;
+        }
+        .checkbox .item:before {
+            position: absolute;
+            left: 10px;
+            top: 16px;
+            display: inline-block;
+            border: 1px solid #333;
+            width: 12px;
+            height: 12px;
+            content: '';
+            transition: .2s all;
+        }
+        .checkbox .item.checked, .checkbox .item:hover {
+             color: #409eff;
+         }
+        .checkbox .item.checked:before {
+            border-color: #409eff;
+            background: #409eff;
+            content: '√';
+            color: #fff;
+            font-size: 12px;
+            text-align: center;
+            line-height: 12px;
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div class="box">
+
+        <!--<ul class="checkbox clear">
+            <li class="item checked">北京</li>
+            <li class="item">上海</li>
+            <li class="item">广州</li>
+            <li class="item">深圳</li>
+            <li class="item">武汉</li>
+        </ul>-->
+        
+         <ul class="checkbox clear">
+            <li class="item" 
+            	v-for="item,index in citys"
+            	v-bind:class="{'checked':n.includes(index)}"
+            	@click="selectedHandle(index)"
+            >{{item}}</li>
+        </ul>
+
+    </div>
+	<script type="text/javascript">
+		let vm =new Vue({
+			el:".box",
+			data:{
+				citys:'北京,上海,广州,深圳,武汉'.split(','),
+				ischecked:true,
+				n:[]
+			},
+			methods:{
+				selectedHandle(index){
+					//判断下当前的n中是不是有传入的index值
+					//如果有 删除 如果没有 添加
+					if(this.n.includes(index)){//如果是n这个数组中包含传递进来的index 那就是true执行
+						this.n=this.n.filter(item=>item!=index)//当前的n就要进行一次过滤 
+					}else{
+						this.n.push(index)
+					}
+					
+				}
+			}
+		})
+	</script>
+</body>
+</html>

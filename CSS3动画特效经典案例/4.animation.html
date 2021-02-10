@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animation</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            /* 动画 animation:动画名字 时间 运动曲线 延迟 */
+            animation:move 2s;
+            /* 兼容 私有前缀 */
+        }
+        /* 定义动画 */
+        @keyframes move{
+            0%{
+                width: 100px;
+            }
+            100%{
+                width: 600px; 
+            }
+        }
+        @-moz-keyframes move{
+            0%{
+                width: 100px;
+            }
+            100%{
+                width: 600px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+</body>
+</html>

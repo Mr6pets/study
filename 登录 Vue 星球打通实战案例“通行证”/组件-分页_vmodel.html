@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            margin: 100px auto 0;
+            width: 80%;
+        }
+        .clear:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .pagination {
+            margin: 10px 0;
+        }
+
+        .pagination span {
+            margin: 0 10px;
+        }
+
+        .pagination span.page, .pagination span.prev, .pagination span.next {
+            cursor: pointer;
+        }
+
+        .pagination span.page:hover {
+            color: #409eff;
+        }
+
+        .pagination span.page.active {
+            color: #409eff;
+            cursor: default;
+        }
+
+        .pagination span.prev.disabled, .pagination span.next.disabled {
+            color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .pagination input[type='text'] {
+            padding: 2px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            width: 60px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            outline: none;
+            transition: .2s all;
+        }
+        .pagination input[type='text']:focus {
+            border-color: #409eff;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div class="box">
+        <pagination :total="41" prepag="5" v-model="currentPage1"></pagination>
+        <pagination :total="50" prepag="10" v-model="currentPage2"></pagination>
+    </div>
+	<script type="text/javascript">
+		Vue.component('pagination',{
+//			model:{
+			//props:pages,//这里默认是value
+			//event:'change'
+//			},
+			props:['total','prepag','value'],//这里是v-model中父级传给子集的默认接收为value 如果不想使用默认的可以使用 自定义在model中定义
+			data(){
+				return{
+					pagenum:Math.ceil(this.total/this.prepag)
+				}
+			},
+			template:`
+			<div class="pagination">
+	            <span class="total">共 {{total}} 条 / {{pagenum}} 页</span>
+	            <span class="prev disabled">&lt;</span>
+	            <span 
+	            	class="page" 
+	            	v-for="n in pagenum"
+	            	:class="{'active':n==value}"
+	            	@click="choose(n)"
+	            >{{n}}</span>
+	            <span class="next">&gt;</span>
+	
+	            <span class="jump">前往
+	            	<input type="text" />页
+	            </span>
+	        </div>
+			`,
+			methods:{
+				choose(n){
+//					this.$emit('changehandle',n)
+					this.$emit('input',n)//如果以上是用v-model来进行绑定，那么向父级传递要用默认的input方法，同样如果想自定义也是可以在model中进行定义
+				}
+			}
+		})
+		let vm = new Vue({
+			el:".box",
+			data:{
+				currentPage1:1,
+				currentPage2:3
+			}
+		})
+	</script>
+</body>
+</html>

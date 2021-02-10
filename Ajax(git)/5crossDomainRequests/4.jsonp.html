@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp点击按钮加载我们需要的资源</title>
+	<script>
+		function fn(data){
+			var oUl=document.getElementById('ul1');
+			for(var i=0;i<data.length;i++){
+				oUl.innerHTML+='<li>'+data[i]+'</li>'
+			}
+		}
+	</script>
+	<script>
+		window.onload=function(){
+			var btn=document.getElementById('btn');
+			btn.onclick=function(){
+				var oScript=document.createElement('script');
+				oScript.src="4.getData.php";
+				document.body.appendChild(oScript);
+			}
+		}
+	</script>
+</head>
+<body>
+	<button id="btn">按钮</button>
+	<ul id="ul1"></ul>
+</body>
+</html>

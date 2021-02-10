@@ -1,0 +1,63 @@
+<!--pages/about/about.wxml-->
+<!-- swiper -->
+<view>
+  <swiper indicator-dots="{{true}}" indicator-color="red" indicator-active-color="white" >
+    <swiper-item >
+      <image src="../../common/img/1.jpg"></image>
+    </swiper-item>
+    <swiper-item >
+      <image src="../../common/img/2.jpg"></image>
+    </swiper-item>
+    <swiper-item >
+      <image src="../../common/img/3.jpg"></image>
+    </swiper-item>
+  </swiper>
+</view>
+
+<navigator url="../movie/movie" open-type="navigate">跳转到电影</navigator>
+<navigator url="../movie/movie" open-type="redirect">跳转到电影redirect</navigator>
+<navigator url="../index/index" open-type="switchTab">跳转到电影switchTab</navigator>
+<button type="primary" size="mini" bindtap="change">按钮测试点击</button>
+<view class="box" wx:if="{{isShow}}" >
+这里是展示的内容
+</view>
+
+<!-- 数据绑定 -->
+<view>{{msg}}</view>
+<!-- 方法1 -->
+<!-- <view wx:for="{{books}}" wx:for-item="book">
+  <text>书名：{{book.name}}</text>
+  <text>简介：{{book.desc}}</text>
+</view> -->
+<!-- 方法2 -->
+<block wx:for="{{books}}">
+  <view>书名：{{item.name}}</view>
+  <view>简介：{{item.desc}}</view>
+</block>
+
+<view wx:if='{{onShow}}'>show or display_if</view>
+<view wx:else>show or display_else</view>
+<view wx:for="{{arr}}" wx:key='index'>{{item}}{{index}}</view>
+<view wx:for="{{arr}}" wx:for-item="idx" wx:key='index'>{{idx}}{{index}}</view>
+<!-- 循环嵌套 -->
+<view wx:for="{{num}}" wx:for-item="i">
+  <view wx:for="{{num}}" wx:for-item="j">
+    {{i}}*{{j}}={{i*j}}
+  </view>
+</view>
+
+<view>
+  <icon type="success" size="30"/>
+  <icon type="success_no_circle"/>
+  <icon type="info"/>
+  <icon type="warn"/>
+  <icon type="waiting"/>
+</view>
+<view>
+  <button type="primary" size="mini" bindtap="demo">按钮</button>
+</view>
+<view>
+  <map longitude="116.404" latitude="39.915" scale="11"></map>
+</view>
+<switch></switch>
+

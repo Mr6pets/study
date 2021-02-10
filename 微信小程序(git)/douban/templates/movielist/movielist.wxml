@@ -1,0 +1,25 @@
+<import src='../movieone/movieone.wxml'/>
+<template name="movielist">
+  <view class="movielist">
+    <!-- title -->
+    <view class="th">
+      <view class="title">{{temp.title}}</view>
+      <navigator url="../more/more?val={{temp.movietype}}" data-value="{{temp.movietype}}">更多</navigator>
+    </view>
+    <!-- 模板 -->
+    <view class="wrapper">
+      <!-- <view>
+        <template is="movieone" data="{{temp[0]}}"/>
+      </view>
+      <view>
+        <template is="movieone" data="{{temp[1]}}"/>
+      </view>
+      <view>
+        <template is="movieone" data="{{temp[2]}}"/>
+      </view> -->
+      <view wx:for='{{temp.list}}' wx:key="index">
+        <template is="movieone" data="{{item}}"/>
+      </view>
+    </view>
+  </view>
+</template>

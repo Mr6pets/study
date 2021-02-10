@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax登录获取</title>
+    <style>
+        *{margin:0; padding: 0;}
+        .warpper{
+            position: fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding-top: 200px;
+            display: none;
+        }
+        .warpper .loginInfo{
+            width: 400px;
+            height: 300px;
+            background-color: white;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:void(0)" id="login">登录</a>
+    <p class="username"></p>
+    <div class="warpper">
+        <div class="loginInfo">
+            <span class="msg"></span>
+            用户：<input type="text" class="name" value="iwen@qq.com"><br>
+            密码：<input type="password" class="password" value="iwen123"><br>
+            验证码：<input type="text" class="verticode" value="crfvw"><br>
+            <a href="javascript:void(0)" id="loginIn">确认登录</a>
+        </div>
+    </div> 
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script>
+        $('#login').click(function(){
+            $('.warpper').show();
+        });
+        $('.warpper').click(function(){
+            $(this).hide();
+        });
+        //这里点击loginInfo部分 因为在warpper中 所以会冒泡 或认为是点击的还是父亲warpper 所以这里要阻止事件冒泡
+        $('.loginInfo').click(function(e){
+            e.stopPropagation();
+        });
+        //ajax登录
+        $('#loginIn').click(function(){
+            var name=$('.name').val();
+            var password=$('.password').val();
+            var verticode=$('.verticode').val();
+            $.ajax({
+                type:'post',
+                url:'http://iwenwiki.com/api/blueberrypai/login.php',
+                data:{
+                    user_id:name,
+                    password:password,
+                    verification_code:verticode
+                },
+                success:function(data){
+                    console.log(data);
+                    if(name.trim().length==0 || password.trim().length==0 ||verticode.trim().length==0){
+                        alert("不能为空");
+                        // return
+                    }
+                    if(data.success){
+                        // $('.msg').html(data.msg);
+                        //如果是登录信息真确
+                        // 弹框隐藏
+                        $('.warpper').hide();
+                        //获取用户名 插入到页面上
+                        $('#login').hide();
+                        $('.username').html('欢迎登录：'+name).css('color','blue');
+
+                    }else{
+                        $('.msg').html(data.msg+':'+data.msg_code).css('color','red'); 
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

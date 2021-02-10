@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>bootstrap</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<style type="text/css">
+		div[class*="col-"]{
+			background: lightblue;
+			border :1px solid red;
+			min-height: 30px;
+		}
+		.tips1{
+			width: 30px;
+			height: 100px;
+			background:lightblue;
+			right: 0;
+		}
+		.tips2{
+			width: 30px;
+			height: 50px;
+			background: lightgreen;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		
+		<!-- <div class="row">
+			<div class="col-lg-4 visible-lg-block">col-lg-4</div>
+			<div class="col-lg-4 hidden-sm hidden-xs">col-lg-4</div>
+			<div class="col-lg-4">col-lg-4</div>
+		</div> -->
+		<div class="container-fuild">
+			<div class="row">
+				<div class="tips1  visible-lg-block affix"></div>
+				<div class="tips2  hidden-lg affix"></div>
+			</div>
+			<div>1111</div>
+		</div>
+	</div>
+	 <script src="https://www.jq22.com/jquery/jquery-1.9.1.js"></script>
+	 <script src="js/bootstrap.js"></script>
+</body>
+</html>

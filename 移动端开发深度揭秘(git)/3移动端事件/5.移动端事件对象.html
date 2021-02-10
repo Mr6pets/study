@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>移动端事件基础</title>
+    <title>移动端事件事件对象</title>
     <style>
         #div1{
             width: 200px;
@@ -25,9 +25,12 @@
     <div id="div1"></div>
     <script>
         /*
-            touches当前位于屏幕上所有手指的一个列表
+        当给某个元素加上了事件绑定函数之后，事件函数默认的第一个参数就是事件对象
+        事件对象：
+        当用户在浏览器下触发某个行为，事件对象会记录用户操作时一些细节信息
+            touches当前位于*屏幕*上所有手指的一个列表
             targetTouches位于当前DOM元素上的手指的一个列表
-            changedTouches涉及当前实践的手指的一个列表
+            changedTouches涉及当前事件的手指的一个列表
         */
         document.addEventListener('touchstart',function(ev){
             ev.preventDefault();
@@ -35,10 +38,11 @@
         var div=document.getElementById('div1');
         // 移动端都是事件要比鼠标事件快大概300毫秒
         div.addEventListener('touchstart',start);
-        function end(ev){
-            this.innerHTML=ev.touches.length;
+        function start(ev){
+            // this.innerHTML=ev.touches.length;
+            // this.innerHTML=ev.targetTouches.length;
+            this.innerHTML=ev.changedTouches.length;
         }
-        
     </script>
 </body>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>本地存储</title>
+    <script>
+        window.onload=function(){
+            var oInputs=document.getElementsByTagName('input');
+            oInputs[0].onclick=function(){
+                window.localStorage.setItem('name',oInputs[3].value)
+            }
+            oInputs[1].onclick=function(){
+               alert(window.localStorage.getItem('name'));
+            }
+            oInputs[2].onclick=function(){
+                window.localStorage.removeItem('name')
+            }
+            //这里的storage事件是在原来的页面修改后   在新的共享页面触发
+            window.addEventListener('storage',function(ev){
+                // alert("修改了")
+                console.log(ev.key);
+                console.log(ev.newValue);
+                console.log(ev.oldValue);
+                console.log(ev.storageArea);
+                console.log(ev.url);
+            },false)
+
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="设置">
+    <input type="button" value="获取">
+    <input type="button" value="删除">
+    <input type="text" >
+
+</body>
+</html>

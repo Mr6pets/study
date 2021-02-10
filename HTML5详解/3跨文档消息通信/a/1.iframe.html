@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1.iframe</title>
+	<script>
+		window.onload=function(){
+			var oBtn=document.getElementById('btn');
+			var oMyIframe=document.getElementById('myframe');
+			oBtn.onclick=function(){
+				//如果要操作一个iframe里面的dom元素，首先要获取iframe引入的页面的window对象
+				//oMyIframe.contentWindow=>指的是iframe包含的页面的window的对象
+				// alert(oMyIframe.contentWindow);
+				oMyIframe.contentWindow.document.body.style.background = 'red';
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="点击改变2.iframe中背景色为红色">
+	<iframe id="myframe" src="2.iframe.html"></iframe>
+</body>
+</html>

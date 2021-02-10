@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>类式继承</title>
+    <script>
+        //类：js中是没有类的概念 把js中构造函数看做的类
+        // 类式继承
+        // window.onload=function(){
+        //     function Aaa(){
+        //         this.name='liuan';
+        //     }
+        //     Aaa.prototype.showName=function(){
+        //         alert(this.name);
+        //     }
+        //     function Bbb(){//子类
+
+        //     }
+        //     Bbb.prototype=new Aaa();//类式继承 但是这里有很多问题
+        //     Bbb.prototype.constructor=Bbb;//
+        //     var b1=new Bbb();
+        //     b1.showName();//liuan
+        //     // 类式继承后，这里的指向变了 如下
+        //     //console.log(b1.constructor)//ƒ Aaa(){his.name='liuan';}
+        //     // 所以你要添加指向为正确的指向Bbb.prototype.constructor=Bbb;
+        //     console.log(b1.constructor);//ƒ Bbb(){//子类}
+        // }
+
+
+        // window.onload=function(){
+        //     function Aaa(){
+        //         this.name=[1,2,3];
+        //     }
+        //     Aaa.prototype.showName=function(){
+        //         alert(this.name);
+        //     }
+        //     function Bbb(){//子类
+        //     }
+        //     Bbb.prototype=new Aaa();//类式继承 但是这里有很多问题
+        //     Bbb.prototype.constructor=Bbb;//
+        //     var b1=new Bbb();
+        //     b1.name.push(4);
+        //     var b2=new Bbb();
+        //     alert(b2.name);//[1,2,3,4] 问题：这里改动了b1的name添加了一个4  创建b2的name也改变了
+        // }
+
+        //解决办法    
+        window.onload=function(){
+            function Aaa(){
+                this.name=[1,2,3];
+            }
+            Aaa.prototype.showName=function(){
+                alert(this.name);
+            }
+            function Bbb(){//子类
+                Aaa.call(this);
+            }
+
+            var F=function(){};
+            F.prototype=Aaa.prototype;//这里是将Aaa上的原型方法赋值到F上
+            Bbb.prototype=new F();//原先的F构造函数里面尅有东西 所以这里的赋值只有F原型上的来自Aaa的showName方法
+            Bbb.prototype.constructor=Bbb;//修正指向问题
+
+            var b1=new Bbb();
+            b1.name.push(4);
+            alert(b1.name);//1,2,3,4
+            var b2=new Bbb();
+            alert(b2.name);//1,2,3
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

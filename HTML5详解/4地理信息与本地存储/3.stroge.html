@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>本地存储</title>
+    <script>
+        window.onload=function(){
+            var oInputs=document.getElementsByTagName('input');
+            oInputs[0].onclick=function(){
+                // sessionStorage:temp
+                // localStorage:always
+                // window.sessionStorage.setItem('name',oInputs[3].value);
+                window.localStorage.setItem('name',oInputs[4].value)
+            }
+            oInputs[1].onclick=function(){
+               var getValue = window.localStorage.getItem('name');
+               if(getValue){
+                alert(getValue);
+               }else{
+                   alert("这里莫不是空值")
+               }
+               
+
+            }
+            oInputs[2].onclick=function(){
+                window.localStorage.removeItem('name')
+            }
+            oInputs[3].onclick=function(){
+                window.localStorage.clear();
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="设置">
+    <input type="button" value="获取">
+    <input type="button" value="删除">
+    <input type="button" value="删除">
+    <input type="text" >
+
+</body>
+</html>

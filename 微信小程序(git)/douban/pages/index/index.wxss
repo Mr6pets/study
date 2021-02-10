@@ -1,0 +1,3 @@
+/**index.wxss**/
+/* 导入模板的样式 */
+@import '../../templates/movielist/movielist.wxss';

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom优化</title>
+    <script>
+        window.onload=function(){
+            //尽量在appendchild前添加操作
+            var oUl=document.getElementById('ul1');
+            // console.time('hello');
+            // for( var i=0;i<5000;i++){
+            //     var oLi=document.createElement('li');
+            //     oUl.appendChild(oLi);
+            //     oLi.innerHTML='li';
+            // }
+            // console.timeEnd('hello');//50.537109375ms
+
+            console.time('hello');
+            for( var i=0;i<5000;i++){
+                var oLi=document.createElement('li');
+                oLi.innerHTML='li';
+                oUl.appendChild(oLi);
+            }
+            console.timeEnd('hello');//46.55810546875ms
+        }
+    </script>
+</head>
+<body>
+    <ul id="ul1">
+
+    </ul>
+</body>
+</html>

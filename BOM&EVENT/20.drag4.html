@@ -28,7 +28,7 @@
             var oDiv=document.getElementById('div1')
             drag(oDiv)
             function drag(obj){
-                oDiv.onmousedown=function(ev){
+                obj.onmousedown=function(ev){
                     var ev=ev||window.event;
                     var disX=ev.clientX-this.offsetLeft;
                     var disY=ev.clientY-this.offsetTop;

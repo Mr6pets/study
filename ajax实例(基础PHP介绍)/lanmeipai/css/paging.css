@@ -1,0 +1,51 @@
+.container{
+    width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.info{
+    width: 20%;
+    float: left;
+    position: relative;
+}
+.info p{
+    position: absolute;
+    right: 7%;
+    bottom: 3%;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+}
+.ts-page{
+    width: 1000px;
+    margin: 0 auto;
+    position: fixed;
+    left: 50%;
+    bottom: 5%;
+    margin-left: -500px;
+}
+.ts-page span{
+    width: 50px;
+    height: 25px;
+    line-height: 25px;
+    display: inline-block;
+    box-shadow: 1px 1px 2px #888888;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.ts-page span:nth-child(1){
+    margin-left: 0;
+}
+.ts-page .on{
+    background-color: #109d59;
+    color: white;
+}
+.ts-page .page{
+    width: 25px;
+}
+.ts-page .disable{
+   cursor:not-allowed;
+   color: #333;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>everyand some</title>
+</head>
+<body>
+    <input type="checkbox" >
+    <input type="checkbox" checked="checked">
+    <input type="checkbox" checked="checked">
+    <script>
+        var inputs =document.querySelectorAll('input');
+        // every用于循环数组中的每一项，指定的函数中做判断，如果全部符合返回true 有一项不符合就返回false;
+        var isCheck=[...inputs].every(item=>{
+            return item.checked;
+        })
+        console.log(isCheck);
+        //some 是有一项是符合就返回true
+    </script>
+</body>
+</html>

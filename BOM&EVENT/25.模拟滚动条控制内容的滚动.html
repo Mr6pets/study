@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模拟滚动条控制内容滚动</title>
+    <style>
+        #div1{
+            width: 30px;
+            height: 500px;
+            background-color: black;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+        #div2{
+            width: 30px;
+            height: 30px;
+            background-color: brown;
+            position:absolute;
+            left: 0;
+            top: 0; 
+        }
+        #div3{
+            width: 498px;
+            height: 500px;
+            border: 1px solid green;
+            position:absolute;
+            left: 50px;
+            top: 10px; 
+            overflow-y: hidden;
+        }
+        #div4{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+    </style>
+    <script>
+        window.onload=function(){
+            var oDiv1=document.getElementById('div1');
+            var oDiv2=document.getElementById('div2');
+            var oDiv3=document.getElementById('div3');
+            var oDiv4=document.getElementById('div4');
+            var iMaxTop=oDiv1.offsetHeight-oDiv2.offsetHeight;
+            oDiv2.onmousedown=function(ev){
+                var ev=ev||window.event;
+                var disY=ev.clientY-this.offsetTop;
+                document.onmousemove=function(ev){
+                    var ev=ev||window.event;
+                    var T=ev.clientY-disY;
+                    if(T<0){
+                        T=0;
+                    }else if(T > iMaxTop){
+                        T = iMaxTop;
+                    }
+                    oDiv2.style.top=T+'px';
+                    var iScale=T/iMaxTop;//这里是算出点击位置在总高度中所占的比例;
+                    oDiv4.style.top=iScale*(oDiv3.clientHeight-oDiv4.clientHeight)+'px';//clientHeight可视区域的高不包含边框
+                }
+                document.onmouseup=function(){
+                    document.onmousemove=document.onmouseup=null;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2"></div>
+    </div>
+    <div id="div3">
+        <div id="div4">
+                父组件向子组件传值：
+
+                子组件在props中创建一个属性，用来接收父组件传过来的值；
+            
+                在父组件中注册子组件；
+            
+                在子组件标签中添加子组件props中创建的属性；
+            
+                把需要传给子组件的值赋给该属性
+            
+            子组件向父组件传值：
+            
+                子组件中需要以某种方式（如点击事件）的方法来触发一个自定义的事件；
+            
+                将需要传的值作为$emit的第二个参数，该值将作为实参传给响应事件的方法；
+            
+                在父组件中注册子组件并在子组件标签上绑定自定义事件的监听
+                父组件向子组件传值：
+
+    子组件在props中创建一个属性，用来接收父组件传过来的值；
+
+    在父组件中注册子组件；
+
+    在子组件标签中添加子组件props中创建的属性；
+
+    把需要传给子组件的值赋给该属性
+
+子组件向父组件传值：
+
+    子组件中需要以某种方式（如点击事件）的方法来触发一个自定义的事件；
+
+    将需要传的值作为$emit的第二个参数，该值将作为实参传给响应事件的方法；
+
+    在父组件中注册子组件并在子组件标签上绑定自定义事件的监听
+    父组件向子组件传值：
+
+    子组件在props中创建一个属性，用来接收父组件传过来的值；
+
+    在父组件中注册子组件；
+
+    在子组件标签中添加子组件props中创建的属性；
+
+    把需要传给子组件的值赋给该属性
+
+子组件向父组件传值：
+
+    子组件中需要以某种方式（如点击事件）的方法来触发一个自定义的事件；
+
+    将需要传的值作为$emit的第二个参数，该值将作为实参传给响应事件的方法；
+
+    在父组件中注册子组件并在子组件标签上绑定自定义事件的监听
+    父组件向子组件传值：
+
+    子组件在props中创建一个属性，用来接收父组件传过来的值；
+
+    在父组件中注册子组件；
+
+    在子组件标签中添加子组件props中创建的属性；
+
+    把需要传给子组件的值赋给该属性
+
+子组件向父组件传值：
+
+    子组件中需要以某种方式（如点击事件）的方法来触发一个自定义的事件；
+
+    将需要传的值作为$emit的第二个参数，该值将作为实参传给响应事件的方法；
+
+    在父组件中注册子组件并在子组件标签上绑定自定义事件的监听
+    父组件向子组件传值：
+
+    子组件在props中创建一个属性，用来接收父组件传过来的值；
+
+    在父组件中注册子组件；
+
+    在子组件标签中添加子组件props中创建的属性；
+
+    把需要传给子组件的值赋给该属性
+
+子组件向父组件传值：
+
+    子组件中需要以某种方式（如点击事件）的方法来触发一个自定义的事件；
+
+    将需要传的值作为$emit的第二个参数，该值将作为实参传给响应事件的方法；
+
+    在父组件中注册子组件并在子组件标签上绑定自定义事件的监听
+    父组件向子组件传值：
+
+    子组件在props中创建一个属性，用来接收父组件传过来的值；
+
+    在父组件中注册子组件；
+
+    在子组件标签中添加子组件props中创建的属性；
+
+    把需要传给子组件的值赋给该属性
+
+子组件向父组件传值：
+
+    子组件中需要以某种方式（如点击事件）的方法来触发一个自定义的事件；
+
+    将需要传的值作为$emit的第二个参数，该值将作为实参传给响应事件的方法；
+
+    在父组件中注册子组件并在子组件标签上绑定自定义事件的监听
+        </div>
+    </div>
+
+</body>
+</html>

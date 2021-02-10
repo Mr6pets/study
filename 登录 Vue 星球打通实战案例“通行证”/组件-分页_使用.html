@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            margin: 100px auto 0;
+            width: 80%;
+        }
+        .clear:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .pagination {
+            margin: 10px 0;
+        }
+
+        .pagination span {
+            margin: 0 10px;
+        }
+
+        .pagination span.page, .pagination span.prev, .pagination span.next {
+            cursor: pointer;
+        }
+
+        .pagination span.page:hover {
+            color: #409eff;
+        }
+
+        .pagination span.page.active {
+            color: #409eff;
+            cursor: default;
+        }
+
+        .pagination span.prev.disabled, .pagination span.next.disabled {
+            color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .pagination input[type='text'] {
+            padding: 2px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            width: 60px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            outline: none;
+            transition: .2s all;
+        }
+        .pagination input[type='text']:focus {
+            border-color: #409eff;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div class="box">
+    	<ul>
+    		<li v-for="news in showList">{{news}}</li>
+    	</ul>
+        <pagination 
+        	:total="newsList.length" 
+        	:prepage="pre" 
+        	v-model="currentPage"></pagination>
+    </div>
+	<script type="text/javascript">
+		Vue.component('pagination',{
+//			model:{
+			//props:pages,//这里默认是value
+			//event:'change'
+//			},
+			props:['total','prepage','value'],//这里是v-model中父级传给子集的默认接收为value 如果不想使用默认的可以使用 自定义在model中定义
+			data(){
+				return{
+					pagenum:Math.ceil(this.total/this.prepage)
+				}
+			},
+			template:`
+			<div class="pagination">
+	            <span class="total">共 {{total}} 条 / {{pagenum}} 页</span>
+	            <span class="prev disabled">&lt;</span>
+	            <span 
+	            	class="page" 
+	            	v-for="n in pagenum"
+	            	:class="{'active':n==value}"
+	            	@click="choose(n)"
+	            >{{n}}</span>
+	            <span class="next">&gt;</span>
+	            <span class="jump">前往
+	            	<input type="text" />页
+	            </span>
+	        </div>
+			`,
+			methods:{
+				choose(n){
+					this.$emit('input',n)//如果以上是用v-model来进行绑定，那么向父级传递要用默认的input方法，同样如果想自定义也是可以在model中进行定义
+				}
+			}
+		})
+		let vm = new Vue({
+			el:".box",
+			data:{
+				newsList:[
+					'一图读懂|习近平主席2019上半年外交日程 ',
+					'新闻联播五连发:捍卫自身利益 一切后果美方承担 ',
+					' 全国首个跨省流动党组织  宁夏"最美奋斗者"推荐人选  ',
+					' 新中国首部关税税则 老英雄！一路走好！',
+					'港澳台大学生实习分享:追梦的夏天,不燃怎Young！ ',
+					'能量get!网信实习5周年,港澳台学生感恩向未来 ',
+					'国家禁毒委:严格管控芬太尼,推进全球毒品共治',
+					'房价要降?7月楼市销售转冷,金九银十可能也黄了',
+					'中国为关税买单?福克斯主播在线怼特朗普:买单的是美国人!',
+					'韦帕"夜袭广西防城港上思县致强降雨,消防员彻夜救援 ',
+					'有人以“医保局办公厅”名义发假信息,医保局辟谣 ',
+					'5G，干啥的？在这个偏远地区，人家能用它放牛！ ',
+					'四成广告违法、中介佣金超五成……赴韩整容"坑"太多 '
+				],
+				currentPage:1,
+				pre:2
+			},
+			computed:{
+				showList(){
+					var start=(this.currentPage-1)*this.pre;
+					start = Math.max(0,start)
+					var end= start+this.pre;
+					end=Math.min(end,this.newsList.length)
+					var news=[];
+					for( var i=start;i<end;i++){
+						news.push(this.newsList[i])
+					}
+					return news
+				}
+			}
+		})
+	</script>
+</body>
+</html>

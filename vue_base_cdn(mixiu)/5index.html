@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>empty</title>
+  <link rel="stylesheet" href="5tyle.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1>ref</h1>
+    <label>name:</label>
+    <input type="text" ref="name" @keyup="getName">
+    <p>{{name}}</p>
+    <label>age:</label>
+    <input type="text" ref="age" @keyup="getAge">
+    <p>{{age}}</p>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="5app_ref_watch.js"></script>
+</body>
+
+</html>

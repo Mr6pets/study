@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax 请求PHP接口</title>
+</head>
+<body>
+	<button id="button">请求PHP接口</button>
+	<br>
+	<h1>正常表单GET提交数据到PHP</h1>
+	<form action="process.php" method="GET">
+		<input type="text" name="name">
+		<input type="submit" value="提交">
+	</form>
+	<!-- 这里会跳转到PHP文件中并且把后台的信息展示出来 -->
+
+	<h1>ajax提交GET</h1>
+	<form id="getForm">
+		<input type="text" name="name" id="name1">
+		<input type="submit" value="提交">
+	</form>
+
+	<h1>正常表单POST提交数据到PHP</h1>
+	<form action="process.php" method="POST">
+		<input type="text" name="name">
+		<input type="submit" value="提交">
+	</form>
+	
+	<h1>ajax提交POST</h1>
+	<form id="postForm">
+		<input type="text" name="name" id="name2">
+		<input type="submit" value="提交">
+	</form>
+
+	<script>
+		document.getElementById('button').addEventListener('click',getData);
+		document.getElementById('getForm').addEventListener('submit',getForm);
+		document.getElementById('postForm').addEventListener('submit',postForm);
+		function getData(){
+			var xhr =new XMLHttpRequest();
+			xhr.open('GET','process.php?name=liu',true);
+			xhr.onload=function(){
+				if(this.status==200){
+					console.log(this.responseText);
+				}
+			}
+			xhr.send();
+		}
+		function getForm(e){
+			e.preventDefault();//组织form表单自己的刷新事件
+			var name=document.getElementById('name1').value;
+			var xhr =new XMLHttpRequest();
+			xhr.open('GET','process.php?name='+name,true);
+			xhr.onload=function(){
+				if(this.status==200){
+					console.log(this.responseText);
+				}
+			}
+			xhr.send();
+		}
+		function postForm(e){
+			e.preventDefault();//组织form表单自己的刷新事件
+			var name=document.getElementById('name2').value;
+			var params="name="+name;
+			var xhr =new XMLHttpRequest();
+			xhr.open('POST','process.php',true);
+			//设置请求头
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.onload=function(){
+				if(this.status==200 ){
+					console.log(this.responseText);
+				}
+
+			}
+			xhr.send(params);
+		}
+	</script>
+</body>
+</html>

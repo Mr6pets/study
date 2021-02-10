@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装ajax</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" class="name"><br\>
+        <input type="password" class="psd"><br\>
+        <button class="btn" type="button">登录</button>
+    </form>
+    <script>
+        /*
+            jquery
+            $.ajax({
+                type:'post/get',
+                url:'...',
+                data:{
+                    key:value
+                },
+                dataType:'json',
+                success:function(data){
+                    console.log(data);
+                }
+            })
+        */
+        window.onload=function(){ 
+            var btn=document.querySelector('.btn');
+            //点击事件
+            btn.onclick=function(){
+                //获取用户输入的值
+                var name=document.querySelector('.name').value;
+                var psd=document.querySelector('.psd').value;
+                ownAjax({
+                    type:'get',
+                    url:'8ownGet.php',
+                    data:{
+                        uname:name,
+                        upsd:psd
+                    },
+                    dataType:'json',
+                    success:function(data){
+                        console.log(data);
+                    }
+                });
+            }
+            // //封装的函数(参数类型是json类型) paramJson={.....}
+            // function ownAjax(paramJson){
+            //     //get:url=8ownGet.php?uname=name&upsd=psd
+            //     //1.判断一个请求类型 是get 还是post方式
+            //     if(paramJson.type.toLowerCase()=='get'){
+            //         // console.log(paramJson.data);//{uname: "11", upsd: "11"}
+            //         //如果是get请求方式 那个最终要转化为url=8ownGet.php?uname=name&upsd=psd的形式
+            //         //处理data数据 json->数组
+            //         var arr=[];
+            //         for(var key in paramJson.data){
+            //             var str=key+'='+paramJson.data[key];//str='uname=11';
+            //             arr.push(str);
+            //         }
+            //         // console.log(arr);//["uname=33", "upsd=44"]
+            //         //数组转化为字符串
+            //         var strUrl=arr.join('&');
+            //         // console.log(strUrl);//uname=33&upsd=44
+            //         paramJson.url+='?'+strUrl;
+            //         // console.log(paramJson.url);//8ownGet.php?uname=33&upsd=44
+            //     }else if(paramJson.type.toLowerCase()=='post'){
+            //         //如果是post请求 就把数据存放到formdata中
+            //         var formdata=new FormData();
+            //         for(var key in paramJson.data){
+            //             formdata.append(key,paramJson.data[key]);
+            //         }
+            //     }
+            //     //创建XMLHttpRequest();
+            //     var xhr=new XMLHttpRequest();
+            //     //准备 get post
+            //     if(paramJson.type.toLowerCase()=='get'){
+            //         xhr.open('get',paramJson.url,true);
+            //         xhr.send();
+            //     }else if(paramJson.type.toLowerCase()=='post'){
+            //         xhr.open('post',paramJson.urlm,true);
+            //         xhr.send(formdata);
+            //     }
+            //     xhr.onreadystatechange=function(){
+            //         if(xhr.readyState==4 && xhr.status==200){
+            //             console.log(xhr.responseText);
+            //         }
+            //     }
+            // }
+        }
+        
+    </script>
+    <script src="./ownAjax.js"></script>
+</body>
+</html>

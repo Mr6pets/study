@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom优化</title>
+    <style>
+    #div1{
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+    }
+    </style>
+    <script>
+        window.onload=function(){
+            var oUL=document.getElementById('ul1');
+            var oFrag=document.createDocumentFragment();
+            // console.time('hello')
+            // for( var i=0;i<5000;i++){
+            //     var oLi=document.createElement('li');
+            //     oUL.appendChild(oLi);
+            // }
+            // console.timeEnd('hello');//17.0791015625ms
+
+            console.time('hello')
+            for( var i=0;i<5000;i++){
+                var oLi=document.createElement('li');
+                oFrag.appendChild(oLi);
+            }
+            oUL.appendChild(oFrag);
+            console.timeEnd('hello');//15.156005859375ms
+        }
+    </script>
+</head>
+<body>
+    <ul id="ul1">
+
+    </ul>
+</body>
+</html>
