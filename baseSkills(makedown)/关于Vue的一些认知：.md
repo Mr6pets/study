@@ -31,6 +31,10 @@ vue 是通过 数据劫持 结合 发布者-订阅者 来实现双向绑定；�
 2、订阅者watcher，接收变化通知执行相应函数，更新view
 3、解析器compile，扫描解析每一个节点的指令，初始化订阅器
 
+这里可以-Vue的双向绑定实现-https://www.cnblogs.com/canfoo/p/6891868.html
+
+
+
 
 
 
