@@ -1,6 +1,6 @@
 /** vue 底层原理的数据劫持*/
 /**
- * 1.实现一个监听器Observer，用来劫持并监听所有属性，如果有变动的，就通知订阅者。
+* 1.实现一个监听器Observer，用来劫持并监听所有属性，如果有变动的，就通知订阅者。
 *2.实现一个订阅者Watcher，可以收到属性的变化通知并执行相应的函数，从而更新视图。
 *3.实现一个解析器Compile，可以扫描和解析每个节点的相关指令，并根据初始化模板数据以及初始化相应的订阅器。
 */
@@ -89,6 +89,17 @@ Watcher.prototype = {
   }
 
 }
+
+// 这时候我们需要将Observer和Watcher关联起来：
+function SelfVue(data,el,exp) {
+  this.data = data;
+  observe(data);
+  el.innerHTML = this.data[exp]//初始化模板数据
+  new Watcher(this, exp, function (value) {
+    el.innerHTML = value;
+  })
+};
+
 
 
 //解析器Compile来做解析和绑定工作
