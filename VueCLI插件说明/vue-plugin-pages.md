@@ -44,5 +44,7 @@ Pages({
   //   return path.includes('fruits') ? 'async' : 'sync'
   // },
 })
+
 ~~~
+
 
