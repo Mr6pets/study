@@ -176,7 +176,7 @@ let strLength:number=(someValue as string).length;
 
 
 
-// 关于 let const var 在ts中的作用域的一些说明
+// 关于 let const var 在ts中的作用域的一些说明(来自于：ts文档：变量声明：https://www.tslang.cn/docs/handbook/variable-declarations.html)
 
 function f(input:Boolean){
     let a=100;
@@ -187,6 +187,10 @@ function f(input:Boolean){
 
     return b
 }
+
+
+
+
 
 
 
